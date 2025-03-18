@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: Create tarball
-        run: tar -czvf satellite.tar.gz .
+        run: tar --exclude=satellite.tar.gz -czvf satellite.tar.gz .
 
       - name: Create GitHub Release
         id: create_release
