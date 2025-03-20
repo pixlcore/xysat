@@ -15,20 +15,17 @@ jobs:
           - os: ubuntu-latest
             arch: x64
             platform: linux
-          - os: ubuntu-24.04-arm64
+          - os: ubuntu-24.04-arm
             arch: arm64
             platform: linux
-          - os: macos-latest
+          - os: macos-13
             arch: x64
             platform: darwin
-          - os: macos-14-arm64
+          - os: macos-14
             arch: arm64
             platform: darwin
           - os: windows-latest
             arch: x64
-            platform: windows
-          - os: windows-2022-arm64
-            arch: arm64
             platform: windows
 
     steps:
