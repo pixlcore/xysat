@@ -1,26 +1,85 @@
-name: Create Release Tarball
+name: Build and Package Satellite
 
 on:
   push:
     tags:
-      - '*'
+      - '*' # Trigger on any tag push
 
 jobs:
-  build-and-release:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x64
+            platform: linux
+          - os: ubuntu-latest
+            arch: arm64
+            platform: linux
+          - os: macos-latest
+            arch: x64
+            platform: darwin
+          - os: macos-latest
+            arch: arm64
+            platform: darwin
+          - os: windows-latest
+            arch: x64
+            platform: windows
+          - os: windows-latest
+            arch: arm64
+            platform: windows
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Create tarball
+      - name: Install Dependencies
+        run: npm install --arch=${{ matrix.arch }} --platform=${{ matrix.platform }}
+
+      - name: Download and Extract Node.js Runtime
         run: |
-          cd ..
-          tar --exclude=satellite.tar.gz -czvf satellite.tar.gz $(basename $GITHUB_WORKSPACE)
-          mv satellite.tar.gz $GITHUB_WORKSPACE/
+          NODE_VERSION=20.19.0  # Change this as needed
+          NODE_DIST="node-v${NODE_VERSION}-${{ matrix.platform }}-${{ matrix.arch }}"
+          NODE_TARBALL="${NODE_DIST}.tar.gz"
+
+          if [[ "${{ matrix.platform }}" == "windows" ]]; then
+            NODE_TARBALL="${NODE_DIST}.zip"
+            curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
+            unzip -d . "${NODE_TARBALL}"  # Extract everything into the current directory
+          else
+            curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
+            tar --strip-components=1 -xzf "${NODE_TARBALL}"  # Extract without subdirectories
+          fi
+
+        shell: bash
+
+      - name: Package Application
+        run: |
+          BUNDLE_NAME="satellite-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz"
+          tar -czvf "${BUNDLE_NAME}" .
+          mv "${BUNDLE_NAME}" $GITHUB_WORKSPACE/
+
+        shell: bash
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: satellite-${{ matrix.platform }}-${{ matrix.arch }}
+          path: satellite-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
 
       - name: Create GitHub Release
         id: create_release
@@ -33,12 +92,12 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload tarball to release
-        uses: actions/upload-release-asset@v1
+      - name: Upload all tarballs to Release
+        run: |
+          for file in satellite-*/satellite-*.tar.gz; do
+            echo "Uploading $file..."
+            gh release upload ${{ github.ref_name }} "$file"
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./satellite.tar.gz
-          asset_name: satellite.tar.gz
-          asset_content_type: application/gzip
+        shell: bash
