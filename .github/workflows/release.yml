@@ -50,22 +50,39 @@ jobs:
           NODE_TARBALL="${NODE_DIST}.tar.gz"
 
           if [[ "${{ matrix.platform }}" == "windows" ]]; then
+            NODE_DIST="node-v${NODE_VERSION}-win-${{ matrix.arch }}"
             NODE_TARBALL="${NODE_DIST}.zip"
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
-            unzip -d . "${NODE_TARBALL}"  # Extract everything into the current directory
+            unzip -d . "${NODE_TARBALL}"
           else
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
-            tar --strip-components=1 -xzf "${NODE_TARBALL}"  # Extract without subdirectories
+            tar --strip-components=1 -xzf "${NODE_TARBALL}"
           fi
 
         shell: bash
 
       - name: Package Application
         run: |
-          mkdir -p /tmp/artifact
           BUNDLE_NAME="satellite-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz"
-          tar -czvf "/tmp/artifact/${BUNDLE_NAME}" .
-          mv "/tmp/artifact/${BUNDLE_NAME}" $GITHUB_WORKSPACE/
+          
+          if [[ "${{ matrix.platform }}" == "windows" ]]; then
+            # Windows-specific commands
+            # Create temp dir outside of current directory to avoid including it in the archive
+            TEMP_DIR="$RUNNER_TEMP/artifact"
+            mkdir -p "$TEMP_DIR"
+            
+            # Use 7-Zip which is pre-installed on Windows runners
+            # Create tar archive to stdout, then compress it to the temp directory
+            7z a -ttar -so -- . | 7z a -si "$TEMP_DIR/$BUNDLE_NAME"
+            
+            # Move to workspace
+            mv "$TEMP_DIR/$BUNDLE_NAME" $GITHUB_WORKSPACE/
+          else
+            # Unix commands (Linux/macOS)
+            mkdir -p /tmp/artifact
+            tar -czvf "/tmp/artifact/${BUNDLE_NAME}" .
+            mv "/tmp/artifact/${BUNDLE_NAME}" $GITHUB_WORKSPACE/
+          fi
         shell: bash
 
       - name: Upload Artifact
