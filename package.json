@@ -1,6 +1,6 @@
 {
 	"name": "orchestra-satellite",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"private": true,
 	"description": "Remote satellite worker daemon for Orchestra.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
