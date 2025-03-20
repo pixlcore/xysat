@@ -45,7 +45,7 @@ jobs:
 
       - name: Download and Extract Node.js Runtime
         run: |
-          NODE_VERSION=20.19.0  # Change this as needed
+          NODE_VERSION=20.19.0
           NODE_DIST="node-v${NODE_VERSION}-${{ matrix.platform }}-${{ matrix.arch }}"
           NODE_TARBALL="${NODE_DIST}.tar.gz"
 
@@ -62,10 +62,10 @@ jobs:
 
       - name: Package Application
         run: |
+          mkdir -p /tmp/artifact
           BUNDLE_NAME="satellite-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz"
-          tar -czvf "${BUNDLE_NAME}" .
-          mv "${BUNDLE_NAME}" $GITHUB_WORKSPACE/
-
+          tar -czvf "/tmp/artifact/${BUNDLE_NAME}" .
+          mv "/tmp/artifact/${BUNDLE_NAME}" $GITHUB_WORKSPACE/
         shell: bash
 
       - name: Upload Artifact
