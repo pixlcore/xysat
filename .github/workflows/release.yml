@@ -95,14 +95,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for tags
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
-
-      - name: Install GitHub CLI
-        run: |
-          gh auth setup-git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: artifacts
 
       - name: Create GitHub Release
         id: create_release
@@ -120,7 +121,7 @@ jobs:
       - name: Upload all tarballs to Release
         run: |
           echo "Uploading artifacts to release..."
-          for file in satellite-*/satellite-*.tar.gz; do
+          for file in artifacts/*/satellite-*.tar.gz; do
             echo "Uploading $file..."
             gh release upload "${{ github.ref_name }}" "$file" --clobber
           done
