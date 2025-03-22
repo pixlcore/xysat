@@ -54,15 +54,47 @@ jobs:
           NODE_TARBALL="${NODE_DIST}.tar.gz"
 
           if [[ "${{ matrix.platform }}" == "windows" ]]; then
+            # Install additional dependency
+            npm install node-windows
+            
+            # For Windows, we only need node.exe
             NODE_DIST="node-v${NODE_VERSION}-win-${{ matrix.arch }}"
             NODE_TARBALL="${NODE_DIST}.zip"
+            
+            # Download the ZIP file
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
-            unzip -d . "${NODE_TARBALL}"
+            
+            # Create bin directory if it doesn't exist
+            mkdir -p bin
+            
+            # Extract only node.exe from the ZIP and place it in the bin directory
+            # Using PowerShell for better ZIP handling on Windows
+            pwsh -Command "
+              Add-Type -AssemblyName System.IO.Compression.FileSystem;
+              \$zip = [System.IO.Compression.ZipFile]::OpenRead('$NODE_TARBALL');
+              \$entry = \$zip.Entries | Where-Object { \$_.Name -eq 'node.exe' };
+              [System.IO.Compression.ZipFileExtensions]::ExtractToFile(\$entry, 'bin/node.exe', \$true);
+              \$zip.Dispose();
+            "
+            
+            # Clean up the ZIP file
+            rm -f "${NODE_TARBALL}"
+            
+            # Move Windows batch files from win directory to root
+            if [ -d "win" ]; then
+              echo "Moving Windows batch files to root directory..."
+              cp -f win/* .
+              rm -rf win
+              echo "Windows batch files moved successfully."
+            else
+              echo "Warning: 'win' directory not found, no batch files to move."
+            fi
           else
+            # Unix platforms
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
             tar --strip-components=1 -xzf "${NODE_TARBALL}"
+            rm -f "${NODE_TARBALL}"
           fi
-
         shell: bash
 
       - name: Package Application
