@@ -77,8 +77,9 @@ jobs:
               \$zip.Dispose();
             "
             
-            # Clean up the ZIP file
+            # Clean up unnecessary files
             rm -f "${NODE_TARBALL}"
+            rm -rf .git .github package.json package-lock.json debug.sh
             
             # Move Windows batch files from win directory to root
             if [ -d "win" ]; then
@@ -94,6 +95,7 @@ jobs:
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
             tar --strip-components=1 -xzf "${NODE_TARBALL}"
             rm -f "${NODE_TARBALL}"
+            rm -rf .git .github package.json package-lock.json
           fi
         shell: bash
 
