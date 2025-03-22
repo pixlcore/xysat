@@ -153,7 +153,7 @@ else if (args.stop || (args.other && (args.other[0] == 'stop'))) {
 else if (args.plugin || (args.other && (args.other[0] == 'plugin') && args.other[1])) {
 	// execute plugin
 	var plugin_name = Path.basename(args.plugin || args.other[1]);
-	var plugin_file = Path.resolve( Path.join( 'bin', plugin_name + '.js' ) );
+	var plugin_file = Path.resolve( Path.join( 'plugins', plugin_name + '.js' ) );
 	if (!fs.existsSync(plugin_file)) die("\nError: Unknown plugin: " + plugin_name + "\n\n");
 	
 	process.title = plugin_name + '.js';
