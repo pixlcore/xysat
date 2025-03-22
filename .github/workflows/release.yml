@@ -95,7 +95,7 @@ jobs:
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
             tar --strip-components=1 -xzf "${NODE_TARBALL}"
             rm -f "${NODE_TARBALL}"
-            rm -rf .git .github package.json package-lock.json
+            rm -rf .git .github package.json package-lock.json share include bin/npm bin/npx bin/corepack lib/node_modules win
           fi
         shell: bash
 
