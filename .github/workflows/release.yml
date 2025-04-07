@@ -79,7 +79,7 @@ jobs:
             
             # Clean up unnecessary files
             rm -f "${NODE_TARBALL}"
-            rm -rf .git .github debug.sh
+            rm -rf .git .github *.sh
             
             # Move Windows batch files from win directory to root
             if [ -d "win" ]; then
