@@ -83,6 +83,16 @@ if ((args.install || args.uninstall) && is_windows) {
 	});
 	
 	svc.on('uninstall', function() {
+		try { 
+			// kill main process if still running
+			var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); 
+			if (pid) process.kill( pid, 'SIGTERM' );
+		} catch (e) {;}
+		
+		// delete entire sat directory
+		try { Tools.rimraf.sync( __dirname ); }
+		catch (e) { die("\nError: Failed to delete folder: " + e + "\n\n"); }
+		
 		print("\nOrchestra Satellite has been removed successfully.\n\n");
 		process.exit(0);
 	});
@@ -131,7 +141,15 @@ if (args.install || (args.other && (args.other[0] == 'install'))) {
 else if (args.uninstall || (args.other && (args.other[0] == 'uninstall'))) {
 	// uninstall satellite
 	boot.uninstall(boot_opts, function(err) {
-		if (err) throw err;
+		try { 
+			// kill main process if still running
+			var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); 
+			if (pid) process.kill( pid, 'SIGTERM' );
+		} catch (e) {;}
+		
+		// delete entire sat directory
+		try { Tools.rimraf.sync( __dirname ); }
+		catch (e) { die("\nError: Failed to delete folder: " + e + "\n\n"); }
 		
 		print("\nOrchestra Satellite has been removed successfully.\n");
 		print("\n");
