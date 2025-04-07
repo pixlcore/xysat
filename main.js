@@ -55,17 +55,12 @@ if ((args.install || args.uninstall) && is_windows) {
 		process.exit(0);
 	});
 	
-	svc.on('alreadyinstalled', function() {
-		print("\nOrchestra Satellite is already installed.\n\n");
-		process.exit(0);
-	});
-	
 	svc.on('error', function(err) {
-		print("\nWindows Installation Error: " + err + "\n\n");
+		print("\nWindows Service Installation Error: " + err + "\n\n");
 		process.exit(1);
 	});
 	
-	svc.on('install', function() {
+	var installCompleted = function() {
 		print("\nOrchestra Satellite has been installed successfully.\n");
 		
 		if (!fs.existsSync(config_file)) {
@@ -80,9 +75,11 @@ if ((args.install || args.uninstall) && is_windows) {
 		}
 		
 		process.exit(0);
-	});
+	};
+	svc.on('install', installCompleted);
+	svc.on('alreadyinstalled', installCompleted);
 	
-	svc.on('uninstall', function() {
+	var uninstallCompleted = function() {
 		try { 
 			// kill main process if still running
 			var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); 
@@ -95,12 +92,9 @@ if ((args.install || args.uninstall) && is_windows) {
 		
 		print("\nOrchestra Satellite has been removed successfully.\n\n");
 		process.exit(0);
-	});
-	
-	svc.on('alreadyuninstalled', function() {
-		print("\nOrchestra Satellite is already uninstalled.\n\n");
-		process.exit(0);
-	});
+	};
+	svc.on('uninstall', uninstallCompleted);
+	svc.on('alreadyuninstalled', uninstallCompleted);
 	
 	if (args.install) svc.install();
 	else svc.uninstall();
