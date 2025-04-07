@@ -22,6 +22,7 @@
 	"dependencies": {
 		"async": "2.6.4",
 		"class-plus": "^1.0.0",
+		"node-notifier": "10.0.1",
 		"node-pty": "1.0.0",
 		"pixl-boot": "^2.0.0",
 		"pixl-cli": "^1.0.0",
