@@ -9,9 +9,13 @@ const fs = require('fs');
 const os = require('os');
 const cp = require('child_process');
 const Path = require('path');
+const sqparse = require('shell-quote').parse;
 const JSONStream = require('pixl-json-stream');
 const Tools = require('pixl-tools');
 const config = require('../config.json');
+
+const is_windows = !!process.platform.match(/^win/);
+const RE_SHEBANG = /^\#\!([^\n]+)\n/;
 
 // chdir to the proper server root dir
 process.chdir( Path.dirname( __dirname ) );
@@ -25,12 +29,83 @@ var stream = new JSONStream( process.stdin, process.stdout );
 stream.once('json', function(job) {
 	// got job from parent
 	var script_file = Path.join( config.temp_dir, 'orchestra-script-temp-' + job.id + '.sh' );
-	fs.writeFileSync( script_file, job.params.script, { mode: 0o775 } );
-	
-	var child = cp.spawn( Path.resolve(script_file), [], {
+	var child_cmd = Path.resolve(script_file);
+	var child_args = [];
+	var child_opts = {
 		stdio: ['pipe', 'pipe', 'pipe'],
 		cwd: os.tmpdir()
-	} );
+	};
+	
+	// convert to unix line endings universally (windows 10+ is fine with this)
+	if (job.params.script.match(/\r/)) job.params.script = job.params.script.replace(/\r\n/g, "\n");
+	
+	if (is_windows) {
+		// we have to parse the shebang ourselves
+		if (job.params.script.match(RE_SHEBANG)) {
+			var shebang = RegExp.$1.trim();
+			
+			if (shebang.match(/^powershell(\.exe)?$/i)) {
+				script_file = script_file.replace(/\.\w+$/, '.ps1');
+				child_cmd = 'POWERSHELL.EXE';
+				child_args = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', script_file];
+			}
+			else if (shebang.match(/^pwsh(\.exe)?$/i)) {
+				script_file = script_file.replace(/\.\w+$/, '.ps1');
+				child_cmd = 'PWSH.EXE';
+				child_args = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', script_file];
+			}
+			else if (shebang.match(/^cmd(\.exe)?$/i)) {
+				script_file = script_file.replace(/\.\w+$/, '.bat');
+				child_cmd = 'CMD.EXE';
+				child_args = ['/c', script_file];
+			}
+			else if (shebang.match(/\b(powershell|pwsh)\b/i)) {
+				// powershell with custom exe location and/or CLI arguments
+				script_file = script_file.replace(/\.\w+$/, '.ps1');
+				child_cmd = shebang;
+				// if command has cli args, parse using shell-quote
+				if (child_cmd.match(/\s+(.+)$/)) {
+					var cargs_raw = RegExp.$1;
+					child_cmd = child_cmd.replace(/\s+(.+)$/, '');
+					child_args = sqparse( cargs_raw, process.env );
+				}
+				child_args.push( '-File', script_file );
+			}
+			else if (shebang.match(/\b(cmd)\b/i)) {
+				// cmd with custom exe location and/or ClI arguments
+				script_file = script_file.replace(/\.\w+$/, '.bat');
+				child_cmd = shebang;
+				// if command has cli args, parse using shell-quote
+				if (child_cmd.match(/\s+(.+)$/)) {
+					var cargs_raw = RegExp.$1;
+					child_cmd = child_cmd.replace(/\s+(.+)$/, '');
+					child_args = sqparse( cargs_raw, process.env );
+				}
+				child_args.push( '/c', script_file );
+			}
+			else {
+				// generic executable
+				child_cmd = shebang;
+				child_args = [ script_file ];
+			}
+			
+			// remove shebang line
+			job.params.script = job.params.script.replace(RE_SHEBANG, "");
+		}
+		else {
+			// no shebang, assume cmd.exe
+			script_file = script_file.replace(/\.\w+$/, '.bat');
+			child_cmd = 'CMD.EXE';
+			child_args = ['/c', script_file];
+		}
+		child_opts.windowsHide = true;
+	}
+	
+	// write out temp file containing script code
+	fs.writeFileSync( script_file, job.params.script, { mode: 0o775 } );
+	
+	// spawn child to run it
+	var child = cp.spawn( child_cmd, child_args, child_opts );
 	
 	var kill_timer = null;
 	var stderr_buffer = '';
