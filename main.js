@@ -7,6 +7,7 @@
 const Path = require('path');
 const fs = require('fs');
 const PixlServer = require("pixl-server");
+const pkg = require('./package.json');
 const self_bin = Path.resolve(process.argv[0]) + ' ' + Path.resolve(process.argv[1]);
 const config_file = Path.join( __dirname, 'config.json' );
 const is_windows = !!process.platform.match(/^win/);
@@ -180,7 +181,7 @@ else {
 	// start server
 	var server = new PixlServer({
 		__name: 'Satellite',
-		__version: '1.0.0',
+		__version: pkg.version,
 		
 		configFile: config_file,
 		
