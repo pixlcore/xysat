@@ -91,7 +91,7 @@ if ((args.install || args.uninstall) && is_windows) {
 		
 		// delete entire sat directory
 		try { Tools.rimraf.sync( __dirname ); }
-		catch (e) { die("\nError: Failed to delete folder: " + e + "\n\n"); }
+		catch (e) { die("\nError: Failed to delete folder: " + __dirname + ": " + e + "\n\n"); }
 		
 		print("\nOrchestra Satellite has been removed successfully.\n\n");
 		process.exit(0);
@@ -149,7 +149,7 @@ else if (args.uninstall || (args.other && (args.other[0] == 'uninstall'))) {
 		
 		// delete entire sat directory
 		try { Tools.rimraf.sync( __dirname ); }
-		catch (e) { die("\nError: Failed to delete folder: " + e + "\n\n"); }
+		catch (e) { die("\nError: Failed to delete folder: " + __dirname + ": " + e + "\n\n"); }
 		
 		print("\nOrchestra Satellite has been removed successfully.\n");
 		print("\n");
