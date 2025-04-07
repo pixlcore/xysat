@@ -22,7 +22,8 @@ var sample_config = {
 	log_dir: "logs",
 	log_filename: "satellite.log",
 	log_crashes: true,
-	log_archive_path: "logs/archives/[yyyy]/[mm]/[dd]/[filename]-[yyyy]-[mm]-[dd].log.gz", // TODO: this, also log arch deletion
+	log_archive_path: "logs/archives/[filename]-[yyyy]-[mm]-[dd].log.gz",
+	log_archive_keep: "7 days",
 	temp_dir: "temp",
 	debug_level: 5,
 	child_kill_timeout: 10,
