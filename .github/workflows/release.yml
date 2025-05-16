@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: Report System Architecture
         run: |
@@ -49,7 +49,7 @@ jobs:
 
       - name: Download and Extract Node.js Runtime
         run: |
-          NODE_VERSION=20.19.0
+          NODE_VERSION=18.20.8
           NODE_DIST="node-v${NODE_VERSION}-${{ matrix.platform }}-${{ matrix.arch }}"
           NODE_TARBALL="${NODE_DIST}.tar.gz"
 
