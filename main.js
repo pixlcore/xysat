@@ -174,6 +174,10 @@ else if (args.plugin || (args.other && (args.other[0] == 'plugin') && args.other
 }
 else {
 	// normal startup
+	if (!fs.existsSync(config_file)) {
+		// create sample config file if needed (user may have skipped the install step)
+		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
+	}
 	
 	// merge CLI into config file and save it
 	delete args.start;
