@@ -185,6 +185,10 @@ else {
 		args.hosts = [ args.host ];
 		delete args.host;
 	}
+	else if (process.env.ORCHESTRA_masters) {
+		// support common way of specifying masters
+		args.hosts = process.env.ORCHESTRA_masters.split(/\,\s*/);
+	}
 	
 	if (Tools.numKeys(args) && !args.debug && !args.echo) {
 		var temp_config = Tools.mergeHashes( JSON.parse( fs.readFileSync( config_file, 'utf8' ) ), args );
