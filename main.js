@@ -27,7 +27,6 @@ var sample_config = {
 	temp_dir: "temp",
 	debug_level: 5,
 	child_kill_timeout: 10,
-	max_sleep_ms: 5000,
 	monitoring_enabled: true
 };
 
