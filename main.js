@@ -14,8 +14,9 @@ const is_windows = !!process.platform.match(/^win/);
 
 var config = {};
 var sample_config = {
-	hosts: [ "orchestra.local:5523" ],
-	secure: true,
+	hosts: [ "localhost" ],
+	port: 5522,
+	secure: false,
 	socket_opts: { rejectUnauthorized: false },
 	secret_key: "CHANGE_ME", 
 	pid_file: "pid.txt",
@@ -179,6 +180,11 @@ else {
 		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
 	}
 	
+	// map ORCHESTRA_ env vars to SATELLITE_, for convenience
+	for (var key in process.env) {
+		if (key.match(/^ORCHESTRA_(.+)$/)) process.env[ 'SATELLITE_' + RegExp.$1 ] = process.env[key];
+	}
+	
 	// merge CLI into config file and save it
 	delete args.start;
 	delete args.other;
@@ -187,10 +193,6 @@ else {
 		// hosts should always be an array
 		args.hosts = [ args.host ];
 		delete args.host;
-	}
-	else if (process.env.ORCHESTRA_masters) {
-		// support common way of specifying masters
-		args.hosts = process.env.ORCHESTRA_masters.split(/\,\s*/);
 	}
 	
 	if (Tools.numKeys(args) && !args.debug && !args.echo) {
@@ -218,7 +220,7 @@ else {
 	if (is_windows) {
 		// hook logger error event for windows event viewer
 		var EventLogger = require('node-windows').EventLogger;
-		var win_log = new EventLogger('Orchestra Satellite');
+		var win_log = new EventLogger('Orchestra');
 		
 		server.logger.on('row', function(line, cols, args) {
 			if (args.category == 'error') win_log.error( line );
