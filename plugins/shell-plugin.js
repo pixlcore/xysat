@@ -17,9 +17,6 @@ const config = require('../config.json');
 const is_windows = !!process.platform.match(/^win/);
 const RE_SHEBANG = /^\#\!([^\n]+)\n/;
 
-// chdir to the proper server root dir
-process.chdir( Path.dirname( __dirname ) );
-
 // setup stdin / stdout streams
 process.stdin.setEncoding('utf8');
 process.stdout.setEncoding('utf8');
@@ -28,12 +25,12 @@ var stream = new JSONStream( process.stdin, process.stdout );
 
 stream.once('json', function(job) {
 	// got job from parent
-	var script_file = Path.join( config.temp_dir, 'orchestra-script-temp-' + job.id + '.sh' );
+	var script_file = Path.join( Path.dirname(__dirname), config.temp_dir, 'orchestra-script-temp-' + job.id + '.sh' );
 	var child_cmd = Path.resolve(script_file);
 	var child_args = [];
 	var child_opts = {
 		stdio: ['pipe', 'pipe', 'pipe'],
-		cwd: os.tmpdir()
+		cwd: process.cwd()
 	};
 	
 	// convert to unix line endings universally (windows 10+ is fine with this)
