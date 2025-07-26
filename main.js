@@ -36,11 +36,11 @@ var Tools = cli.Tools;
 var args = cli.args;
 cli.global();
 
-process.chdir( __dirname );
-
 // special windows install mode
 if ((args.install || args.uninstall) && is_windows) {
 	// install as a windows service, or uninstall
+	process.chdir( __dirname );
+	
 	var Service = require('node-windows').Service;
 	var svc = new Service({
 		name: 'Orchestra Satellite',
@@ -115,6 +115,7 @@ var boot_opts = {
 
 if (args.install || (args.other && (args.other[0] == 'install'))) {
 	// first time install
+	process.chdir( __dirname );
 	boot.install(boot_opts, function(err) {
 		if (err) throw err;
 		
@@ -134,6 +135,7 @@ if (args.install || (args.other && (args.other[0] == 'install'))) {
 }
 else if (args.uninstall || (args.other && (args.other[0] == 'uninstall'))) {
 	// uninstall satellite
+	process.chdir( __dirname );
 	boot.uninstall(boot_opts, function(err) {
 		try { 
 			// kill main process if still running
@@ -152,6 +154,7 @@ else if (args.uninstall || (args.other && (args.other[0] == 'uninstall'))) {
 }
 else if (args.stop || (args.other && (args.other[0] == 'stop'))) {
 	// shutdown if running
+	process.chdir( __dirname );
 	var pid = 0;
 	try { pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); } catch (e) {;}
 	
@@ -167,7 +170,7 @@ else if (args.stop || (args.other && (args.other[0] == 'stop'))) {
 else if (args.plugin || (args.other && (args.other[0] == 'plugin') && args.other[1])) {
 	// execute plugin
 	var plugin_name = Path.basename(args.plugin || args.other[1]);
-	var plugin_file = Path.resolve( Path.join( 'plugins', plugin_name + '.js' ) );
+	var plugin_file = Path.resolve( __dirname, Path.join( 'plugins', plugin_name + '.js' ) );
 	if (!fs.existsSync(plugin_file)) die("\nError: Unknown plugin: " + plugin_name + "\n\n");
 	
 	process.title = plugin_name + '.js';
@@ -175,6 +178,7 @@ else if (args.plugin || (args.other && (args.other[0] == 'plugin') && args.other
 }
 else {
 	// normal startup
+	process.chdir( __dirname );
 	if (!fs.existsSync(config_file)) {
 		// create sample config file if needed (user may have skipped the install step)
 		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
