@@ -9,12 +9,9 @@ var cp = require('child_process');
 var os = require('os');
 var Path = require('path');
 var JSONStream = require('pixl-json-stream');
-var Logger = require('pixl-logger');
 var Tools = require('pixl-tools');
 var Perf = require('pixl-perf');
 var Request = require('pixl-request');
-
-process.chdir( Path.dirname( __dirname ) );
 
 var perf = new Perf();
 perf.setScale( 1 ); // seconds
@@ -33,8 +30,9 @@ var ac = null;
 // process.stdin.setEncoding('utf8');
 // process.stdout.setEncoding('utf8');
 
-console.warn("Printed this with console.warn, should go to stderr, and thus straight to our logfile.");
-console.log("Printed this with console.log, should be ignored as not json, and also end up in our logfile.");
+// console.warn("Printed this with console.warn, should go to stderr.");
+// console.log("Printed this with console.log, should be ignored as not json.");
+console.log("Job start!");
 
 // ANSI escape codes
 (function() {
@@ -70,17 +68,17 @@ if (process.argv.length > 2) console.log("ARGV: " + JSON.stringify(process.argv)
 var stream = new JSONStream( process.stdin, process.stdout );
 stream.on('json', function(job) {
 	// got job from parent 
-	var columns = ['hires_epoch', 'date', 'hostname', 'category', 'code', 'msg', 'data'];
-	var logger = new Logger( Path.join(os.tmpdir(), 'orchestra-test-plugin.log'), columns );
-	logger.set('hostname', os.hostname());
-	logger.set('sync', true);
-	logger.set('echo', true);
-	// logger.set('component', job.id);
-	logger.set('debugLevel', 9);
+	console.log( "The current working directory is: " + process.cwd() );
+	console.log( "The current date/time for our job is: " + (new Date(job.now * 1000)).toString() );
 	
-	logger.debug(1, "This is a test debug log entry");
-	logger.debug(9, "Here is our job, delivered via JSONStream:", job);
-	logger.debug(9, "The current date/time for our job is: " + (new Date(job.now * 1000)).toString() );
+	// report if we got input
+	if (job.input && job.input.data) {
+		console.log( "Received input data: " + JSON.stringify(job.input.data) );
+	}
+	if (job.input && job.input.files) {
+		console.log( "Received input files: " + JSON.stringify(job.input.files) );
+		console.log( "Glob: " + JSON.stringify( Tools.glob.sync('*') ) );
+	}
 	
 	// use some memory so we show up on the mem graph
 	var buf = null;
@@ -99,7 +97,7 @@ stream.on('json', function(job) {
 		low = parseInt(low);
 		high = parseInt(high);
 		duration = Math.round( low + (Math.random() * (high - low)) );
-		logger.debug(9, "Chosen random duration: " + duration + " seconds");
+		console.log( "Chosen random duration: " + duration + " seconds" );
 	}
 	else {
 		duration = parseInt( job.params.duration );
@@ -118,7 +116,7 @@ stream.on('json', function(job) {
 		
 		if (job.params.progress) {
 			// report progress
-			logger.debug(9, "Progress: " + progress);
+			console.log( "Progress: " + Tools.shortFloat(progress));
 			stream.write({
 				orchestra: true,
 				progress: progress
@@ -126,12 +124,9 @@ stream.on('json', function(job) {
 		}
 		
 		idx++;
-		if (idx % 10 == 0) {
-			logger.debug(9, "Now is the ⏱ for all good 🏃 to come to the 🏥 of their 🇺🇸! " + progress);
-		}
 		
 		if (progress >= 1.0) {
-			logger.debug(9, "We're done!");
+			console.log( "We're done!" );
 			perf.end();
 			clearTimeout( timer );
 			
@@ -178,17 +173,19 @@ stream.on('json', function(job) {
 			};
 			
 			if (job.params.upload) {
-				var temp_file = 'temp/sample-report-' + job.id + '.txt';
+				var temp_file = 'sample-report-' + job.id + '.txt';
 				fs.writeFileSync( temp_file, html.content.replace(/<.+?>/g, '') + "\n" );
 				stream.write({
 					orchestra: true,
-					files: [ { path: temp_file, delete: true } ]
+					push: {
+						files: [ { path: temp_file, delete: true } ]
+					}
 				});
 			}
 			
 			switch (job.params.action) {
 				case 'Success':
-					logger.debug(9, "Simulating a successful response");
+					console.log( "Simulating a successful response." );
 					stream.write({
 						orchestra: true,
 						complete: true,
@@ -196,12 +193,19 @@ stream.on('json', function(job) {
 						description: "Success!",
 						perf: perf.summarize(),
 						table: table,
-						html: html
+						html: html,
+						data: {
+							text: "This is some sample data to pass to the next job!",
+							// mmmm: "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+							animal: "cat",
+							breed: "abyssinian",
+							age: 42
+						}
 					});
 				break;
 				
 				case 'Error':
-					logger.debug(9, "Simulating an error response");
+					console.log( "Simulating an error response." );
 					stream.write({
 						orchestra: true,
 						complete: true,
@@ -212,7 +216,7 @@ stream.on('json', function(job) {
 				break;
 				
 				case 'Warning':
-					logger.debug(9, "Simulating a warning response");
+					console.log( "Simulating a warning response." );
 					stream.write({
 						orchestra: true,
 						complete: true,
@@ -223,7 +227,7 @@ stream.on('json', function(job) {
 				break;
 				
 				case 'Critical':
-					logger.debug(9, "Simulating an error response");
+					console.log( "Simulating an error response." );
 					stream.write({
 						orchestra: true,
 						complete: true,
@@ -234,16 +238,13 @@ stream.on('json', function(job) {
 				break;
 				
 				case 'Crash':
-					logger.debug(9, "Simulating a crash");
+					console.log( "Simulating a crash..." );
 					setTimeout( function() { 
 						// process.exit(1); 
 						throw new Error("Test Crash");
 					}, 100 );
 				break;
 			}
-			
-			// delete log file
-			try { fs.unlinkSync( logger.file ); } catch(e) {;}
 			
 			// allow organic exit so stream.writes can complete
 			// process.exit(0);
