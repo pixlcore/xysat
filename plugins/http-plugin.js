@@ -79,7 +79,7 @@ stream.on('json', function(job) {
 	
 	// download
 	if (params.download) {
-		opts.download = params.download = os.tmpdir() + '/' + job.id + '-download.bin';
+		opts.download = params.download = Path.join( job.cwd, job.id + '-download.bin' );
 	}
 	
 	// progress
