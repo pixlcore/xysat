@@ -1,6 +1,6 @@
 {
 	"name": "opsrocket-satellite",
-	"version": "0.0.19",
+	"version": "0.0.20",
 	"private": true,
 	"description": "Remote satellite worker daemon for OpsRocket.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
