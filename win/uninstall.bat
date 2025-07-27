@@ -1,5 +1,5 @@
 @echo off
-rem uninstall-service.bat - Remove the Orchestra Satellite service
+rem uninstall-service.bat - Remove the OpsRocket Satellite service
 setlocal enabledelayedexpansion
 
 net session >nul 2>&1
@@ -27,14 +27,14 @@ if not exist "%MAIN_JS%" (
     exit /b 1
 )
 
-echo Removing Orchestra Satellite...
+echo Removing OpsRocket Satellite...
 
 rem Start the application
 "%NODE_EXE%" "%MAIN_JS%"
 
 rem Check if process started successfully
 if %ERRORLEVEL% neq 0 (
-    echo ERROR: Failed to remove Orchestra Satellite. Exit code: %ERRORLEVEL%
+    echo ERROR: Failed to remove OpsRocket Satellite. Exit code: %ERRORLEVEL%
     exit /b %ERRORLEVEL%
 )
 

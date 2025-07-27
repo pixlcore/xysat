@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-// HTTP Plugin for Orchestra
+// HTTP Plugin for OpsRocket
 // Invoked via the 'HTTP Client' Plugin
-// Copyright (c) 2024 Joseph Huckaby
-// Released under the Sustainable Use License
+// Copyright (c) 2019 - 2025 PixlCore LLC
+// Sustainable Use License -- see LICENSE.md
 
 // Job Params: 
 //		method, url, headers, data, timeout, follow, ssl_cert_bypass, download, success_match, error_match
@@ -34,7 +34,7 @@ stream.on('json', function(job) {
 	request.setTimeout( (params.timeout || 0) * 1000 );
 	
 	if (!params.url || !params.url.match(/^https?\:\/\/\S+$/i)) {
-		stream.write({ orchestra: true, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
+		stream.write({ opsrocket: true, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
 		return;
 	}
 	
@@ -88,7 +88,7 @@ stream.on('json', function(job) {
 		if (res.headers && res.headers['content-length']) {
 			if (!prog.len) prog.len = parseInt( res.headers['content-length'] );
 			prog.current += chunk.length;
-			if (prog.len) stream.write({ orchestra: true, progress: prog.current / prog.len });
+			if (prog.len) stream.write({ opsrocket: true, progress: prog.current / prog.len });
 		}
 	};
 	
@@ -115,9 +115,9 @@ stream.on('json', function(job) {
 			}
 		}
 		
-		// start building orchestra JSON update
+		// start building opsrocket JSON update
 		var update = { 
-			orchestra: true,
+			opsrocket: true,
 			complete: true
 		};
 		if (err) {

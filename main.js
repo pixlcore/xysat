@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Orchestra Satellite - Main entry point
+// OpsRocket Satellite - Main entry point
 // Copyright (c) 2019 - 2025 PixlCore LLC
 // Sustainable Use License -- see LICENSE.md
 
@@ -43,15 +43,15 @@ if ((args.install || args.uninstall) && is_windows) {
 	
 	var Service = require('node-windows').Service;
 	var svc = new Service({
-		name: 'Orchestra Satellite',
-		description: 'Orchestra Satellite',
+		name: 'OpsRocket Satellite',
+		description: 'OpsRocket Satellite',
 		script: Path.resolve(  __dirname, 'main.js' ),
 		execPath: process.execPath,
 		scriptOptions: [ '--foreground' ]
 	});
 	
 	svc.on('start', function() {
-		print("\nOrchestra Satellite has been started successfully.\n\n");
+		print("\nOpsRocket Satellite has been started successfully.\n\n");
 		process.exit(0);
 	});
 	
@@ -61,7 +61,7 @@ if ((args.install || args.uninstall) && is_windows) {
 	});
 	
 	var installCompleted = function() {
-		print("\nOrchestra Satellite has been installed successfully.\n");
+		print("\nOpsRocket Satellite has been installed successfully.\n");
 		
 		if (!fs.existsSync(config_file)) {
 			config = sample_config;
@@ -90,7 +90,7 @@ if ((args.install || args.uninstall) && is_windows) {
 		try { Tools.rimraf.sync( __dirname ); }
 		catch (e) { die("\nError: Failed to delete folder: " + __dirname + ": " + e + "\n\n"); }
 		
-		print("\nOrchestra Satellite has been removed successfully.\n\n");
+		print("\nOpsRocket Satellite has been removed successfully.\n\n");
 		process.exit(0);
 	};
 	svc.on('uninstall', uninstallCompleted);
@@ -104,7 +104,7 @@ if ((args.install || args.uninstall) && is_windows) {
 // setup pixl-boot for startup service
 var boot = require('pixl-boot');
 var boot_opts = {
-	name: "Orchestra Satellite",
+	name: "OpsRocket Satellite",
 	company: "PixlCore LLC",
 	script: self_bin,
 	linux_type: "forking",
@@ -119,7 +119,7 @@ if (args.install || (args.other && (args.other[0] == 'install'))) {
 	boot.install(boot_opts, function(err) {
 		if (err) throw err;
 		
-		print("\nOrchestra Satellite has been installed successfully.\n");
+		print("\nOpsRocket Satellite has been installed successfully.\n");
 		
 		if (!fs.existsSync(config_file)) {
 			config = sample_config;
@@ -147,7 +147,7 @@ else if (args.uninstall || (args.other && (args.other[0] == 'uninstall'))) {
 		try { Tools.rimraf.sync( __dirname ); }
 		catch (e) { die("\nError: Failed to delete folder: " + __dirname + ": " + e + "\n\n"); }
 		
-		print("\nOrchestra Satellite has been removed successfully.\n");
+		print("\nOpsRocket Satellite has been removed successfully.\n");
 		print("\n");
 		process.exit(0);
 	} );
@@ -184,9 +184,9 @@ else {
 		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
 	}
 	
-	// map ORCHESTRA_ env vars to SATELLITE_, for convenience
+	// map OPSROCKET_ env vars to SATELLITE_, for convenience
 	for (var key in process.env) {
-		if (key.match(/^ORCHESTRA_(.+)$/)) process.env[ 'SATELLITE_' + RegExp.$1 ] = process.env[key];
+		if (key.match(/^OPSROCKET_(.+)$/)) process.env[ 'SATELLITE_' + RegExp.$1 ] = process.env[key];
 	}
 	
 	// merge CLI into config file and save it
@@ -218,13 +218,13 @@ else {
 
 	server.startup( function() {
 		// server startup complete
-		process.title = "Orchestra Satellite";
+		process.title = "OpsRocket Satellite";
 	} );
 	
 	if (is_windows) {
 		// hook logger error event for windows event viewer
 		var EventLogger = require('node-windows').EventLogger;
-		var win_log = new EventLogger('Orchestra');
+		var win_log = new EventLogger('OpsRocket');
 		
 		server.logger.on('row', function(line, cols, args) {
 			if (args.category == 'error') win_log.error( line );

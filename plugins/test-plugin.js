@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-// Test Plugin for Orchestra
-// Copyright (c) 2022 Joseph Huckaby
-// Released under the Sustainable Use License
+// Test Plugin for OpsRocket
+// Copyright (c) 2019 - 2025 PixlCore LLC
+// Sustainable Use License -- see LICENSE.md
 
 var fs = require('fs');
 var cp = require('child_process');
@@ -118,7 +118,7 @@ stream.on('json', function(job) {
 			// report progress
 			console.log( "Progress: " + Tools.shortFloat(progress));
 			stream.write({
-				orchestra: true,
+				opsrocket: true,
 				progress: progress
 			});
 		}
@@ -176,7 +176,7 @@ stream.on('json', function(job) {
 				var temp_file = 'sample-report-' + job.id + '.txt';
 				fs.writeFileSync( temp_file, html.content.replace(/<.+?>/g, '') + "\n" );
 				stream.write({
-					orchestra: true,
+					opsrocket: true,
 					push: {
 						files: [ { path: temp_file, delete: true } ]
 					}
@@ -187,7 +187,7 @@ stream.on('json', function(job) {
 				case 'Success':
 					console.log( "Simulating a successful response." );
 					stream.write({
-						orchestra: true,
+						opsrocket: true,
 						complete: true,
 						code: 0,
 						description: "Success!",
@@ -207,7 +207,7 @@ stream.on('json', function(job) {
 				case 'Error':
 					console.log( "Simulating an error response." );
 					stream.write({
-						orchestra: true,
+						opsrocket: true,
 						complete: true,
 						code: 999,
 						description: "Simulating an error message here.  Something went wrong!",
@@ -218,7 +218,7 @@ stream.on('json', function(job) {
 				case 'Warning':
 					console.log( "Simulating a warning response." );
 					stream.write({
-						orchestra: true,
+						opsrocket: true,
 						complete: true,
 						code: 'warning',
 						description: "Simulating a warning message here.  Something is concerning!",
@@ -229,7 +229,7 @@ stream.on('json', function(job) {
 				case 'Critical':
 					console.log( "Simulating an error response." );
 					stream.write({
-						orchestra: true,
+						opsrocket: true,
 						complete: true,
 						code: 'critical',
 						description: "Simulating a critical error message here.  Something is VERY wrong!",

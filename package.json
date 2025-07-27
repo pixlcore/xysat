@@ -1,22 +1,22 @@
 {
-	"name": "orchestra-satellite",
+	"name": "opsrocket-satellite",
 	"version": "0.0.19",
 	"private": true,
-	"description": "Remote satellite worker daemon for Orchestra.",
+	"description": "Remote satellite worker daemon for OpsRocket.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
-	"homepage": "https://github.com/pixlcore/orchestra-satellite",
+	"homepage": "https://github.com/pixlcore/opsrocket-satellite",
 	"license": "Sustainable Use License",
 	"bin": "main.js",
 	"main": "main.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pixlcore/orchestra-satellite"
+		"url": "https://github.com/pixlcore/opsrocket-satellite"
 	},
 	"bugs": {
-		"url": "https://github.com/pixlcore/orchestra-satellite/issues"
+		"url": "https://github.com/pixlcore/opsrocket-satellite/issues"
 	},
 	"keywords": [
-		"orchestra",
+		"opsrocket",
 		"satellite"
 	],
 	"dependencies": {
