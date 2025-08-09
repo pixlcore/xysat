@@ -75,7 +75,7 @@ stream.on('json', function(job) {
 	if (job.input && job.input.data) {
 		console.log( "Received input data: " + JSON.stringify(job.input.data) );
 	}
-	if (job.input && job.input.files) {
+	if (job.input && job.input.files && job.input.files.length) {
 		console.log( "Received input files: " + JSON.stringify(job.input.files) );
 		console.log( "Glob: " + JSON.stringify( Tools.glob.sync('*') ) );
 	}
@@ -103,9 +103,8 @@ stream.on('json', function(job) {
 		duration = parseInt( job.params.duration );
 	}
 	
-	if (job.params.spawn) {
-		cp.exec( 'sleep ' + Math.floor(duration - 1), function(err, stdout, stderr) {} );
-	}
+	// spawn child process
+	cp.exec( 'sleep ' + Math.floor(duration - 1), function(err, stdout, stderr) {} );
 	
 	var timer = setInterval( function() {
 		var now = Tools.timeNow();
@@ -114,14 +113,12 @@ stream.on('json', function(job) {
 		
 		if (buf) buf.fill( String.fromCharCode( Math.floor( Math.random() * 256 ) ) );
 		
-		if (job.params.progress) {
-			// report progress
-			console.log( "Progress: " + Tools.shortFloat(progress));
-			stream.write({
-				opsrocket: true,
-				progress: progress
-			});
-		}
+		// report progress
+		// console.log( "Progress: " + Tools.shortFloat(progress));
+		stream.write({
+			opsrocket: true,
+			progress: progress
+		});
 		
 		idx++;
 		
@@ -196,10 +193,10 @@ stream.on('json', function(job) {
 						html: html,
 						data: {
 							text: "This is some sample data to pass to the next job!",
-							// mmmm: "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
-							animal: "cat",
-							breed: "abyssinian",
-							age: 42
+							hostname: os.hostname(),
+							pid: process.pid,
+							random: Tools.shortFloat( Math.random() ),
+							obj: { foo: 1, bar: null, bool: true }
 						}
 					});
 				break;
