@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// HTTP Plugin for OpsRocket
+// HTTP Plugin for xyOps
 // Invoked via the 'HTTP Client' Plugin
 // Copyright (c) 2019 - 2025 PixlCore LLC
 // Sustainable Use License -- see LICENSE.md
@@ -34,7 +34,7 @@ stream.on('json', function(job) {
 	request.setTimeout( (params.timeout || 0) * 1000 );
 	
 	if (!params.url || !params.url.match(/^https?\:\/\/\S+$/i)) {
-		stream.write({ opsrocket: true, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
+		stream.write({ xy: true, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
 		return;
 	}
 	
@@ -88,7 +88,7 @@ stream.on('json', function(job) {
 		if (res.headers && res.headers['content-length']) {
 			if (!prog.len) prog.len = parseInt( res.headers['content-length'] );
 			prog.current += chunk.length;
-			if (prog.len) stream.write({ opsrocket: true, progress: prog.current / prog.len });
+			if (prog.len) stream.write({ xy: true, progress: prog.current / prog.len });
 		}
 	};
 	
@@ -115,9 +115,9 @@ stream.on('json', function(job) {
 			}
 		}
 		
-		// start building opsrocket JSON update
+		// start building xyops JSON update
 		var update = { 
-			opsrocket: true,
+			xy: true,
 			complete: true
 		};
 		if (err) {

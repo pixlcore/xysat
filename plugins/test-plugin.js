@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Test Plugin for OpsRocket
+// Test Plugin for xyOps
 // Copyright (c) 2019 - 2025 PixlCore LLC
 // Sustainable Use License -- see LICENSE.md
 
@@ -116,7 +116,7 @@ stream.on('json', function(job) {
 		// report progress
 		// console.log( "Progress: " + Tools.shortFloat(progress));
 		stream.write({
-			opsrocket: true,
+			xy: true,
 			progress: progress
 		});
 		
@@ -173,7 +173,7 @@ stream.on('json', function(job) {
 				var temp_file = 'sample-report-' + job.id + '.txt';
 				fs.writeFileSync( temp_file, html.content.replace(/<.+?>/g, '') + "\n" );
 				stream.write({
-					opsrocket: true,
+					xy: true,
 					push: {
 						files: [ { path: temp_file, delete: true } ]
 					}
@@ -184,7 +184,7 @@ stream.on('json', function(job) {
 				case 'Success':
 					console.log( "Simulating a successful response." );
 					stream.write({
-						opsrocket: true,
+						xy: true,
 						complete: true,
 						code: 0,
 						description: "Success!",
@@ -204,7 +204,7 @@ stream.on('json', function(job) {
 				case 'Error':
 					console.log( "Simulating an error response." );
 					stream.write({
-						opsrocket: true,
+						xy: true,
 						complete: true,
 						code: 999,
 						description: "Simulating an error message here.  Something went wrong!",
@@ -215,7 +215,7 @@ stream.on('json', function(job) {
 				case 'Warning':
 					console.log( "Simulating a warning response." );
 					stream.write({
-						opsrocket: true,
+						xy: true,
 						complete: true,
 						code: 'warning',
 						description: "Simulating a warning message here.  Something is concerning!",
@@ -226,7 +226,7 @@ stream.on('json', function(job) {
 				case 'Critical':
 					console.log( "Simulating an error response." );
 					stream.write({
-						opsrocket: true,
+						xy: true,
 						complete: true,
 						code: 'critical',
 						description: "Simulating a critical error message here.  Something is VERY wrong!",

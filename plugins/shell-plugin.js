@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Shell Script Runner for OpsRocket
+// Shell Script Runner for xyOps
 // Invoked via the 'Shell Script' Plugin
 // Copyright (c) 2019 - 2025 PixlCore LLC
 // Sustainable Use License -- see LICENSE.md
@@ -25,7 +25,7 @@ var stream = new JSONStream( process.stdin, process.stdout );
 
 stream.once('json', function(job) {
 	// got job from parent
-	var script_file = Path.join( Path.dirname(__dirname), config.temp_dir, 'opsrocket-script-temp-' + job.id + '.sh' );
+	var script_file = Path.join( Path.dirname(__dirname), config.temp_dir, 'xyops-script-temp-' + job.id + '.sh' );
 	var child_cmd = Path.resolve(script_file);
 	var child_args = [];
 	var child_opts = {
@@ -112,7 +112,7 @@ stream.once('json', function(job) {
 	cstream.recordRegExp = /^\s*\{.+\}\s*$/;
 	
 	cstream.on('json', function(data) {
-		// received JSON data from child, pass along to OpsRocket or log
+		// received JSON data from child, pass along to xyOps or log
 		if (job.params.json) {
 			stream.write(data);
 			if (data.html) sent_html = true;
@@ -126,7 +126,7 @@ stream.once('json', function(job) {
 		if (line.match(/^\s*(\d+)\%\s*$/)) {
 			var progress = Math.max( 0, Math.min( 100, parseInt( RegExp.$1 ) ) ) / 100;
 			stream.write({
-				opsrocket: true,
+				xy: true,
 				progress: progress
 			});
 		}
@@ -148,7 +148,7 @@ stream.once('json', function(job) {
 	child.on('error', function (err) {
 		// child error
 		stream.write({
-			opsrocket: true,
+			xy: true,
 			complete: true,
 			code: 1,
 			description: "Script failed: " + Tools.getErrorDescription(err)
@@ -163,7 +163,7 @@ stream.once('json', function(job) {
 		code = (code || signal || 0);
 		
 		var data = {
-			opsrocket: true,
+			xy: true,
 			complete: true,
 			code: code,
 			description: code ? ("Script exited with code: " + code) : ""

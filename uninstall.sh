@@ -5,5 +5,5 @@
 
 cd "$(dirname "$0")" || exit 1
 
-# Uninstall OpsRocket Satellite
+# Uninstall xyOps Satellite
 ./bin/node main.js uninstall || exit 1

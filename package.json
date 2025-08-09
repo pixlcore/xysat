@@ -1,23 +1,23 @@
 {
-	"name": "opsrocket-satellite",
+	"name": "xysat",
 	"version": "0.0.20",
 	"private": true,
-	"description": "Remote satellite worker daemon for OpsRocket.",
+	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
-	"homepage": "https://github.com/pixlcore/opsrocket-satellite",
+	"homepage": "https://github.com/pixlcore/xysat",
 	"license": "Sustainable Use License",
 	"bin": "main.js",
 	"main": "main.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pixlcore/opsrocket-satellite"
+		"url": "https://github.com/pixlcore/xysat"
 	},
 	"bugs": {
-		"url": "https://github.com/pixlcore/opsrocket-satellite/issues"
+		"url": "https://github.com/pixlcore/xysat/issues"
 	},
 	"keywords": [
-		"opsrocket",
-		"satellite"
+		"xyops",
+		"xysat"
 	],
 	"dependencies": {
 		"async": "2.6.4",

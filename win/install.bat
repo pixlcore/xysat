@@ -1,5 +1,5 @@
 @echo off
-rem install-service.bat - Installs the OpsRocket Satellite service
+rem install-service.bat - Installs the xyOps Satellite service
 setlocal enabledelayedexpansion
 
 net session >nul 2>&1
@@ -27,14 +27,14 @@ if not exist "%MAIN_JS%" (
     exit /b 1
 )
 
-echo Installing OpsRocket Satellite...
+echo Installing xyOps Satellite...
 
 rem Start the application
 "%NODE_EXE%" "%MAIN_JS%"
 
 rem Check if process started successfully
 if %ERRORLEVEL% neq 0 (
-    echo ERROR: Failed to install OpsRocket Satellite. Exit code: %ERRORLEVEL%
+    echo ERROR: Failed to install xyOps Satellite. Exit code: %ERRORLEVEL%
     exit /b %ERRORLEVEL%
 )
 
