@@ -104,7 +104,7 @@ if ((args.install || args.uninstall) && is_windows) {
 // setup pixl-boot for startup service
 var boot = require('pixl-boot');
 var boot_opts = {
-	name: "xyOps Satellite",
+	name: "xysat",
 	company: "PixlCore LLC",
 	script: self_bin,
 	linux_type: "forking",
