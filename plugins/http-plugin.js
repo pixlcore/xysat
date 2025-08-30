@@ -3,7 +3,7 @@
 // HTTP Plugin for xyOps
 // Invoked via the 'HTTP Client' Plugin
 // Copyright (c) 2019 - 2025 PixlCore LLC
-// Sustainable Use License -- see LICENSE.md
+// MIT License -- see LICENSE.md
 
 // Job Params: 
 //		method, url, headers, data, timeout, follow, ssl_cert_bypass, download, success_match, error_match
@@ -15,6 +15,7 @@ var Path = require('path');
 var JSONStream = require('pixl-json-stream');
 var Tools = require('pixl-tools');
 var Request = require('pixl-request');
+var config = require('../config.json');
 
 // setup stdin / stdout streams 
 process.stdin.setEncoding('utf8');
@@ -29,6 +30,12 @@ stream.on('json', function(job) {
 	var print = function(text) {
 		process.stdout.write(text);
 	};
+	
+	// airgapped mode
+	if (config.airgap && config.airgap.enabled) {
+		if (config.airgap.whitelist && config.airgap.whitelist.length) request.setWhitelist( config.airgap.whitelist );
+		if (config.airgap.blacklist && config.airgap.blacklist.length) request.setBlacklist( config.airgap.blacklist );
+	}
 	
 	// timeout
 	request.setTimeout( (params.timeout || 0) * 1000 );

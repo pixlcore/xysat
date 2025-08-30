@@ -2,7 +2,7 @@
 
 // Test Plugin for xyOps
 // Copyright (c) 2019 - 2025 PixlCore LLC
-// Sustainable Use License -- see LICENSE.md
+// MIT License -- see LICENSE.md
 
 var fs = require('fs');
 var cp = require('child_process');
@@ -12,6 +12,7 @@ var JSONStream = require('pixl-json-stream');
 var Tools = require('pixl-tools');
 var Perf = require('pixl-perf');
 var Request = require('pixl-request');
+var config = require('../config.json');
 
 var perf = new Perf();
 perf.setScale( 1 ); // seconds
@@ -22,6 +23,12 @@ request.setTimeout( 300 * 1000 );
 request.setFollow( 5 );
 request.setAutoError( true );
 request.setKeepAlive( false );
+
+// airgapped mode
+if (config.airgap && config.airgap.enabled) {
+	if (config.airgap.whitelist && config.airgap.whitelist.length) request.setWhitelist( config.airgap.whitelist );
+	if (config.airgap.blacklist && config.airgap.blacklist.length) request.setBlacklist( config.airgap.blacklist );
+}
 
 var net_url = 'https://github.com/jhuckaby/performa-satellite/releases/latest/download/performa-satellite-linux-x64';
 var ac = null;
