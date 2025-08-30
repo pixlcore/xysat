@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Copyright (c) 2019 - 2025 PixlCore LLC
-# Sustainable Use License -- see LICENSE.md
+# MIT License -- see LICENSE.md
 
 cd "$(dirname "$0")" || exit 1
 

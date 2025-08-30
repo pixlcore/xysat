@@ -3,7 +3,7 @@
 // Shell Script Runner for xyOps
 // Invoked via the 'Shell Script' Plugin
 // Copyright (c) 2019 - 2025 PixlCore LLC
-// Sustainable Use License -- see LICENSE.md
+// MIT License -- see LICENSE.md
 
 const fs = require('fs');
 const os = require('os');
