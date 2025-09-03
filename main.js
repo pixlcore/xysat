@@ -21,7 +21,7 @@ var sample_config = {
 	secret_key: "CHANGE_ME", 
 	pid_file: "pid.txt",
 	log_dir: "logs",
-	log_filename: "satellite.log",
+	log_filename: "[component].log",
 	log_crashes: true,
 	log_archive_path: "logs/archives/[filename]-[yyyy]-[mm]-[dd].log.gz",
 	log_archive_keep: "7 days",
