@@ -37,7 +37,7 @@ var args = cli.args;
 cli.global();
 
 // special windows install mode
-if ((args.install || args.uninstall) && is_windows) {
+if ((args.install || args.uninstall || args.stop) && is_windows) {
 	// install as a windows service, or uninstall
 	process.chdir( __dirname );
 	
@@ -50,56 +50,81 @@ if ((args.install || args.uninstall) && is_windows) {
 		scriptOptions: [ '--foreground' ]
 	});
 	
-	svc.on('start', function() {
-		print("\nxyOps Satellite has been started successfully.\n\n");
-		process.exit(0);
-	});
-	
-	svc.on('error', function(err) {
-		print("\nWindows Service Installation Error: " + err + "\n\n");
-		process.exit(1);
-	});
-	
-	var installCompleted = function() {
-		print("\nxyOps Satellite has been installed successfully.\n");
+	if (args.install) {
+		svc.on('start', function() {
+			print("\nxyOps Satellite has been started successfully.\n\n");
+			process.exit(0);
+		});
 		
-		if (!fs.existsSync(config_file)) {
-			config = sample_config;
-			var raw_config = JSON.stringify( config, null, "\t" );
-			fs.writeFileSync( config_file, raw_config, { mode: 0o600 } );
-			print("\nA sample config file has been created: " + config_file + ":\n");
-			print( raw_config + "\n" );
-		}
-		else {
-			svc.start();
-		}
+		svc.on('error', function(err) {
+			print("\nWindows Service Installation Error: " + err + "\n\n");
+			process.exit(1);
+		});
 		
-		process.exit(0);
-	};
-	svc.on('install', installCompleted);
-	svc.on('alreadyinstalled', installCompleted);
+		var installCompleted = function() {
+			print("\nxyOps Satellite has been installed successfully.\n");
+			
+			if (!fs.existsSync(config_file)) {
+				config = sample_config;
+				var raw_config = JSON.stringify( config, null, "\t" );
+				fs.writeFileSync( config_file, raw_config, { mode: 0o600 } );
+				print("\nA sample config file has been created: " + config_file + ":\n");
+				print( raw_config + "\n" );
+			}
+			else {
+				svc.start();
+			}
+			
+			process.exit(0);
+		};
+		svc.on('install', installCompleted);
+		svc.on('alreadyinstalled', installCompleted);
+		
+		svc.install();
+	} // install
 	
-	var uninstallCompleted = function() {
-		try { 
-			// kill main process if still running
-			var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); 
-			if (pid) process.kill( pid, 'SIGTERM' );
-		} catch (e) {;}
+	if (args.uninstall) {
+		var uninstallCompleted = function() {
+			try { 
+				// kill main process if still running
+				var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); 
+				if (pid) process.kill( pid, 'SIGTERM' );
+			} catch (e) {;}
+			
+			// delete entire sat directory
+			try { Tools.rimraf.sync( __dirname ); }
+			catch (e) { die("\nError: Failed to delete folder: " + __dirname + ": " + e + "\n\n"); }
+			
+			print("\nxyOps Satellite has been removed successfully.\n\n");
+			process.exit(0);
+		};
+		svc.on('uninstall', uninstallCompleted);
+		svc.on('alreadyuninstalled', uninstallCompleted);
 		
-		// delete entire sat directory
-		try { Tools.rimraf.sync( __dirname ); }
-		catch (e) { die("\nError: Failed to delete folder: " + __dirname + ": " + e + "\n\n"); }
+		svc.on('error', function(err) {
+			print("\nWindows Service Error: " + err + "\n\n");
+			process.exit(1);
+		});
 		
-		print("\nxyOps Satellite has been removed successfully.\n\n");
-		process.exit(0);
-	};
-	svc.on('uninstall', uninstallCompleted);
-	svc.on('alreadyuninstalled', uninstallCompleted);
+		svc.uninstall();
+	} // uninstall
 	
-	if (args.install) svc.install();
-	else svc.uninstall();
+	if (args.stop) {
+		svc.on('stop', function() {
+			print("\nxyOps Satellite has been stopped.\n\n");
+			process.exit(0);
+		});
+		
+		svc.on('error', function(err) {
+			print("\nWindows Service Error: " + err + "\n\n");
+			process.exit(1);
+		});
+		
+		svc.stop();
+	} // stop
+	
 	return;
-}
+} // windows
 
 // setup pixl-boot for startup service
 var boot = require('pixl-boot');
