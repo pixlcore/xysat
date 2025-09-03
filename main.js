@@ -182,15 +182,20 @@ else if (args.stop || (args.other && (args.other[0] == 'stop'))) {
 	process.chdir( __dirname );
 	var pid = 0;
 	try { pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); } catch (e) {;}
+	if (!pid) die("\nError: Failed to load PID file (pid.txt)\n\n");
 	
-	if (pid) {
-		try { process.kill( pid, 'SIGTERM' ); }
-		catch (err) {
-			die("\nError: Failed to stop process: " + err + "\n\n");
-		}
-		process.exit(0);
+	try { process.kill( pid, 'SIGTERM' ); }
+	catch (err) {
+		die("\nError: Failed to stop process: " + err + "\n\n");
 	}
-	else die("\nError: Failed to load PID file (pid.txt)\n\n");
+	
+	// wait for pid to actually exit
+	var checkExit = function() {
+		try { process.kill(pid, 0); }
+		catch (e) { process.exit(0); }
+		setTimeout( checkExit, 250 );
+	}
+	checkExit();
 }
 else if (args.plugin || (args.other && (args.other[0] == 'plugin') && args.other[1])) {
 	// execute plugin
