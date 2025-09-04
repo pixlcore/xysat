@@ -28,7 +28,8 @@ var sample_config = {
 	temp_dir: "temp",
 	debug_level: 5,
 	child_kill_timeout: 10,
-	monitoring_enabled: true
+	monitoring_enabled: true,
+	quickmon_enabled: true
 };
 
 const cli = require('pixl-cli');
@@ -40,6 +41,10 @@ cli.global();
 if ((args.install || args.uninstall || args.stop) && is_windows) {
 	// install as a windows service, or uninstall
 	process.chdir( __dirname );
+	
+	// patch out console.log because node-windows dumps debug info to it
+	// see: https://github.com/coreybutler/node-windows/issues/382
+	console.log = function() {};
 	
 	var Service = require('node-windows').Service;
 	var svc = new Service({
@@ -70,12 +75,11 @@ if ((args.install || args.uninstall || args.stop) && is_windows) {
 				fs.writeFileSync( config_file, raw_config, { mode: 0o600 } );
 				print("\nA sample config file has been created: " + config_file + ":\n");
 				print( raw_config + "\n" );
+				process.exit(0);
 			}
 			else {
 				svc.start();
 			}
-			
-			process.exit(0);
 		};
 		svc.on('install', installCompleted);
 		svc.on('alreadyinstalled', installCompleted);
