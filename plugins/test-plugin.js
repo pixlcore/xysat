@@ -111,7 +111,8 @@ stream.on('json', function(job) {
 	}
 	
 	// spawn child process
-	cp.exec( 'sleep ' + Math.floor(duration - 1), function(err, stdout, stderr) {} );
+	if (process.platform == 'win32') cp.exec( 'timeout /t ' + Math.floor(duration - 1) + ' /nobreak >nul', function(err, stdout, stderr) {} );
+	else cp.exec( 'sleep ' + Math.floor(duration - 1), function(err, stdout, stderr) {} );
 	
 	var timer = setInterval( function() {
 		var now = Tools.timeNow();
