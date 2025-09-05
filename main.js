@@ -186,7 +186,7 @@ else if (args.stop || (args.other && (args.other[0] == 'stop'))) {
 	process.chdir( __dirname );
 	var pid = 0;
 	try { pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); } catch (e) {;}
-	if (!pid) die("\nError: Failed to load PID file (pid.txt)\n\n");
+	if (!pid) die("\nError: xyOps Satellite is not currentiy running.\n\n");
 	
 	try { process.kill( pid, 'SIGTERM' ); }
 	catch (err) {
@@ -217,6 +217,13 @@ else {
 		// create sample config file if needed (user may have skipped the install step)
 		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
 	}
+	
+	// make sure we don't stomp on ourselves
+	try {
+		var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ) || 0;
+		if (pid && process.kill(pid, 0)) die(`\nError: xyOps Satellite is already running (PID ${pid}).\n\n`);
+	}
+	catch (e) {;}
 	
 	// map XYOPS_ env vars to SATELLITE_, for convenience
 	for (var key in process.env) {
