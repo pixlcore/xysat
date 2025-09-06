@@ -267,6 +267,8 @@ else {
 		var EventLogger = require('node-windows').EventLogger;
 		var win_log = new EventLogger('xyOps');
 		
+		win_log.info( "xyOps Satellite v" + pkg.version + " starting up" );
+		
 		server.logger.on('row', function(line, cols, args) {
 			if (args.category == 'error') win_log.error( line );
 			else if ((args.category == 'debug') && (args.code == 1)) win_log.info( line );
