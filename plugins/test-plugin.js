@@ -73,6 +73,8 @@ if (process.argv.length > 2) console.log("ARGV: " + JSON.stringify(process.argv)
 } );*/
 
 var stream = new JSONStream( process.stdin, process.stdout );
+stream.EOL = "\n";
+
 stream.on('json', function(job) {
 	// got job from parent 
 	console.log( "The current working directory is: " + process.cwd() );
