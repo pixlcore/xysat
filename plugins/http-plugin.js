@@ -22,6 +22,8 @@ process.stdin.setEncoding('utf8');
 process.stdout.setEncoding('utf8');
 
 var stream = new JSONStream( process.stdin, process.stdout );
+stream.EOL = "\n";
+
 stream.on('json', function(job) {
 	// got job from parent
 	var params = job.params;
