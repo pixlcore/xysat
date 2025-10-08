@@ -198,7 +198,7 @@ stream.on('json', function(job) {
 						complete: true,
 						code: 0,
 						description: "Success!",
-						perf: perf.summarize(),
+						perf: perf.metrics(),
 						table: table,
 						html: html,
 						data: {
@@ -218,7 +218,7 @@ stream.on('json', function(job) {
 						complete: true,
 						code: 999,
 						description: "Simulating an error message here.  Something went wrong!",
-						perf: perf.summarize()
+						perf: perf.metrics()
 					});
 				break;
 				
@@ -229,7 +229,7 @@ stream.on('json', function(job) {
 						complete: true,
 						code: 'warning',
 						description: "Simulating a warning message here.  Something is concerning!",
-						perf: perf.summarize()
+						perf: perf.metrics()
 					});
 				break;
 				
@@ -240,7 +240,7 @@ stream.on('json', function(job) {
 						complete: true,
 						code: 'critical',
 						description: "Simulating a critical error message here.  Something is VERY wrong!",
-						perf: perf.summarize()
+						perf: perf.metrics()
 					});
 				break;
 				
