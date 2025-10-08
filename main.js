@@ -234,12 +234,6 @@ else {
 	delete args.start;
 	delete args.other;
 	
-	if (args.host) {
-		// hosts should always be an array
-		args.hosts = [ args.host ];
-		delete args.host;
-	}
-	
 	if (Tools.numKeys(args) && !args.debug && !args.echo) {
 		var temp_config = Tools.mergeHashes( JSON.parse( fs.readFileSync( config_file, 'utf8' ) ), args );
 		fs.writeFileSync( config_file, JSON.stringify(temp_config, null, "\t") + "\n", { mode: 0o600 } );
