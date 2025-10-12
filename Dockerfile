@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y \
     sudo \
 	iproute2 \
 	tzdata \
-	python3
+	python3 \
+	git \
+	docker-ce-cli
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
