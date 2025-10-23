@@ -43,7 +43,7 @@ stream.on('json', function(job) {
 	request.setTimeout( (params.timeout || 0) * 1000 );
 	
 	if (!params.url || !params.url.match(/^https?\:\/\/\S+$/i)) {
-		stream.write({ xy: true, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
+		stream.write({ xy: 1, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
 		return;
 	}
 	
@@ -97,7 +97,7 @@ stream.on('json', function(job) {
 		if (res.headers && res.headers['content-length']) {
 			if (!prog.len) prog.len = parseInt( res.headers['content-length'] );
 			prog.current += chunk.length;
-			if (prog.len) stream.write({ xy: true, progress: prog.current / prog.len });
+			if (prog.len) stream.write({ xy: 1, progress: prog.current / prog.len });
 		}
 	};
 	
@@ -126,7 +126,7 @@ stream.on('json', function(job) {
 		
 		// start building xyops JSON update
 		var update = { 
-			xy: true,
+			xy: 1,
 			complete: true
 		};
 		if (err) {
@@ -177,7 +177,7 @@ stream.on('json', function(job) {
 		}
 		
 		// populate data object with response
-		if (!err && resp) update.data = {
+		if (resp) update.data = {
 			statusCode: resp.statusCode,
 			statusMessage: resp.statusMessage,
 			headers: resp.headers
@@ -201,7 +201,7 @@ stream.on('json', function(job) {
 				catch (e) {
 					print("\nWARNING: Failed to parse JSON response: " + e + " (could not include JSON in job data)\n");
 				}
-				if (json) update.data.json = json;
+				if (json && update.data) update.data.json = json;
 			}
 		}
 		
