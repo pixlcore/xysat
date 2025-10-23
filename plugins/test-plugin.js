@@ -126,7 +126,7 @@ stream.on('json', function(job) {
 		// report progress
 		// console.log( "Progress: " + Tools.shortFloat(progress));
 		stream.write({
-			xy: true,
+			xy: 1,
 			progress: progress
 		});
 		
@@ -183,7 +183,7 @@ stream.on('json', function(job) {
 				var temp_file = 'sample-report-' + job.id + '.txt';
 				fs.writeFileSync( temp_file, html.content.replace(/<.+?>/g, '') + "\n" );
 				stream.write({
-					xy: true,
+					xy: 1,
 					push: {
 						files: [ { path: temp_file, delete: true } ]
 					}
@@ -194,7 +194,7 @@ stream.on('json', function(job) {
 				case 'Success':
 					console.log( "Simulating a successful response." );
 					stream.write({
-						xy: true,
+						xy: 1,
 						complete: true,
 						code: 0,
 						description: "Success!",
@@ -214,7 +214,7 @@ stream.on('json', function(job) {
 				case 'Error':
 					console.log( "Simulating an error response." );
 					stream.write({
-						xy: true,
+						xy: 1,
 						complete: true,
 						code: 999,
 						description: "Simulating an error message here.  Something went wrong!",
@@ -225,7 +225,7 @@ stream.on('json', function(job) {
 				case 'Warning':
 					console.log( "Simulating a warning response." );
 					stream.write({
-						xy: true,
+						xy: 1,
 						complete: true,
 						code: 'warning',
 						description: "Simulating a warning message here.  Something is concerning!",
@@ -236,7 +236,7 @@ stream.on('json', function(job) {
 				case 'Critical':
 					console.log( "Simulating an error response." );
 					stream.write({
-						xy: true,
+						xy: 1,
 						complete: true,
 						code: 'critical',
 						description: "Simulating a critical error message here.  Something is VERY wrong!",

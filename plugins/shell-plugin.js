@@ -127,7 +127,7 @@ stream.once('json', function(job) {
 		if (line.match(/^\s*(\d+)\%\s*$/)) {
 			var progress = Math.max( 0, Math.min( 100, parseInt( RegExp.$1 ) ) ) / 100;
 			stream.write({
-				xy: true,
+				xy: 1,
 				progress: progress
 			});
 		}
@@ -149,7 +149,7 @@ stream.once('json', function(job) {
 	child.on('error', function (err) {
 		// child error
 		stream.write({
-			xy: true,
+			xy: 1,
 			complete: true,
 			code: 1,
 			description: "Script failed: " + Tools.getErrorDescription(err)
@@ -164,7 +164,7 @@ stream.once('json', function(job) {
 		code = (code || signal || 0);
 		
 		var data = {
-			xy: true,
+			xy: 1,
 			complete: true,
 			code: code,
 			description: code ? ("Script exited with code: " + code) : ""
