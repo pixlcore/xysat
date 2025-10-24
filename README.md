@@ -29,3 +29,9 @@ node --trace-warnings main.js --debug --debug_level 9 --echo
 # License
 
 See [LICENSE.md](LICENSE.md) in this repository.
+
+## Included Software
+
+This software includes the Node.js runtime engine, which is licensed separately:
+
+https://github.com/nodejs/node/blob/main/LICENSE
