@@ -2,7 +2,7 @@
 
 // xySat - xyOps Satellite - Main entry point
 // Copyright (c) 2019 - 2025 PixlCore LLC
-// MIT License -- see LICENSE.md
+// BSD 3-Clause License -- see LICENSE.md
 
 const Path = require('path');
 const fs = require('fs');

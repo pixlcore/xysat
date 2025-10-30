@@ -5,7 +5,7 @@
 	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
 	"homepage": "https://github.com/pixlcore/xysat",
-	"license": "MIT",
+	"license": "BSD-3-Clause",
 	"bin": "main.js",
 	"main": "main.js",
 	"repository": {

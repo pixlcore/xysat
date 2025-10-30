@@ -3,7 +3,7 @@
 // HTTP Plugin for xyOps
 // Invoked via the 'HTTP Client' Plugin
 // Copyright (c) 2019 - 2025 PixlCore LLC
-// MIT License -- see LICENSE.md
+// BSD 3-Clause License -- see LICENSE.md
 
 // Job Params: 
 //		method, url, headers, data, timeout, follow, ssl_cert_bypass, download, success_match, error_match

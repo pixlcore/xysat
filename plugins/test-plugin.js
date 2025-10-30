@@ -2,7 +2,7 @@
 
 // Test Plugin for xyOps
 // Copyright (c) 2019 - 2025 PixlCore LLC
-// MIT License -- see LICENSE.md
+// BSD 3-Clause License -- see LICENSE.md
 
 var fs = require('fs');
 var cp = require('child_process');
@@ -111,6 +111,8 @@ stream.on('json', function(job) {
 	else {
 		duration = parseInt( job.params.duration );
 	}
+	
+	duration = Math.max(1, duration);
 	
 	// spawn child process
 	if (process.platform == 'win32') cp.exec( 'timeout /t ' + Math.floor(duration - 1) + ' /nobreak >nul', function(err, stdout, stderr) {} );
