@@ -4,11 +4,11 @@
 
 # Installation
 
-See the [xySat Installation Guide](https://github.com/pixlcore/xyops/blob/main/docs/self-hosting.md#satellite) for details.
+See the [xySat Installation Guide](https://github.com/pixlcore/xyops/blob/main/docs/hosting.md#satellite) for details.
 
 # Configuration
 
-See the [xySat Configuration Guide](https://github.com/pixlcore/xyops/blob/main/docs/configuration.md#satellite) for details.
+See the [xySat Configuration Guide](https://github.com/pixlcore/xyops/blob/main/docs/config.md#satellite) for details.
 
 # Development
 
