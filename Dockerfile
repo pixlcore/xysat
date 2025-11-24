@@ -47,4 +47,4 @@ ENV SATELLITE_debug_level=5
 
 RUN npm install
 
-CMD ["node", "/opt/xyops/satellite/main.js", "start"]
+CMD ["sh", "start.sh"]
