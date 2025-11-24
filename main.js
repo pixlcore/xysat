@@ -18,7 +18,6 @@ var sample_config = {
 	port: 5522,
 	secure: false,
 	socket_opts: { rejectUnauthorized: false },
-	secret_key: "CHANGE_ME", 
 	pid_file: "pid.txt",
 	log_dir: "logs",
 	log_filename: "[component].log",
