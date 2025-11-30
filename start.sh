@@ -8,5 +8,8 @@ if [ -n "$XYOPS_setup" ] && [ ! -f "config.json" ]; then
 	chmod 600 config.json
 fi
 
+# cleanup pid file
+rm -f pid.txt
+
 # start xysat
 node main.js start
