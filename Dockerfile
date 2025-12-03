@@ -1,4 +1,8 @@
-FROM node:22-bookworm
+FROM node:22-bookworm-slim
+
+LABEL org.opencontainers.image.source="https://github.com/pixlcore/xysat"
+LABEL org.opencontainers.image.description="Remote satellite worker daemon for xyOps."
+LABEL org.opencontainers.image.licenses="BSD-3-Clause"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -14,7 +18,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
 	iproute2 \
 	tzdata \
+	build-essential \
 	python3 \
+	python3-distutils \
+    python3-setuptools \
+    pkg-config \
+	libc6-dev \
+	libssl-dev \
+	zlib1g-dev \
+	libffi-dev \
 	git \
 	ca-certificates \
 	gnupg
