@@ -7,6 +7,7 @@ LABEL org.opencontainers.image.licenses="BSD-3-Clause"
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+	zip unzip xz-utils bzip2 procps lsof \
     iputils-ping \
     dnsutils \
     openssh-client \
