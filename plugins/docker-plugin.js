@@ -88,10 +88,10 @@ if (!docker_bin) {
 		if (kill_timer) clearTimeout(kill_timer);
 		code = (code || signal || 0);
 		
-		if (code) console.log( JSON.stringify({
+		console.log( JSON.stringify({
 			xy: 1,
 			code: code,
-			description: "Docker exited with code: " + code
+			description: code ? ("Docker exited with code: " + code) : ""
 		}));
 	} ); // exit
 	
