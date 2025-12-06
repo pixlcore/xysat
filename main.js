@@ -249,10 +249,21 @@ else {
 			require('./lib/engine.js')
 		]
 	});
-
+	
 	server.startup( function() {
 		// server startup complete
 		process.title = "xyOps Satellite";
+		
+		if (server.config.get('auth_token')) {
+			server.logDebug(3, "Authentication method: auth_token");
+		}
+		else if (server.config.get('secret_key')) {
+			server.logDebug(3, "Authentication method: secret_key");
+		}
+		else {
+			server.logDebug(1, "ERROR: Both auth_token and secret_key are missing from config. Shutting down.");
+			server.shutdown();
+		}
 	} );
 	
 	if (is_windows) {
