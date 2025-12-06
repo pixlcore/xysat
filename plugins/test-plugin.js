@@ -208,7 +208,8 @@ stream.on('json', function(job) {
 							hostname: os.hostname(),
 							pid: process.pid,
 							random: Tools.shortFloat( Math.random() ),
-							obj: { foo: 1, bar: null, bool: true }
+							obj: { foo: 1, bar: null, bool: true },
+							custom: job.params.custom
 						}
 					});
 				break;
