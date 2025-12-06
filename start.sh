@@ -11,5 +11,5 @@ fi
 # cleanup pid file
 rm -f pid.txt
 
-# start xysat
-node main.js start
+# start xysat, replace current process
+exec node main.js start
