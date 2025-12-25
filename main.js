@@ -217,13 +217,6 @@ else {
 		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
 	}
 	
-	// make sure we don't stomp on ourselves
-	try {
-		var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ) || 0;
-		if (pid && process.kill(pid, 0)) die(`\nError: xyOps Satellite is already running (PID ${pid}).\n\n`);
-	}
-	catch (e) {;}
-	
 	// map XYOPS_ env vars to SATELLITE_, for convenience
 	for (var key in process.env) {
 		if (key.match(/^XYOPS_(.+)$/)) process.env[ 'SATELLITE_' + RegExp.$1 ] = process.env[key];
