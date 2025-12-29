@@ -217,9 +217,9 @@ else {
 		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
 	}
 	
-	// map XYOPS_ env vars to SATELLITE_, for convenience
+	// map XYSAT_ env vars to SATELLITE_, for convenience
 	for (var key in process.env) {
-		if (key.match(/^XYOPS_(.+)$/)) process.env[ 'SATELLITE_' + RegExp.$1 ] = process.env[key];
+		if (key.match(/^XYSAT_(.+)$/)) process.env[ 'SATELLITE_' + RegExp.$1 ] = process.env[key];
 	}
 	
 	// merge CLI into config file and save it
