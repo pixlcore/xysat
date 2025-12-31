@@ -1,6 +1,6 @@
 {
 	"name": "xysat",
-	"version": "0.9.56",
+	"version": "0.9.57",
 	"private": true,
 	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
@@ -8,6 +8,9 @@
 	"license": "BSD-3-Clause",
 	"bin": "main.js",
 	"main": "main.js",
+	"scripts": {
+		"changelog": "node tools/changelog.js"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/pixlcore/xysat"
