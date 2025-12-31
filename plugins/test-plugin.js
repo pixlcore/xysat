@@ -77,6 +77,7 @@ stream.EOL = "\n";
 
 stream.on('json', function(job) {
 	// got job from parent 
+	console.log( "Job Params: " + JSON.stringify(job.params) );
 	console.log( "The current working directory is: " + process.cwd() );
 	console.log( "The current date/time for our job is: " + (new Date(job.now * 1000)).toString() );
 	
