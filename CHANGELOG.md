@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v0.9.57
+
+> December 31, 2025
+
+- [3743d35](https://github.com/pixlcore/xyops/commit/3743d35fa6f0ccb1aea37b0f318e80bb1585dc57): Version 0.9.57
+- [0fa6ab5](https://github.com/pixlcore/xyops/commit/0fa6ab5094a358602af81d79ab6a78a229545de7): Add changelog generator script, and changelog itself.
+- [a23c985](https://github.com/pixlcore/xyops/commit/a23c9854fe25fba29c5b3de66cd48b79d8ba3fdf): Add package-lock
+
 ## Version v0.9.56
 
 > December 30, 2025
