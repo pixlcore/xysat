@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v0.9.58
+
+> January 5, 2026
+
+- [4f00f79](https://github.com/pixlcore/xyops/commit/4f00f79127e662aa9ff7b2decd77b396dfeb72cc): Version 0.9.58
+- [63d470e](https://github.com/pixlcore/xyops/commit/63d470e9994c15cf28366f16e8d8c40e5c4b60d5): Add container sanity check in container-start.sh
+- [f3c8287](https://github.com/pixlcore/xyops/commit/f3c82874bebff28e25ae8b2d5d5de86ee1e5d13a): If files failed to upload during job finish, clear out files array
+- [e54a0bb](https://github.com/pixlcore/xyops/commit/e54a0bb4e64b742dc0abfbdff3449887c3bbb65e): Rename start.sh to container-start.sh (only for use as a docker container entrypoint)
+
 ## Version v0.9.57
 
 > December 31, 2025
