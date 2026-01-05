@@ -8,8 +8,13 @@ if [ -n "$XYOPS_setup" ] && [ ! -f "config.json" ]; then
 	chmod 600 config.json
 fi
 
-# cleanup pid file
-rm -f pid.txt
+# check for foreground
+if [ -n "${SATELLITE_foreground:-}" ]; then
+    # cleanup pid file
+	rm -f pid.txt
 
-# start xysat, replace current process
-exec node main.js start
+	# start xysat, replace current process
+	exec node main.js start
+else
+    echo "This script is for containers only."
+fi
