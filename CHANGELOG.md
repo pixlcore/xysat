@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v0.9.59
+
+> January 8, 2026
+
+- [`8deef75`](https://github.com/pixlcore/xysat/commit/8deef75017305fec975844be07eeeb45d8657c00): Version 0.9.59
+- [`75a6adc`](https://github.com/pixlcore/xysat/commit/75a6adc4794e8525957ec8109bb4e98a31d9564d): Fix: Crasher bug in detectVirtualization with public cloud VMs
+- [`c393066`](https://github.com/pixlcore/xysat/commit/c393066a240bd9f542fe9a48877621c95cd6e7e5): Fix: Crasher bug on macOS when netstat doesn't return any interfaces.
+- [`95a6d3f`](https://github.com/pixlcore/xysat/commit/95a6d3f8d03188817cd9759e9071469609202b3a): Changelog Script: Add smarts, tweak formatting.
+
 ## Version v0.9.58
 
 > January 5, 2026
