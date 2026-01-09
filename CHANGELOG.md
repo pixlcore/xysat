@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.60
+
+> January 8, 2026
+
+- [`824e6ea`](https://github.com/pixlcore/xysat/commit/824e6ea844d3a2dc2de7050b452d2946f0d28d43): Version 0.9.60
+- [`dfefa9f`](https://github.com/pixlcore/xysat/commit/dfefa9fd44e21a3b2f3bda01dddfa7afe30065ed): Fix: Properly handle shutdown while jobs are still running.
+
 ## Version v0.9.59
 
 > January 8, 2026
