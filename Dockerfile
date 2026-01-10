@@ -48,6 +48,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+RUN mv /root/.local/bin/uv /usr/local/bin/uv
+RUN mv /root/.local/bin/uvx /usr/local/bin/uvx
 
 WORKDIR /opt/xyops/satellite
 COPY . .
