@@ -2,7 +2,7 @@
 set -e
 
 # add some common path locations
-PATH=$PATH:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin:$HOME/.local/bin
+export PATH=$PATH:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin:$HOME/.local/bin
 
 # check for bootstrap env var, but only on first run
 if [ -n "$XYOPS_setup" ] && [ ! -f "config.json" ]; then
