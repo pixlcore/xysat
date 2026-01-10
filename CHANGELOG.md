@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.64
+
+> January 10, 2026
+
+- [`d139bc1`](https://github.com/pixlcore/xysat/commit/d139bc175471ef19e54600e28d712f21414db63f): Version 0.9.64
+- [`4600d07`](https://github.com/pixlcore/xysat/commit/4600d07cc584f885bd1b1d981427e2634b032ca4): Fix: Export PATH in container-start.sh, so it properly propagates out
+
 ## Version v0.9.63
 
 > January 10, 2026
