@@ -1,5 +1,16 @@
 # xySat Changelog
 
+## Version v0.9.61
+
+> January 10, 2026
+
+- [`3b3c23a`](https://github.com/pixlcore/xysat/commit/3b3c23a0f1d18a82d547c2dfe6c70e7c5d18d458): Version 0.9.61
+- [`3e360b6`](https://github.com/pixlcore/xysat/commit/3e360b6611d034096bb622026353fbb611cbb9c4): Refactor: Changes in monitor plugins and new features.
+- [`6b021b6`](https://github.com/pixlcore/xysat/commit/6b021b6b67e513e7b611b8f0c23ece3e179cf1a5): Add new "features" object, which reports satellite features on connect
+- [`ef38f37`](https://github.com/pixlcore/xysat/commit/ef38f37f9d9b24f6b42f7ca9a5d75ba50d32eee7): Drop default ping timeout from 120 to 60 seconds, and add support for new testMonitorPlugin command.
+- [`7678659`](https://github.com/pixlcore/xysat/commit/7678659ca5ea52d73d0b2dc3276ae62019fed06e): Test Plugin: Add support for simulated "Abort" style response.
+- [`bed1a7f`](https://github.com/pixlcore/xysat/commit/bed1a7faaf97be36451f7f23372da58075473284): HTTP Plugin: Report details in markdown format, and set idleTimeout to value of timeout.
+
 ## Version v0.9.60
 
 > January 8, 2026
