@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.62
+
+> January 10, 2026
+
+- [`87a4a1c`](https://github.com/pixlcore/xysat/commit/87a4a1c1cc596c4803c1f10af6ec29c21875a1ef): Version 0.9.62
+- [`80e0c29`](https://github.com/pixlcore/xysat/commit/80e0c29ef76a8ac736b3f29e8d5a96203d5de0b6): Fix: Move uv/uvx binaries to a standard PATH location
+
 ## Version v0.9.61
 
 > January 10, 2026
