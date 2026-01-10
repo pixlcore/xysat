@@ -40,7 +40,8 @@ stream.on('json', function(job) {
 	}
 	
 	// timeout
-	request.setTimeout( (params.timeout || 0) * 1000 );
+	request.setTimeout( parseInt(params.timeout || 0) * 1000 );
+	request.setIdleTimeout( parseInt(params.idle_timeout || params.timeout || 0) * 1000 );
 	
 	if (!params.url || !params.url.match(/^https?\:\/\/\S+$/i)) {
 		stream.write({ xy: 1, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
@@ -57,7 +58,7 @@ stream.on('json', function(job) {
 		// allow headers to be substituted using [placeholders]
 		params.headers = Tools.sub( params.headers, job );
 		
-		print("\nRequest Headers:\n" + params.headers.trim() + "\n");
+		// print("\nRequest Headers:\n" + params.headers.trim() + "\n");
 		params.headers.replace(/\r\n/g, "\n").trim().split(/\n/).forEach( function(pair) {
 			if (pair.match(/^([^\:]+)\:\s*(.+)$/)) {
 				request.setHeader( RegExp.$1, RegExp.$2 );
@@ -82,7 +83,7 @@ stream.on('json', function(job) {
 		// allow POST data to be substituted using [placeholders]
 		params.data = Tools.sub( params.data, job );
 		
-		print("\nPOST Data:\n" + params.data.trim() + "\n");
+		// print("\nPOST Data:\n" + params.data.trim() + "\n");
 		opts.data = Buffer.from( params.data || '' );
 	}
 	
@@ -138,26 +139,7 @@ stream.on('json', function(job) {
 			update.description = "Success (HTTP " + resp.statusCode + " " + resp.statusMessage + ")";
 		}
 		
-		print( "\n" + update.description + "\n" );
-		
-		// add raw response headers into table
-		if (resp && resp.rawHeaders) {
-			var rows = [];
-			print("\nResponse Headers:\n");
-			
-			for (var idx = 0, len = resp.rawHeaders.length; idx < len; idx += 2) {
-				rows.push([ resp.rawHeaders[idx], resp.rawHeaders[idx + 1] ]);
-				print( resp.rawHeaders[idx] + ": " + resp.rawHeaders[idx + 1] + "\n" );
-			}
-			
-			update.table = {
-				title: "HTTP Response Headers",
-				header: ["Header Name", "Header Value"],
-				rows: rows.sort( function(a, b) {
-					return a[0].localeCompare(b[0]);
-				} )
-			};
-		}
+		print( update.description + "\n" );
 		
 		// attach file to job for upload
 		if (!err && params.download) {
@@ -183,19 +165,45 @@ stream.on('json', function(job) {
 			headers: resp.headers
 		};
 		
+		// include markdown report of request and response
+		var details = '';
+		
+		details += "### Summary\n";
+		details += "- **Method:** " + params.method + "\n";
+		details += "- **URL:** " + params.url + "\n";
+		details += "- **Redirects:** " + (params.follow ? 'Follow' : 'n/a') + "\n";
+		details += "- **Timeout:** " + Tools.getTextFromSeconds(params.timeout, false, false) + "\n";
+		details += "- **Response:** HTTP " + resp.statusCode + " " + resp.statusMessage + "\n";
+		
+		if (params.headers.length) {
+			details += "\n### Request Headers:\n\n```http\n";
+			details += params.headers + "\n";
+			details += "```\n";
+		}
+		
+		if (params.data && params.data.length) {
+			details += "\n### Request Body:\n\n```\n";
+			details += params.data.trim() + "\n```\n";
+		}
+		
+		if (resp && resp.rawHeaders) {
+			details += "\n### Response Headers:\n\n```http\n";
+			
+			for (var idx = 0, len = resp.rawHeaders.length; idx < len; idx += 2) {
+				details += resp.rawHeaders[idx] + ": " + resp.rawHeaders[idx + 1] + "\n";
+			}
+			details += "```\n";
+		}
+		
 		// add raw response content, if text (and not too long)
 		if (text && resp && resp.headers['content-type'] && resp.headers['content-type'].match(/(text|javascript|json|css|html)/i)) {
-			print("\nRaw Response Content:\n" + text.trim() + "\n");
-			
-			if (text.length < 32768) {
-				update.html = {
-					title: "Raw Response Content",
-					content: "<pre>" + text.replace(/</g, '&lt;').trim() + "</pre>"
-				};
+			if (text.length) {
+				details += "\n### Response Body:\n\n```\n";
+				details += text.trim() + "\n```\n";
 			}
 			
 			// if response was JSON, include parsed data
-			if ((text.length < 1024 * 1024) && resp.headers['content-type'].match(/(application|text)\/json/i)) {
+			if ((text.length < 1024 * 1024) && (resp.headers['content-type'].match(/(application|text)\/json/i) || text.match(/^\s*\{[\S\s]+\}\s*$/))) {
 				var json = null;
 				try { json = JSON.parse(text); }
 				catch (e) {
@@ -205,10 +213,16 @@ stream.on('json', function(job) {
 			}
 		}
 		
+		if (perf) details += "\n### Performance Metrics:\n\n```json\n" + JSON.stringify(perf.metrics(), null, "\t") + "\n```\n";
+		
+		update.markdown = {
+			title: "HTTP Request Details",
+			content: details
+		};
+		
 		if (perf) {
-			// passthru perf to cronicle
+			// passthru perf to xyops
 			update.perf = perf.metrics();
-			print("\nPerformance Metrics: " + perf.summarize() + "\n");
 		}
 		
 		stream.write(update);
