@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.63
+
+> January 10, 2026
+
+- [`4dccb60`](https://github.com/pixlcore/xysat/commit/4dccb60fabde4f539380abb4e084e74e5ab2cbc1): Version 0.9.63
+- [`e99bd7e`](https://github.com/pixlcore/xysat/commit/e99bd7e3b413c1232b515a2d14d41991e0197173): Add common PATH locations to container-start.sh
+
 ## Version v0.9.62
 
 > January 10, 2026
