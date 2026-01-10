@@ -248,6 +248,17 @@ stream.on('json', function(job) {
 					});
 				break;
 				
+				case 'Abort':
+					console.log( "Simulating an abort response." );
+					stream.write({
+						xy: 1,
+						complete: true,
+						code: 'abort',
+						description: "Simulating an abort message here.",
+						perf: perf.metrics()
+					});
+				break;
+				
 				case 'Crash':
 					console.log( "Simulating a crash..." );
 					setTimeout( function() { 
