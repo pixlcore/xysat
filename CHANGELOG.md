@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v0.9.65
+
+> January 13, 2026
+
+- [`0270765`](https://github.com/pixlcore/xysat/commit/0270765a12533c968ced2be98ca3d6924379eb81): Version 0.9.65
+- [`518f9d7`](https://github.com/pixlcore/xysat/commit/518f9d7088f4df893f965efd726498d43d1dc7c1): New upgrade logic: Use background.log, check for stale log, etc.
+- [`e535c33`](https://github.com/pixlcore/xysat/commit/e535c33ba3eebc8e2ae7587ded540fbd21d5c23e): On socket auth, check for background.log and crash.log.  If found, send notices/criticals to the primary conductor.
+
 ## Version v0.9.64
 
 > January 10, 2026
