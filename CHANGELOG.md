@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.67
+
+> January 14, 2026
+
+- [`9e4fa37`](https://github.com/pixlcore/xysat/commit/9e4fa37353f3f1c24790e5db54758877d490c40d): Version 0.9.67
+- [`5692f8f`](https://github.com/pixlcore/xysat/commit/5692f8fe7f0de2d5cfa0172233dea4e1d72dff60): Comm: Sanity check on socket in handleSocketMessage (race condition on shutdown)
+
 ## Version v0.9.66
 
 > January 14, 2026
