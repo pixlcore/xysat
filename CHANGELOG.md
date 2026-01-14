@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v0.9.68
+
+> January 14, 2026
+
+- [`dffcfd3`](https://github.com/pixlcore/xysat/commit/dffcfd379e9a229e6e422d6be67879e0e8f61e9f): Version 0.9.68
+- [`0817a61`](https://github.com/pixlcore/xysat/commit/0817a61731efe2b387f4e8f8431679ed6d2706fb): Upgrade Satellite: Remove "__daemon" environment variable, used by pixl-server.
+- [`226b9c4`](https://github.com/pixlcore/xysat/commit/226b9c49277207d1b8b7545078a7c2313f9c6797): Startup Log File Check: Include hostname in notice/critical messages sent to conductor.
+
 ## Version v0.9.67
 
 > January 14, 2026
