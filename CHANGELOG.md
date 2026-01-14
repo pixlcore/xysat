@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.66
+
+> January 14, 2026
+
+- [`c2c2fc0`](https://github.com/pixlcore/xysat/commit/c2c2fc0a3adfb3b68fd2031b1f8eac23e1022371): Version 0.9.66
+- [`763a73a`](https://github.com/pixlcore/xysat/commit/763a73a016b8b9410729cce54d987304f51ae70d): Crasher Fix: Sending incorrect websocket data format for notice/critical messages.
+
 ## Version v0.9.65
 
 > January 13, 2026
