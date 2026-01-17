@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v0.9.69
+
+> January 17, 2026
+
+- [`a1e200f`](https://github.com/pixlcore/xysat/commit/a1e200ffada0fa71df455a361d941ccde63591bb): Version 0.9.69
+- [`0d99c00`](https://github.com/pixlcore/xysat/commit/0d99c00ad647d1641332f25aef379d9673d85d47): Tweak debug levels of initial communication / auth challenge, and add some additional debug log entries.
+- [`12aded5`](https://github.com/pixlcore/xysat/commit/12aded50e7d0ef36f97e5b5299ac7e0a77fcc27c): Add standard control.sh script for starting / stopping daemon (not for containers).
+
 ## Version v0.9.68
 
 > January 14, 2026
