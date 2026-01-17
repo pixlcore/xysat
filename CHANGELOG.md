@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.70
+
+> January 17, 2026
+
+- [`792c0ab`](https://github.com/pixlcore/xysat/commit/792c0ab03b6cf9e9414782454f6093e8ca80c15a): Version 0.9.70
+- [`ba0573a`](https://github.com/pixlcore/xysat/commit/ba0573a3c4ffbc7e8137db856dc36be6ca84b467): Fix: getDiskFast: Disk utilization numbers were inflated for some setups (disk partitions were counted twice).
+
 ## Version v0.9.69
 
 > January 17, 2026
