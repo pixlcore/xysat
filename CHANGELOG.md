@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.71
+
+> January 20, 2026
+
+- [`b2dfc3a`](https://github.com/pixlcore/xysat/commit/b2dfc3a299255d2f03b401209efa6a53d34243c1): Version 0.9.71
+- [`930530f`](https://github.com/pixlcore/xysat/commit/930530f13573d86577b4a5cf32db74069e935452): Fix: detectVirtualization could hang indefinitely with Azure and DigitalOcean clouds.
+
 ## Version v0.9.70
 
 > January 17, 2026
