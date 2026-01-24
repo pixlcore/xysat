@@ -1,6 +1,6 @@
 {
 	"name": "xysat",
-	"version": "0.9.71",
+	"version": "0.9.72",
 	"private": true,
 	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
