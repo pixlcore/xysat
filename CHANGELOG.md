@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v0.9.72
+
+> January 24, 2026
+
+- [`1b172ec`](https://github.com/pixlcore/xysat/commit/1b172ec48a5c163385e547ee985238630a423365): Version 0.9.72
+- [`8c8f8f9`](https://github.com/pixlcore/xysat/commit/8c8f8f986ccae6b4efb4dee2c088ee0ba3ac8e35): Shell Plugin: New optional param: "pass" which will passthrough all input data to output.
+- [`eec9e09`](https://github.com/pixlcore/xysat/commit/eec9e0959d579e3b60d1dae434b177aa21a08e34): HTTP Plugin: Improve handling and display of core errors (e.g. "Socket hang up").
+- [`bedcfbf`](https://github.com/pixlcore/xysat/commit/bedcfbf0608c152698b0a51c55aebeea00f6db82): Job Input File Handing: Skip file download when "runner" is set, also strip file.path param after downloading (to avoid user confusion).
+
 ## Version v0.9.71
 
 > January 20, 2026
