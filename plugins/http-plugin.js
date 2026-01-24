@@ -173,7 +173,8 @@ stream.on('json', function(job) {
 		details += "- **URL:** " + params.url + "\n";
 		details += "- **Redirects:** " + (params.follow ? 'Follow' : 'n/a') + "\n";
 		details += "- **Timeout:** " + Tools.getTextFromSeconds(params.timeout, false, false) + "\n";
-		details += "- **Response:** HTTP " + resp.statusCode + " " + resp.statusMessage + "\n";
+		if (resp) details += "- **Response:** HTTP " + resp.statusCode + " " + resp.statusMessage + "\n";
+		else if (err) details += "- **Error:** " + err + "\n";
 		
 		if (params.headers.length) {
 			details += "\n### Request Headers:\n\n```http\n";
@@ -193,6 +194,9 @@ stream.on('json', function(job) {
 				details += resp.rawHeaders[idx] + ": " + resp.rawHeaders[idx + 1] + "\n";
 			}
 			details += "```\n";
+		}
+		else if (err) {
+			details += "\n### Error:\n\n" + err + "\n";
 		}
 		
 		// add raw response content, if text (and not too long)
