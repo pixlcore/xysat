@@ -34,6 +34,11 @@ stream.once('json', function(job) {
 		cwd: process.cwd()
 	};
 	
+	// passthrough all data if desired
+	if (job.params.pass && job.input && job.input.data) {
+		stream.write({ xy: 1, data: job.input.data });
+	}
+	
 	// convert to unix line endings universally (windows 10+ is fine with this)
 	if (job.params.script.match(/\r/)) job.params.script = job.params.script.replace(/\r\n/g, "\n");
 	
