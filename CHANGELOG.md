@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.73
+
+> January 25, 2026
+
+- [`9a01619`](https://github.com/pixlcore/xysat/commit/9a0161986e85d4021a66c8e4da22e6177b391147): Version 0.9.73
+- [`b77ef2f`](https://github.com/pixlcore/xysat/commit/b77ef2ff70c1c174ef81d991d5cb2e69f0c62736): Windows Bug Fix: Allow Plugins to use Powershell by using correct ".ps1" script file extension.
+
 ## Version v0.9.72
 
 > January 24, 2026
