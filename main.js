@@ -185,7 +185,7 @@ else if (args.stop || (args.other && (args.other[0] == 'stop'))) {
 	process.chdir( __dirname );
 	var pid = 0;
 	try { pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); } catch (e) {;}
-	if (!pid) die("\nError: xyOps Satellite is not currentiy running.\n\n");
+	if (!pid) die("\nError: xyOps Satellite is not currently running.\n\n");
 	
 	try { process.kill( pid, 'SIGTERM' ); }
 	catch (err) {
