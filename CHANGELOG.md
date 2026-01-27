@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v0.9.75
+
+> January 27, 2026
+
+- [`19f6f51`](https://github.com/pixlcore/xysat/commit/19f6f51399e876809cfae52099709830dae6438d): Version 0.9.75
+- [`1fa00b2`](https://github.com/pixlcore/xysat/commit/1fa00b21c60bb9542a5607c23d8b2feb9322e7e4): Copy non-object workflow params into environment variables with `workflow_` key prefix.
+- [`10d19d6`](https://github.com/pixlcore/xysat/commit/10d19d6f9092db595a03d1d8bfb029de1ad17001): Fix typo in error string.
+
 ## Version v0.9.74
 
 > January 25, 2026
