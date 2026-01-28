@@ -14,7 +14,7 @@ If you would like to install xySat manually (for e.g. to run it as a non-root us
 
 <details><summary>Manual Linux Installation</summary>
 
-First, click "Add Server" button in the sidebar in the xyOps UI.  Select "Linux" as the target platform, and copy the one-line installer command.  It will look something like this:
+First, click the "Add Server" button in the sidebar in the xyOps UI.  Select "Linux" as the target platform, and copy the one-line installer command.  It will look something like this:
 
 ```sh
 curl -s "http://YOUR_XYOPS_SERVER:5522/api/app/satellite/install?t=AUTH_TOKEN" | sudo sh
@@ -58,7 +58,7 @@ Notably, this installation method will not register xySat as a systemd service, 
 
 <details><summary>Manual macOS Installation</summary>
 
-First, click "Add Server" button in the sidebar in the xyOps UI.  Select "macOS" as the target platform, and copy the one-line installer command.  It will look something like this:
+First, click the "Add Server" button in the sidebar in the xyOps UI.  Select "macOS" as the target platform, and copy the one-line installer command.  It will look something like this:
 
 ```sh
 curl -s "http://YOUR_XYOPS_SERVER:5522/api/app/satellite/install?t=AUTH_TOKEN&os=macos" | sudo sh
@@ -102,7 +102,7 @@ Notably, this installation method will not register xySat as a [LaunchAgent/Laun
 
 <details><summary>Manual Windows Installation</summary>
 
-First, click "Add Server" button in the sidebar in the xyOps UI.  Select "Windows" as the target platform, and copy the one-line installer command.  It will look something like this:
+First, click the "Add Server" button in the sidebar in the xyOps UI.  Select "Windows" as the target platform, and copy the one-line installer command.  It will look something like this:
 
 ```sh
 powershell -Command "IEX (Invoke-WebRequest -UseBasicParsing -Uri 'http://YOUR_XYOPS_SERVER:5522/api/app/satellite/install?t=AUTH_TOKEN&os=windows').Content"
