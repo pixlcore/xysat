@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v0.9.76
+
+> January 30, 2026
+
+- [`d45df5e`](https://github.com/pixlcore/xysat/commit/d45df5e936c6cb2925c21e248a5e661cb7d26c19): Version 0.9.76
+- [`f194a02`](https://github.com/pixlcore/xysat/commit/f194a027accb46d8dd3778a914cbcd1667bd6343): Job Data: Always populate `base_url` in job, and XYOPS_JOB_DATA env var as well.
+- [`d614c69`](https://github.com/pixlcore/xysat/commit/d614c69141319971c77611cd6904b3e0c22aa632): Typo fix in README
+- [`8b3c70e`](https://github.com/pixlcore/xysat/commit/8b3c70ee9b5f04ca0167928369e96e3a5713124b): Add manual installation instructions for Linux, macOS and Windows.
+
 ## Version v0.9.75
 
 > January 27, 2026
