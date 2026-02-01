@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v0.9.77
+
+> February 1, 2026
+
+- [`c1ab406`](https://github.com/pixlcore/xysat/commit/c1ab40677cfa2da9b378e9b97ba23c2e1fe48509): Version 0.9.77
+- [`e171a87`](https://github.com/pixlcore/xysat/commit/e171a8745ab8925148a2afd83de493f9506f9bf2): HTTP Plugin: Scalability adjustments: Support sending JSON body data payloads up to 32 MB.  Do not display response body if over 1 MB.
+- [`8ab68bd`](https://github.com/pixlcore/xysat/commit/8ab68bd9ab6adfcbed152fef18085b6d78da38e4): Scalability: Increase child STDIO JSON message limit from 1 MB to 32 MB.  Adjust debug logging to compensate.
+
 ## Version v0.9.76
 
 > January 30, 2026
