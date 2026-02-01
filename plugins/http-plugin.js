@@ -203,11 +203,12 @@ stream.on('json', function(job) {
 		if (text && resp && resp.headers['content-type'] && resp.headers['content-type'].match(/(text|javascript|json|css|html)/i)) {
 			if (text.length) {
 				details += "\n### Response Body:\n\n```\n";
-				details += text.trim() + "\n```\n";
+				if (text.length >= 1024 * 1024) details += "(Too large to display)\n```\n";
+				else details += text.trim() + "\n```\n";
 			}
 			
-			// if response was JSON, include parsed data
-			if ((text.length < 1024 * 1024) && (resp.headers['content-type'].match(/(application|text)\/json/i) || text.match(/^\s*\{[\S\s]+\}\s*$/))) {
+			// if response was JSON, include parsed data, up to 32 MB
+			if ((text.length < 1024 * 1024 * 32) && (resp.headers['content-type'].match(/(application|text)\/json/i) || text.match(/^\s*\{[\S\s]+\}\s*$/))) {
 				var json = null;
 				try { json = JSON.parse(text); }
 				catch (e) {
