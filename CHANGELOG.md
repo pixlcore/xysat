@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v0.9.78
+
+> February 3, 2026
+
+- [`eb55f86`](https://github.com/pixlcore/xysat/commit/eb55f86867984f1fefb91e39c29b13c2b279d248): Version 0.9.78
+- [`f058483`](https://github.com/pixlcore/xysat/commit/f05848351603d6d6470a873cbb7b8a6977734a20): Add support for new job.status string.
+
 ## Version v0.9.77
 
 > February 1, 2026
