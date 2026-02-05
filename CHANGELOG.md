@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v0.9.79
+
+> February 5, 2026
+
+- [`6991dce`](https://github.com/pixlcore/xysat/commit/6991dce224c0e0500faf7b0df9aa9674a13917fb): Version 0.9.79
+- [`4aefe72`](https://github.com/pixlcore/xysat/commit/4aefe727cb022e878f41be5ad477c721f33c3541): Add monitoring self-test script, for troubleshooting issues with SI, etc.
+- [`ade7500`](https://github.com/pixlcore/xysat/commit/ade75009c44e69f7a246cce9baf059c3b2e26b94): Add lots of debug log calls at level 9, for troubleshooting stuck monitors on some systems.  Also, add callback support for monitoring calls, for test harness.
+
 ## Version v0.9.78
 
 > February 3, 2026
