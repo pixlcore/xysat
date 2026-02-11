@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.0
+
+> February 11, 2026
+
+- [`6212eb6`](https://github.com/pixlcore/xysat/commit/6212eb6a310346490fca60e2b0aed80f408eb42a): Add delayedAutoStart property for Windows service settings.
+- [`a0a92a9`](https://github.com/pixlcore/xysat/commit/a0a92a91c94f00f51acab79a581fe00ed7abe20f): Redesigned Windows self-deletion process so it actually removes the whole directory on uninstall.
+- [`43ccfd5`](https://github.com/pixlcore/xysat/commit/43ccfd5883959b54927c50f731f4e883a65558bb): Version 1.0.0
+- [`4a72115`](https://github.com/pixlcore/xysat/commit/4a72115b39e5dcdb02c6c3de46089613ba20d127): Major Upgrade: Bump Node.js from v18 to v22, and bump macOS from v14 to v15.
+
 ## Version v0.9.79
 
 > February 5, 2026
