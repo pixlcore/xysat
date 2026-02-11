@@ -6,6 +6,8 @@
 
 const Path = require('path');
 const fs = require('fs');
+const cp = require('child_process');
+const os = require('os');
 const PixlServer = require("pixl-server");
 const pkg = require('./package.json');
 const self_bin = Path.resolve(process.argv[0]) + ' ' + Path.resolve(process.argv[1]);
@@ -87,29 +89,102 @@ if ((args.install || args.uninstall || args.stop) && is_windows) {
 	} // install
 	
 	if (args.uninstall) {
-		var uninstallCompleted = function() {
+		const task = `xysat-delete-${Date.now()}`;
+		const logFile = Path.join(os.tmpdir(), `${task}.log`);
+		cli.setLogFile( logFile );
+		println("Uninstalling xyOps Satellite...");
+		
+		var scheduleBackgroundDelete = function() {
+			println("Preparing final background deletion process...");
 			try { 
 				// kill main process if still running
 				var pid = parseInt( fs.readFileSync( 'pid.txt', 'utf8' ) ); 
 				if (pid) process.kill( pid, 'SIGTERM' );
 			} catch (e) {;}
 			
-			// delete entire sat directory
-			try { Tools.rimraf.sync( __dirname ); }
-			catch (e) { die("\nError: Failed to delete folder: " + __dirname + ": " + e + "\n\n"); }
+			// delete directory in background using schtasks
+			const installDir = __dirname;
+  			try { process.chdir(os.tmpdir()); } catch {}
 			
-			print("\nxyOps Satellite has been removed successfully.\n\n");
-			process.exit(0);
-		};
-		svc.on('uninstall', uninstallCompleted);
-		svc.on('alreadyuninstalled', uninstallCompleted);
+			const psFile = Path.join(os.tmpdir(), `${task}.ps1`);
+			const escPS = (s) => s.replace(/'/g, "''"); // for single-quoted PS strings
+			
+			const ps = [
+				`$log = '${escPS(logFile)}'`,
+				`function Log($msg) {`,
+				`  $ts = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss.fff')`,
+				`  Add-Content -LiteralPath $log -Value ("[$ts] " + $msg)`,
+				`}`,
+				``,
+				`Log "BEGIN self-delete script"`,
+				`Log ("Script path: " + $MyInvocation.MyCommand.Path)`,
+				`Log ("Target dir:  ${escPS(installDir)}")`,
+				`Log "Sleeping for 10 seconds..."`,
+				`Start-Sleep -Seconds 10`,
+				``,
+				`try {`,
+				`  if (Test-Path -LiteralPath '${escPS(installDir)}') {`,
+				`    Log "Attempting Remove-Item..."`,
+				`    $err = $null`,
+				`    Remove-Item -LiteralPath '${escPS(installDir)}' -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err`,
+				`    if (Test-Path -LiteralPath '${escPS(installDir)}') {`,
+				`      Log "Remove-Item completed but target still exists."`,
+				`      if ($err) { Log ("Remove-Item error: " + ($err | Out-String).Trim()) }`,
+				`    } else {`,
+				`      Log "SUCCESS: target deleted."`,
+				`    }`,
+				`  } else {`,
+				`    Log "Target did not exist at delete time."`,
+				`  }`,
+				`} catch {`,
+				`  Log ("EXCEPTION: " + $_.Exception.Message)`,
+				`}`,
+				``,
+				`Log "Cleaning up script file..."`,
+				`try { Remove-Item -LiteralPath $MyInvocation.MyCommand.Path -Force -ErrorAction SilentlyContinue } catch {}`,
+				`Log "END self-delete script"`
+			].join('\n') + '\n';
+			
+			fs.writeFileSync(psFile, ps, 'utf8');
+			cli.log("Temp Script: " + psFile);
+			
+			const tr = `powershell.exe -NoProfile -ExecutionPolicy Bypass -File \\"${psFile}\\"`;
+			let cmd = `schtasks /Create /TN "${task}" /SC ONCE /ST 00:00 /SD 01/01/2000 /RU SYSTEM /RL HIGHEST /TR "${tr}"`;
+			cmd += ` && schtasks /Run /TN "${task}" && schtasks /Delete /TN "${task}" /F`;
+			cli.log("Executing Command: " + cmd);
+			
+			const child = cp.spawn(cmd, {
+				shell: true,
+				detached: true,
+				stdio: 'ignore',
+				windowsHide: true
+			});
+			child.unref();
+			
+			print("\nBackground deletion was scheduled successfully.\n\n");
+		}; // scheduleBackgroundDelete
+		
+		scheduleBackgroundDelete();
+		
+		svc.on('uninstall', function() {
+			println("Service 'uninstall' hook has fired.");
+		});
+		svc.on('alreadyuninstalled', function() {
+			println("Service 'alreadyuninstalled' hook has fired.");
+		});
 		
 		svc.on('error', function(err) {
 			print("\nWindows Service Error: " + err + "\n\n");
 			process.exit(1);
 		});
 		
-		svc.uninstall();
+		setTimeout( function() { 
+			// giving scheduleBackgroundDelete a chance to register the task
+			// svc.uninstall seems to kill the current process, so we have to do it last
+			println("Calling service uninstall...");
+			svc.uninstall();
+		}, 1000 );
+		
 	} // uninstall
 	
 	if (args.stop) {
