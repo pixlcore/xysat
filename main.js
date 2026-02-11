@@ -53,7 +53,8 @@ if ((args.install || args.uninstall || args.stop) && is_windows) {
 		description: 'xyOps Satellite',
 		script: Path.resolve(  __dirname, 'main.js' ),
 		execPath: process.execPath,
-		scriptOptions: [ '--foreground' ]
+		scriptOptions: [ '--foreground' ],
+		delayedAutoStart: true
 	});
 	
 	if (args.install) {
