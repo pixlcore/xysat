@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.1
+
+> February 16, 2026
+
+- [`6c6c9e1`](https://github.com/pixlcore/xysat/commit/6c6c9e1283c9a2d3bd58f36a5434a36a3dbb9032): Version 1.0.1
+- [`6b440f7`](https://github.com/pixlcore/xysat/commit/6b440f78191bdc8ea088cbd7078ff4aa2a214e4a): Handle rare case when plugin cannot be found (i.e. plugin deleted with jobs still scheduled).
+- [`11bc7c7`](https://github.com/pixlcore/xysat/commit/11bc7c701ce999b59da93622b0878b51c486bc2d): Temp File Behavior: Use extensionless temp files for Plugins, for better compatibility.  Windows is still the exception.
+
 ## Version v1.0.0
 
 > February 11, 2026
