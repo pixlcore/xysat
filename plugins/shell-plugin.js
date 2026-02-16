@@ -26,7 +26,7 @@ stream.EOL = "\n";
 
 stream.once('json', function(job) {
 	// got job from parent
-	var script_file = Path.join( Path.dirname(__dirname), config.temp_dir, 'xyops-script-temp-' + job.id + '.sh' );
+	var script_file = Path.join( Path.dirname(__dirname), config.temp_dir, 'xyops-script-temp-' + job.id );
 	var child_cmd = Path.resolve(script_file);
 	var child_args = [];
 	var child_opts = {
@@ -48,23 +48,23 @@ stream.once('json', function(job) {
 			var shebang = RegExp.$1.trim();
 			
 			if (shebang.match(/^powershell(\.exe)?$/i)) {
-				script_file = script_file.replace(/\.\w+$/, '.ps1');
+				script_file += '.ps1';
 				child_cmd = 'POWERSHELL.EXE';
 				child_args = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', script_file];
 			}
 			else if (shebang.match(/^pwsh(\.exe)?$/i)) {
-				script_file = script_file.replace(/\.\w+$/, '.ps1');
+				script_file += '.ps1';
 				child_cmd = 'PWSH.EXE';
 				child_args = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', script_file];
 			}
 			else if (shebang.match(/^cmd(\.exe)?$/i)) {
-				script_file = script_file.replace(/\.\w+$/, '.bat');
+				script_file += '.bat';
 				child_cmd = 'CMD.EXE';
 				child_args = ['/c', script_file];
 			}
 			else if (shebang.match(/\b(powershell|pwsh)\b/i)) {
 				// powershell with custom exe location and/or CLI arguments
-				script_file = script_file.replace(/\.\w+$/, '.ps1');
+				script_file += '.ps1';
 				child_cmd = shebang;
 				// if command has cli args, parse using shell-quote
 				if (child_cmd.match(/\s+(.+)$/)) {
@@ -76,7 +76,7 @@ stream.once('json', function(job) {
 			}
 			else if (shebang.match(/\b(cmd)\b/i)) {
 				// cmd with custom exe location and/or ClI arguments
-				script_file = script_file.replace(/\.\w+$/, '.bat');
+				script_file += '.bat';
 				child_cmd = shebang;
 				// if command has cli args, parse using shell-quote
 				if (child_cmd.match(/\s+(.+)$/)) {
@@ -97,12 +97,12 @@ stream.once('json', function(job) {
 		}
 		else {
 			// no shebang, assume cmd.exe
-			script_file = script_file.replace(/\.\w+$/, '.bat');
+			script_file += '.bat';
 			child_cmd = 'CMD.EXE';
 			child_args = ['/c', script_file];
 		}
 		child_opts.windowsHide = true;
-	}
+	} // is_windows
 	
 	// write out temp file containing script code
 	fs.writeFileSync( script_file, job.params.script, { mode: 0o775 } );
