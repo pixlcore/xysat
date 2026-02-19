@@ -12,7 +12,7 @@ var config = {
 	port: 5522,
 	secure: false,
 	socket_opts: { rejectUnauthorized: false },
-	pid_file: "pid.txt",
+	pid_file: "test-pid.txt",
 	log_dir: "logs",
 	log_filename: "test.log",
 	log_crashes: true,
@@ -42,7 +42,9 @@ MockEngine.prototype.socketInit = function() {
 	this.socket = {
 		connected: true,
 		auth: true,
-		send: function() {}
+		send: function(cmd, data) {
+			println( "\nMock Socket: " + cmd + ": " + JSON.stringify(data, null, "\t") + "\n" );
+		}
 	};
 };
 
@@ -82,7 +84,8 @@ server.startup( function() {
 		function(callback) {
 			// getBasicServerInfo
 			println("\n" + bold("Test getBasicServerInfo...") + "\n" );
-			sat.getBasicServerInfo( function() {
+			sat.getBasicServerInfo( function(info) {
+				println("\nServer Info: " + JSON.stringify(info, null, "\t") + "\n");
 				callback();
 			} );
 		},
