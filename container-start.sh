@@ -7,7 +7,7 @@ export PATH=$PATH:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin:$
 # check for bootstrap env var, but only on first run
 if [ -n "$XYOPS_setup" ] && [ ! -f "config.json" ]; then
 	echo "Configuring xySat: $XYOPS_setup"
-    curl -fsSL --connect-timeout 10 "$XYOPS_setup" > config.json
+	curl -fsSL --connect-timeout 10 --retry 10 --retry-delay 5 --retry-connrefused --retry-all-errors "$XYOPS_setup" -o config.json
 	chmod 600 config.json
 fi
 
@@ -19,5 +19,5 @@ if [ -n "${SATELLITE_foreground:-}" ]; then
 	# start xysat, replace current process
 	exec node main.js start
 else
-    echo "This script is for containers only."
+    echo "ERROR: This script is for containers only."
 fi
