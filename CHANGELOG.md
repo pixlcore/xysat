@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.2
+
+> February 18, 2026
+
+- [`054a0d4`](https://github.com/pixlcore/xysat/commit/054a0d4949db82bfe13d679571efae1ae395c6dd): Version 1.0.2
+- [`8fac770`](https://github.com/pixlcore/xysat/commit/8fac7700b3c8b3a24281f3983aed7079763954b6): Add more verbose logging to test-monitors.js script.
+- [`3f48bce`](https://github.com/pixlcore/xysat/commit/3f48bce43def99d693dd783f5bd0c30245d7084e): Fix crasher bug on Linux if `ps` binary is not installed.
+- [`ee39b63`](https://github.com/pixlcore/xysat/commit/ee39b63831da6e822e9827a17a229114ddbfde24): Add retries to bootstrap setup request in container-start.sh
+
 ## Version v1.0.1
 
 > February 16, 2026
