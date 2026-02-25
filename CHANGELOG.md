@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.0.3
+
+> February 24, 2026
+
+- [`dd9e595`](https://github.com/pixlcore/xysat/commit/dd9e5958f3984fdb8cd4519fbf913bdb9ee3bdd4): Version 1.0.3
+- [`759fa15`](https://github.com/pixlcore/xysat/commit/759fa159ec699501c4ad4cd2fcae9bc19b208287): Container Start Script: If config.json file exists but is zero bytes, still run the bootstrap.
+
 ## Version v1.0.2
 
 > February 18, 2026
