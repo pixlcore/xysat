@@ -55,7 +55,7 @@ jobs:
 
           if [[ "${{ matrix.platform }}" == "windows" ]]; then
             # Install additional dependency
-            npm install node-windows
+            npm install npm@10.9.4 node-windows
             
             # For Windows, we only need node.exe
             NODE_DIST="node-v${NODE_VERSION}-win-${{ matrix.arch }}"
@@ -92,6 +92,7 @@ jobs:
             fi
           else
             # Unix platforms
+            npm install npm@10.9.4
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
             tar --strip-components=1 -xzf "${NODE_TARBALL}"
             rm -f "${NODE_TARBALL}"
