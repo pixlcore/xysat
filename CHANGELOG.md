@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.6
+
+> February 25, 2026
+
+- [`099aa97`](https://github.com/pixlcore/xysat/commit/099aa97d45771670ee3cc44d507024a38da290cf): Version 1.0.6
+- [`f94262f`](https://github.com/pixlcore/xysat/commit/f94262f20abb199a0bd1d8c466fd129aa25037da): Increase time and memory limit for "ss" call in getNetworkConnections (called every minute).
+- [`2ef5f76`](https://github.com/pixlcore/xysat/commit/2ef5f76f6830e4bc3ff09238862dfbe8f312b04c): Bug Fix: Crasher if "ss" command failed (improperly handling error case).
+
 ## Version v1.0.5
 
 > February 24, 2026
