@@ -1,5 +1,11 @@
 # xySat Changelog
 
+## Version v1.0.5
+
+> February 24, 2026
+
+- [`9e4d910`](https://github.com/pixlcore/xysat/commit/9e4d9104c5c7a7d87641d13ed645cb075d9ed7e4): Version 1.0.5
+
 ## Version v1.0.4
 
 > February 24, 2026
