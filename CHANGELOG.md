@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.7
+
+> February 26, 2026
+
+- [`7923410`](https://github.com/pixlcore/xysat/commit/7923410396f7a915e82a887888101f10572924b3): Version 1.0.7
+- [`90dad1d`](https://github.com/pixlcore/xysat/commit/90dad1d2d59707e33c8fa88f087622725f437f2f): use /proc/loadavg for load average on linux, as it's more accurate inside containers vs. Node's os.loadavg()
+- [`0b02ba1`](https://github.com/pixlcore/xysat/commit/0b02ba127111f948b39f8d8f8b1fd2691e340f14): Add optional config prop: `disable_job_network_io`, which will prevent calling "ss" every second during job runs.  For servers with a very large amount of concurrent network connections.
+
 ## Version v1.0.6
 
 > February 25, 2026
