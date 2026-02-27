@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.8
+
+> February 26, 2026
+
+- [`176f88d`](https://github.com/pixlcore/xysat/commit/176f88d15a58af0a90d87cb5e72f2dcd581dd0ef): Version 1.0.8
+- [`fdbd5d4`](https://github.com/pixlcore/xysat/commit/fdbd5d47b82004654d83a5143429d14b882977dc): Revert /proc/loadavg change, as it was a red herring.
+- [`d965304`](https://github.com/pixlcore/xysat/commit/d96530456150781359a615d7c6ff806550fc5f08): Shell Plugin: Remove inused "Interpret JSON" code leftover from Cronicle.
+
 ## Version v1.0.7
 
 > February 26, 2026
