@@ -119,11 +119,8 @@ stream.once('json', function(job) {
 	
 	cstream.on('json', function(data) {
 		// received JSON data from child, pass along to xyOps or log
-		if (job.params.json) {
-			stream.write(data);
-			if (data.html) sent_html = true;
-		}
-		else cstream.emit('text', JSON.stringify(data) + "\n");
+		stream.write(data);
+		if (data.html) sent_html = true;
 	} );
 	
 	cstream.on('text', function(line) {
