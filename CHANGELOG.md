@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.9
+
+> February 28, 2026
+
+- [`548bda4`](https://github.com/pixlcore/xysat/commit/548bda460d51633a2ed960493cbf40380f50a2d1): Version 1.0.9
+- [`d8571ba`](https://github.com/pixlcore/xysat/commit/d8571ba241c6aefb4415416b92247fd9d21b99f4): Add comment that explains the high timeout setting on pixl-request
+- [`0cea26f`](https://github.com/pixlcore/xysat/commit/0cea26f87634ea3fc0da3edb9c04e4d6e4d002ca): Network Robustness: If socket connection is closed during final job update, keep trying indefinitely, unless satellite is shutting down.
+
 ## Version v1.0.8
 
 > February 26, 2026
