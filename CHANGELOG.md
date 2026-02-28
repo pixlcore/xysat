@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.10
+
+> February 28, 2026
+
+- [`a6d0296`](https://github.com/pixlcore/xysat/commit/a6d0296b04f7e59ad348952728c4013b10826f17): Allow job file upload retries and retryDelay to be configurable in socket_opts object.
+- [`7d8b8cf`](https://github.com/pixlcore/xysat/commit/7d8b8cf71ee3d6314e5f0959c8c63b257c2bfca8): Version 1.0.10
+- [`60f0e3f`](https://github.com/pixlcore/xysat/commit/60f0e3f21f2e4c91c932e64da8eaca410e9a44c3): Upload Job Files: Log perf metrics on HTTP error (debug level 9).
+- [`e5dede2`](https://github.com/pixlcore/xysat/commit/e5dede2fec1c13934764c864fbf0621543d0d16a): Socket Ping Death: Ensure socket immediately closes by calling terminate() on the underlying WS handle.
+
 ## Version v1.0.9
 
 > February 28, 2026
