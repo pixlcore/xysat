@@ -5,6 +5,8 @@
 > February 28, 2026
 
 - [`548bda4`](https://github.com/pixlcore/xysat/commit/548bda460d51633a2ed960493cbf40380f50a2d1): Version 1.0.9
+	- Bump pixl-request to v2.6.0 for new connectTimeout feature, as well as idleTimeout handling upstream data.
+	- Add retries with exponential backoff to file upload requests.
 - [`d8571ba`](https://github.com/pixlcore/xysat/commit/d8571ba241c6aefb4415416b92247fd9d21b99f4): Add comment that explains the high timeout setting on pixl-request
 - [`0cea26f`](https://github.com/pixlcore/xysat/commit/0cea26f87634ea3fc0da3edb9c04e4d6e4d002ca): Network Robustness: If socket connection is closed during final job update, keep trying indefinitely, unless satellite is shutting down.
 
@@ -37,18 +39,21 @@
 > February 24, 2026
 
 - [`9e4d910`](https://github.com/pixlcore/xysat/commit/9e4d9104c5c7a7d87641d13ed645cb075d9ed7e4): Version 1.0.5
+	- Bump version to rebuild package-lock.json.
 
 ## Version v1.0.4
 
 > February 24, 2026
 
 - [`6e72eb0`](https://github.com/pixlcore/xysat/commit/6e72eb0c24e141e02c16abb7d558625eba7800dd): Version 1.0.4
+	- Remove npm as direct dependency, and install it only as part of the GH actions standalone builds.
 
 ## Version v1.0.3
 
 > February 24, 2026
 
 - [`dd9e595`](https://github.com/pixlcore/xysat/commit/dd9e5958f3984fdb8cd4519fbf913bdb9ee3bdd4): Version 1.0.3
+	- Bump systeminformation to v5.31.1 for various vuln fixes.
 - [`759fa15`](https://github.com/pixlcore/xysat/commit/759fa159ec699501c4ad4cd2fcae9bc19b208287): Container Start Script: If config.json file exists but is zero bytes, still run the bootstrap.
 
 ## Version v1.0.2
@@ -75,6 +80,9 @@
 - [`6212eb6`](https://github.com/pixlcore/xysat/commit/6212eb6a310346490fca60e2b0aed80f408eb42a): Add delayedAutoStart property for Windows service settings.
 - [`a0a92a9`](https://github.com/pixlcore/xysat/commit/a0a92a91c94f00f51acab79a581fe00ed7abe20f): Redesigned Windows self-deletion process so it actually removes the whole directory on uninstall.
 - [`43ccfd5`](https://github.com/pixlcore/xysat/commit/43ccfd5883959b54927c50f731f4e883a65558bb): Version 1.0.0
+	- Bump node-pty to v1.1.0
+	- Bump npm to v10.9.4 (the stock node v22 version)
+	- Bump systeminformation to v5.30.7
 - [`4a72115`](https://github.com/pixlcore/xysat/commit/4a72115b39e5dcdb02c6c3de46089613ba20d127): Major Upgrade: Bump Node.js from v18 to v22, and bump macOS from v14 to v15.
 
 ## Version v0.9.79
@@ -122,6 +130,8 @@
 > January 25, 2026
 
 - [`6661904`](https://github.com/pixlcore/xysat/commit/6661904af10fd2c2d0a4a86d9cbf3f903c1b47a0): Version 0.9.74
+	- Bump pixl-boot to v2.0.2 for improved systemd service behavior.
+	- Bump systeminformation to v5.30.6 for all the latest bug fixes.
 
 ## Version v0.9.73
 
@@ -269,6 +279,8 @@
 > December 29, 2025
 
 - [`2101471`](https://github.com/pixlcore/xysat/commit/2101471f677dc4bc7e76944027e35ed6d8093092): Version 0.9.55
+	- No longer mapping XYOPS_ env vars.  Instead, support XYSAT_ as an alias env var prefix.
+	- This is so we can have satellite coexist inside the xyops container, and the env vars won't clash (i.e. XYOPS_foreground for example).
 
 ## Version v0.9.54
 
@@ -290,6 +302,8 @@
 > December 16, 2025
 
 - [`97a45ba`](https://github.com/pixlcore/xysat/commit/97a45ba4d33eb125b33b10ca51215e021e5f93e6): Version 0.9.52
+	- Bump pixl-tools to v2.0.0 for redesigned ID generation
+	- Bump systeminformation to v5.27.14 for vuln fix on windows.
 - [`95e6192`](https://github.com/pixlcore/xysat/commit/95e6192746950235a3e26155fcb8827fe36d81f0): Protection against event plugin printing the entire job object to STDOUT
 - [`bacf4ee`](https://github.com/pixlcore/xysat/commit/bacf4ee15fe75968f06f922ab227e32633b0dd65): Remove debugging info
 - [`083f518`](https://github.com/pixlcore/xysat/commit/083f5184c71ad2177519e44051ff1e0fc37d03c5): Remove unused "monitoring_only" flag
@@ -324,6 +338,7 @@
 > December 3, 2025
 
 - [`c986f93`](https://github.com/pixlcore/xysat/commit/c986f93243fdbd65f0e3ff47e14bd3d6e524e18b): Version 0.9.48
+	- Add some missing libraries (fallout from the switch to the slim image)
 
 ## Version v0.9.47
 
@@ -434,6 +449,7 @@
 > October 7, 2025
 
 - [`21f9b41`](https://github.com/pixlcore/xysat/commit/21f9b41ef284b430bdddfb47e7eba10aee5345eb): Version 0.0.34
+	- Add npm as dep, to test npx when installed this way
 - [`596ea34`](https://github.com/pixlcore/xysat/commit/596ea340cf2efdc1b54cf3dd8c4a2390684f400a): Add section on included software (node.js)
 
 ## Version v0.0.33
@@ -532,6 +548,7 @@
 > August 30, 2025
 
 - [`84a3ddc`](https://github.com/pixlcore/xysat/commit/84a3ddc52d82d185d4aee5044522eaf41a20d4a0): Version 0.0.23
+	- Trying to fix docker build
 - [`d551843`](https://github.com/pixlcore/xysat/commit/d55184366886a1113c9aaa6d259a1fa066d2897e): Fix uv/uvx install steps
 
 ## Version v0.0.22
@@ -540,6 +557,9 @@
 
 - [`319d5c5`](https://github.com/pixlcore/xysat/commit/319d5c522eedf37dec69f96ff95757a4dc87f637): Update README.
 - [`844fd95`](https://github.com/pixlcore/xysat/commit/844fd95759b69d041a9fd5ca17ae4ca64805a6a4): Version 0.0.22
+	- Relic to MIT
+	- Bump pixl-request to 2.4.1
+	- Bump sysinfo to 5.27.7
 - [`38ace17`](https://github.com/pixlcore/xysat/commit/38ace1737044c3d055705c483b1fdbc0a4e6ab68): Support airgap mode
 - [`4488cc2`](https://github.com/pixlcore/xysat/commit/4488cc2388e85c88f417f9add3bf0a3579b34182): Support for config updates on master connect, and airgap mode, relic to MIT
 - [`14d0d5e`](https://github.com/pixlcore/xysat/commit/14d0d5eaf8576497afeb2ed9dd502079672d2795): Relicense to MIT
@@ -553,6 +573,7 @@
 > August 8, 2025
 
 - [`8e309f1`](https://github.com/pixlcore/xysat/commit/8e309f141fb3ca7aa83daf116762108e109d09ac): Version 0.0.21
+	- Renamed to xySat!
 - [`a238635`](https://github.com/pixlcore/xysat/commit/a2386357d79c95ad8338af7373f54c21eee2b35a): Rename to xyOps / xySat
 - [`cddaf98`](https://github.com/pixlcore/xysat/commit/cddaf98a276057bb61944de8bf9db8b8d30ce7fb): Remove extra params, always spawn sleep proc and report progress, tweak sample data
 
@@ -632,6 +653,7 @@
 > March 23, 2025
 
 - [`97b2322`](https://github.com/pixlcore/xysat/commit/97b232245d4c27b7d6dd19a0e5b8cfcac8648fab): Version 0.0.15
+	- Add support for merging in initial config push on first load.
 
 ## Version v0.0.14
 
@@ -712,6 +734,7 @@
 > March 17, 2025
 
 - [`b50102b`](https://github.com/pixlcore/xysat/commit/b50102bb62f69a4750967e823e1b87ac92fa2c7c): Version 0.0.3
+	- More github action troubleshooting.
 
 ## Version v0.0.2
 
