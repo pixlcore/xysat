@@ -1,5 +1,15 @@
 # xySat Changelog
 
+## Version v1.0.11
+
+> March 2, 2026
+
+- [`72bbbd5`](https://github.com/pixlcore/xysat/commit/72bbbd5215f5734ca34fa325770e9fe5d270b28d): Version 1.0.11
+	- Bump pixl-request to v2.6.1 for retryDelayMax feature.
+- [`649a253`](https://github.com/pixlcore/xysat/commit/649a253f1929e084d81f10e7acee6acdb6bff7d8): Network Robustness: Big refactor of networking code in regards to finishing jobs and uploading files, to better handle unstable networks.
+- [`63a646e`](https://github.com/pixlcore/xysat/commit/63a646eb63de388f3094ac718b9cbf37a17390be): Introduce separate `http_file_opts` config prop for file upload and download settings (timeouts / retries).  Add retryDelayMax.
+- [`0330e4a`](https://github.com/pixlcore/xysat/commit/0330e4a315f70c21884588de207cd3bc4a25923c): Add SECURITY.md file.
+
 ## Version v1.0.10
 
 > February 28, 2026
