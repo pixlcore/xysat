@@ -12,7 +12,6 @@ const Path = require('path');
 const sqparse = require('shell-quote').parse;
 const JSONStream = require('pixl-json-stream');
 const Tools = require('pixl-tools');
-const config = require('../config.json');
 
 const is_windows = !!process.platform.match(/^win/);
 const RE_SHEBANG = /^\#\!([^\n]+)\n/;
@@ -26,7 +25,7 @@ stream.EOL = "\n";
 
 stream.once('json', function(job) {
 	// got job from parent
-	var script_file = Path.join( Path.dirname(__dirname), config.temp_dir, 'xyops-script-temp-' + job.id );
+	var script_file = Path.join( Path.dirname(__dirname), 'temp', 'xyops-script-temp-' + job.id );
 	var child_cmd = Path.resolve(script_file);
 	var child_args = [];
 	var child_opts = {
