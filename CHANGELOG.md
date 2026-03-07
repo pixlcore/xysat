@@ -1,5 +1,15 @@
 # xySat Changelog
 
+## Version v1.0.12
+
+> March 6, 2026
+
+- [`75148c9`](https://github.com/pixlcore/xysat/commit/75148c9ac8481a58315d168c4c13933ba7e4d9fc): Version 1.0.12
+- [`2ec4316`](https://github.com/pixlcore/xysat/commit/2ec43169fc7546c9e6b22d03ec65e54fe6de9395): HTTP/Test Plugins: Stop trying to load xysat config.json file, use airgap config now present in job data.
+- [`e3a38a2`](https://github.com/pixlcore/xysat/commit/e3a38a2dedadc52dde5446dafdce337946e3fc16): Pass airgap config to child processes if set.
+- [`15d8fb0`](https://github.com/pixlcore/xysat/commit/15d8fb03768bb60cb69cff6f7c6295b4aa0a1bb9): Shell Plugin: Do not try to load the xysat config.json file, as this is not readable as a non-root users.
+- [`3287fa3`](https://github.com/pixlcore/xysat/commit/3287fa3196141bb8a46a1eb0f222308c61048fb0): Set permissions of temp dir to 777 on startup, for plugins to run as non-root users.
+
 ## Version v1.0.11
 
 > March 2, 2026
