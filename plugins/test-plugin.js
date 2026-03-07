@@ -12,7 +12,6 @@ var JSONStream = require('pixl-json-stream');
 var Tools = require('pixl-tools');
 var Perf = require('pixl-perf');
 var Request = require('pixl-request');
-var config = require('../config.json');
 
 var perf = new Perf();
 perf.setScale( 1 ); // seconds
@@ -23,12 +22,6 @@ request.setTimeout( 300 * 1000 );
 request.setFollow( 5 );
 request.setAutoError( true );
 request.setKeepAlive( false );
-
-// airgapped mode
-if (config.airgap && config.airgap.enabled) {
-	if (config.airgap.whitelist && config.airgap.whitelist.length) request.setWhitelist( config.airgap.whitelist );
-	if (config.airgap.blacklist && config.airgap.blacklist.length) request.setBlacklist( config.airgap.blacklist );
-}
 
 var net_url = 'https://github.com/jhuckaby/performa-satellite/releases/latest/download/performa-satellite-linux-x64';
 var ac = null;
@@ -88,6 +81,12 @@ stream.on('json', function(job) {
 	if (job.input && job.input.files && job.input.files.length) {
 		console.log( "Received input files: " + JSON.stringify(job.input.files) );
 		console.log( "Glob: " + JSON.stringify( Tools.glob.sync('*') ) );
+	}
+	
+	// airgapped mode
+	if (job.airgap && job.airgap.enabled) {
+		if (job.airgap.whitelist && job.airgap.whitelist.length) request.setWhitelist( job.airgap.whitelist );
+		if (job.airgap.blacklist && job.airgap.blacklist.length) request.setBlacklist( job.airgap.blacklist );
 	}
 	
 	// use some memory so we show up on the mem graph

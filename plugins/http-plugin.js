@@ -15,7 +15,6 @@ var Path = require('path');
 var JSONStream = require('pixl-json-stream');
 var Tools = require('pixl-tools');
 var Request = require('pixl-request');
-var config = require('../config.json');
 
 // setup stdin / stdout streams 
 process.stdin.setEncoding('utf8');
@@ -34,9 +33,9 @@ stream.on('json', function(job) {
 	};
 	
 	// airgapped mode
-	if (config.airgap && config.airgap.enabled) {
-		if (config.airgap.whitelist && config.airgap.whitelist.length) request.setWhitelist( config.airgap.whitelist );
-		if (config.airgap.blacklist && config.airgap.blacklist.length) request.setBlacklist( config.airgap.blacklist );
+	if (job.airgap && job.airgap.enabled) {
+		if (job.airgap.whitelist && job.airgap.whitelist.length) request.setWhitelist( job.airgap.whitelist );
+		if (job.airgap.blacklist && job.airgap.blacklist.length) request.setBlacklist( job.airgap.blacklist );
 	}
 	
 	// timeout
