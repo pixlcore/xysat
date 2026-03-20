@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.13
+
+> March 20, 2026
+
+- [`87b1019`](https://github.com/pixlcore/xysat/commit/87b1019355a87b099b3d2acee3dc9c0a1ba0985a): Version 1.0.13
+	- Bump systeminformation to 5.31.5 for latest macOS updates.
+- [`3d8195d`](https://github.com/pixlcore/xysat/commit/3d8195df61344f7f7095b8fe86e10bdbb1091ec5): Bug Fix: Use new socket secure flag from actual socket rather than config, when constructing HTTP URLs back to the conductor.  Ref: pixlcore/xyops#213
+
 ## Version v1.0.12
 
 > March 6, 2026
