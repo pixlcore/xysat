@@ -1,5 +1,15 @@
 # xySat Changelog
 
+## Version v1.0.14
+
+> March 23, 2026
+
+- [`56b23c1`](https://github.com/pixlcore/xysat/commit/56b23c129e151a867a1d6538c47076f1019ade44): Version 1.0.14
+- [`fca55f8`](https://github.com/pixlcore/xysat/commit/fca55f8eaa9dd1db93db0635de65ed7372dcffc0): Allow user to specify which config keys can be updated by the conductor (managed_keys).
+- [`dd84eb4`](https://github.com/pixlcore/xysat/commit/dd84eb4e4ec06f9e70803f65f21003ba0b61a58a): Security Hardening: HTTP Request Plugin: Redact secrets in diagnostic output detail (best effort).
+- [`098750d`](https://github.com/pixlcore/xysat/commit/098750d560aeb9dd9eab6acd9306415f29ab7b73): Support optional XYSAT_config_file env var for custom config file location.
+- [`8dc4b49`](https://github.com/pixlcore/xysat/commit/8dc4b49d321c3c7508462831255590e6a7b612d7): Shell Plugin: Use Satellite's official temp_dir instead of hard-coding one.  Fixes #5.
+
 ## Version v1.0.13
 
 > March 20, 2026
