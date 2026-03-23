@@ -11,7 +11,7 @@ const os = require('os');
 const PixlServer = require("pixl-server");
 const pkg = require('./package.json');
 const self_bin = Path.resolve(process.argv[0]) + ' ' + Path.resolve(process.argv[1]);
-const config_file = Path.join( __dirname, 'config.json' );
+const config_file = process.env.XYSAT_config_file || Path.join( __dirname, 'config.json' );
 const is_windows = !!process.platform.match(/^win/);
 
 var config = {};
