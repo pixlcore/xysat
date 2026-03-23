@@ -28,6 +28,19 @@ stream.on('json', function(job) {
 	var params = job.params;
 	var request = new Request();
 	
+	// try to scrub secrets from output details (best effort)
+	var scrubSecrets = null;
+	if (job.secrets && Tools.firstKey(job.secrets)) {
+		var sec_re = new RegExp( "\\b(" + 
+			Object.values(job.secrets).map( sec => Tools.escapeRegExp(sec) ).join('|') + '|' + 
+			Object.values(job.secrets).map( sec => Tools.escapeRegExp( encodeURIComponent(sec) ) ).join('|') + 
+			")\\b", 'g' );
+		scrubSecrets = function(value) { return String(value).replace( sec_re, '(REDACTED)' ); }
+	}
+	else {
+		scrubSecrets = function(value) { return value; };
+	}
+	
 	var print = function(text) {
 		process.stdout.write(text);
 	};
@@ -50,7 +63,7 @@ stream.on('json', function(job) {
 	// allow URL to be substituted using [placeholders]
 	params.url = Tools.sub( params.url, job );
 	
-	print("Sending HTTP " + params.method + " to URL:\n" + params.url + "\n");
+	print("Sending HTTP " + params.method + " to URL:\n" + scrubSecrets(params.url) + "\n");
 	
 	// headers
 	if (params.headers) {
@@ -169,7 +182,7 @@ stream.on('json', function(job) {
 		
 		details += "### Summary\n";
 		details += "- **Method:** " + params.method + "\n";
-		details += "- **URL:** " + params.url + "\n";
+		details += "- **URL:** " + scrubSecrets(params.url) + "\n";
 		details += "- **Redirects:** " + (params.follow ? 'Follow' : 'n/a') + "\n";
 		details += "- **Timeout:** " + Tools.getTextFromSeconds(params.timeout, false, false) + "\n";
 		if (resp) details += "- **Response:** HTTP " + resp.statusCode + " " + resp.statusMessage + "\n";
@@ -177,20 +190,20 @@ stream.on('json', function(job) {
 		
 		if (params.headers.length) {
 			details += "\n### Request Headers:\n\n```http\n";
-			details += params.headers + "\n";
+			details += scrubSecrets(params.headers) + "\n";
 			details += "```\n";
 		}
 		
 		if (params.data && params.data.length) {
 			details += "\n### Request Body:\n\n```\n";
-			details += params.data.trim() + "\n```\n";
+			details += scrubSecrets(params.data.trim()) + "\n```\n";
 		}
 		
 		if (resp && resp.rawHeaders) {
 			details += "\n### Response Headers:\n\n```http\n";
 			
 			for (var idx = 0, len = resp.rawHeaders.length; idx < len; idx += 2) {
-				details += resp.rawHeaders[idx] + ": " + resp.rawHeaders[idx + 1] + "\n";
+				details += resp.rawHeaders[idx] + ": " + scrubSecrets(resp.rawHeaders[idx + 1]) + "\n";
 			}
 			details += "```\n";
 		}
@@ -203,7 +216,7 @@ stream.on('json', function(job) {
 			if (text.length) {
 				details += "\n### Response Body:\n\n```\n";
 				if (text.length >= 1024 * 1024) details += "(Too large to display)\n```\n";
-				else details += text.trim() + "\n```\n";
+				else details += scrubSecrets(text.trim()) + "\n```\n";
 			}
 			
 			// if response was JSON, include parsed data, up to 32 MB
