@@ -25,7 +25,7 @@ stream.EOL = "\n";
 
 stream.once('json', function(job) {
 	// got job from parent
-	var script_file = Path.join( Path.dirname(__dirname), 'temp', 'xyops-script-temp-' + job.id );
+	var script_file = Path.join( job.temp_dir, 'xyops-script-temp-' + job.id );
 	var child_cmd = Path.resolve(script_file);
 	var child_args = [];
 	var child_opts = {
