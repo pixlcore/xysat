@@ -5,10 +5,12 @@ set -e
 export PATH=$PATH:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin:$HOME/.local/bin
 
 # check for bootstrap env var, but only on first run
-if [ -n "$XYOPS_setup" ] && [ ! -s "config.json" ]; then
+CONFIG_FILE="${XYSAT_config_file:-config.json}"
+
+if [ -n "$XYOPS_setup" ] && [ ! -s "$CONFIG_FILE" ]; then
 	echo "Configuring xySat: $XYOPS_setup"
-	curl -fsSL --connect-timeout 10 --retry 10 --retry-delay 5 --retry-connrefused --retry-all-errors "$XYOPS_setup" -o config.json
-	chmod 600 config.json
+	curl -fsSL --connect-timeout 10 --retry 10 --retry-delay 5 --retry-connrefused --retry-all-errors "$XYOPS_setup" -o "$CONFIG_FILE"
+	chmod 600 "$CONFIG_FILE"
 fi
 
 # check for foreground
