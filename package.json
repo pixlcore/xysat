@@ -1,6 +1,6 @@
 {
 	"name": "xysat",
-	"version": "1.0.14",
+	"version": "1.0.15",
 	"private": true,
 	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
@@ -32,8 +32,8 @@
 		"pixl-json-stream": "^1.0.7",
 		"pixl-perf": "^1.0.9",
 		"pixl-request": "^2.6.1",
-		"pixl-server": "^1.0.0",
-		"pixl-tools": "^2.0.0",
+		"pixl-server": "^1.0.50",
+		"pixl-tools": "^2.0.2",
 		"pixl-xml": "^1.0.0",
 		"shell-quote": "1.8.2",
 		"systeminformation": "5.31.5",
