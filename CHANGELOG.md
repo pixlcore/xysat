@@ -1,5 +1,15 @@
 # xySat Changelog
 
+## Version v1.0.15
+
+> March 31, 2026
+
+- [`2fa2b96`](https://github.com/pixlcore/xysat/commit/2fa2b96b65828eef2ab3f74829582b0b45795989): Version 1.0.15
+	- Bump pixl-server to v1.0.50 for more detailed crash logs.
+	- Bump pixl-tools to v2.0.2 for upstream vuln fix in picomatch.
+- [`05e9d3d`](https://github.com/pixlcore/xysat/commit/05e9d3dde698285f7e5998a22f50229441e535db): Add very basic config validation on startup.
+- [`939dcee`](https://github.com/pixlcore/xysat/commit/939dcee0e22b7eb2f54b79d41cbf3f8dd96a9e5c): Improve container-start.sh to honor XYSAT_config_file env var.
+
 ## Version v1.0.14
 
 > March 23, 2026
