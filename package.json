@@ -1,6 +1,6 @@
 {
 	"name": "xysat",
-	"version": "1.0.15",
+	"version": "1.0.16",
 	"private": true,
 	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
@@ -9,7 +9,8 @@
 	"bin": "main.js",
 	"main": "main.js",
 	"scripts": {
-		"changelog": "node tools/changelog.js"
+		"changelog": "node tools/changelog.js",
+		"release": "tools/release.sh"
 	},
 	"repository": {
 		"type": "git",
@@ -22,6 +23,9 @@
 		"xyops",
 		"xysat"
 	],
+	"overrides": {
+		"lodash": "4.18.1"
+	},
 	"dependencies": {
 		"async": "2.6.4",
 		"class-plus": "^1.0.0",
