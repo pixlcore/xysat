@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.16
+
+> April 6, 2026
+
+- [`035edfd`](https://github.com/pixlcore/xysat/commit/035edfd99eb29a3aa7e834c4966b02b68e5b604d): Version 1.0.16
+	- Bump lodash (sub-dep of async) to v4.18.1 for high severity vuln fix.
+- [`98457a0`](https://github.com/pixlcore/xysat/commit/98457a0e7df0ebc89f125e66dfad967f8c298c18): Meta: Change GitHub action to generate release notes automatically.
+- [`02cebf2`](https://github.com/pixlcore/xysat/commit/02cebf2a9cc57f25f468ef5cd3e1266efb641237): Meta: Add tools/release.sh script for automating releases.
+
 ## Version v1.0.15
 
 > March 31, 2026
