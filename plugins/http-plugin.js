@@ -51,9 +51,10 @@ stream.on('json', function(job) {
 		if (job.airgap.blacklist && job.airgap.blacklist.length) request.setBlacklist( job.airgap.blacklist );
 	}
 	
-	// timeout
+	// timeouts
 	request.setTimeout( parseInt(params.timeout || 0) * 1000 );
 	request.setIdleTimeout( parseInt(params.idle_timeout || params.timeout || 0) * 1000 );
+	request.setConnectTimeout( parseInt(params.connect_timeout || 10) * 1000 );
 	
 	if (!params.url || !params.url.match(/^https?\:\/\/\S+$/i)) {
 		stream.write({ xy: 1, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
