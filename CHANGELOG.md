@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.17
+
+> April 10, 2026
+
+- [`c0cc87d`](https://github.com/pixlcore/xysat/commit/c0cc87d097f39d3fe3eefff96e7504c9815a7b34): Version 1.0.17
+	- Bump pixl-request to v2.6.3 for upstream vuln fix in basic-ftp (sub-dep of proxy-agent).
+- [`fbdcf4c`](https://github.com/pixlcore/xysat/commit/fbdcf4c04dccb66a366c956e89e9fb0779d75ea7): HTTP Plugin: Add support for connect timeout param (default 10 seconds).
+- [`9bdc555`](https://github.com/pixlcore/xysat/commit/9bdc555724e70b6358f3e685c277f198898d37f1): Add GPU / graphics monitoring, disabled by default.
+
 ## Version v1.0.16
 
 > April 6, 2026
