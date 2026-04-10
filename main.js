@@ -30,7 +30,8 @@ var sample_config = {
 	debug_level: 5,
 	child_kill_timeout: 10,
 	monitoring_enabled: true,
-	quickmon_enabled: true
+	quickmon_enabled: true,
+	graphics_enabled: false
 };
 
 const cli = require('pixl-cli');
