@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.18
+
+> April 13, 2026
+
+- [`ea20064`](https://github.com/pixlcore/xysat/commit/ea2006497bb58b94c6ddb5a100384ed2481afe71): Version 1.0.18
+	- Bump pixl-request to v2.6.4 for upstream vuln fix in basic-ftp (sub-dep of proxy-agent).
+- [`c0e0802`](https://github.com/pixlcore/xysat/commit/c0e0802958fab111230ae53411cffc651b744181): QuickMon: Add support for custom "quick" monitor plugins.
+- [`d9dbd6f`](https://github.com/pixlcore/xysat/commit/d9dbd6f6fb3e0d4f88bb0f289ca90f2703873266): Fix issue with Plugins with commands set to "powershell" or "pwsh" on Windows.  They require a "-File" prefix before the file path.  Fixes pixlcore/xyops#252 and nickdollimount/xyplug-powershell#30
+
 ## Version v1.0.17
 
 > April 10, 2026
