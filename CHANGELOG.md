@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.19
+
+> April 14, 2026
+
+- [`ae2c414`](https://github.com/pixlcore/xysat/commit/ae2c4147eac10dc6cd614e7274f6389236e472bc): Version 1.0.19
+- [`53bf227`](https://github.com/pixlcore/xysat/commit/53bf2279ede59f7f526d280fbbd18a2844733104): Monitoring: Add docker container stats to monitoring data, if docker CLI is available, and feat is enabled in config.
+- [`05f1aee`](https://github.com/pixlcore/xysat/commit/05f1aee0c96e596eae09d29745b4431bcb2e9563): Job Output Processing: Append a warning to the job metadata log if a JSON line could not be parsed.
+- [`bfbfb85`](https://github.com/pixlcore/xysat/commit/bfbfb855c3f472e3de7e6d1d9196126a0e71fb9f): Bug Fix: Do not attempt to kill all processes if remote "runner" flag is set.
+
 ## Version v1.0.18
 
 > April 13, 2026
