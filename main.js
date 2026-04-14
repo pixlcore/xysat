@@ -31,7 +31,8 @@ var sample_config = {
 	child_kill_timeout: 10,
 	monitoring_enabled: true,
 	quickmon_enabled: true,
-	graphics_enabled: false
+	graphics_enabled: false,
+	docker_enabled: true
 };
 
 const cli = require('pixl-cli');
