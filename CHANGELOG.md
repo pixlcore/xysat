@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.20
+
+> April 16, 2026
+
+- [`7c144c1`](https://github.com/pixlcore/xysat/commit/7c144c19962ee832b0a21e2ba383743e0e042171): Version 1.0.20
+	- Bump pixl-request to v2.6.5 for upstream vuln fix in basic-ftp (sub-dep of proxy-agent).
+- [`1556b97`](https://github.com/pixlcore/xysat/commit/1556b97392ea922cf20697aed050e1c8ee4f24db): getBasicServerInfo: Pass along our own IP address (computed from first external net iface).
+
 ## Version v1.0.19
 
 > April 14, 2026
