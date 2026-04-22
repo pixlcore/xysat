@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.21
+
+> April 22, 2026
+
+- [`f558c6e`](https://github.com/pixlcore/xysat/commit/f558c6e7ded0e50e2dff0d45da16b11237439c87): Version 1.0.21
+	- Bump pixl-tools to v2.0.3 for updated getBytesFromText and getTextFromBytes functions.
+- [`761e36b`](https://github.com/pixlcore/xysat/commit/761e36b220de32486ed6ac25208ff12be30bb0af): Redesigned Docker container monitoring code and output format.  Convert all units to bytes, include totals.
+- [`53174f7`](https://github.com/pixlcore/xysat/commit/53174f7cf827fb99c5d0d6477bc71430a4232eca): Custom Monitor Plugins: Exec using `monitor_plugin_concurrency` if set, fallback to  Node's `os.availableParallelism()` if available, then to 1.
+
 ## Version v1.0.20
 
 > April 16, 2026
