@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.22
+
+> April 27, 2026
+
+- [`c972629`](https://github.com/pixlcore/xysat/commit/c97262989f07ddd29978e84e0b1b5f0c38efe679): Version 1.0.22
+- [`eeb8a6e`](https://github.com/pixlcore/xysat/commit/eeb8a6e0fb9a2db283770ef8cbc4d4833320c8c6): Bug Fix: HTTP Request Plugin: When downloading files, support optional `filename` param, and also fix issue with complex content-type header.
+- [`b3aa9e0`](https://github.com/pixlcore/xysat/commit/b3aa9e043b4b66906528183e3808b6c2be29acd6): Bug fix: Do not pass sniffed IP address if it is local (127.0.0.1 and family).
+- [`a49bfaa`](https://github.com/pixlcore/xysat/commit/a49bfaac26e96fb71aaf03dc540e309bc2c2e3c8): Feature: Support for passing `workflow_`, `workflow_data_`, `server_data_`, and `data_` environment variables.
+
 ## Version v1.0.21
 
 > April 22, 2026
