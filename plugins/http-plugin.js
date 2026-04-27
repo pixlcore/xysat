@@ -156,14 +156,15 @@ stream.on('json', function(job) {
 		
 		// attach file to job for upload
 		if (!err && params.download) {
-			var filename = Path.basename(params.url) || 'output';
+			var filename = params.filename || Path.basename(params.url) || 'output';
 			if (resp.headers && resp.headers['content-disposition']) {
 				// grab filename out of CD header, which may or may not have quotes
 				if (resp.headers['content-disposition'].toString().match(/filename="(.+?)"/)) filename = RegExp.$1;
 				else if (resp.headers['content-disposition'].toString().match(/filename=([^\;]+)/)) filename = RegExp.$1;
 			}
 			if (!filename.match(/\.\w+$/)) {
-				if (resp.headers['content-type']) filename += '.' + Path.basename(resp.headers['content-type']);
+				// xyops filenames MUST have an extension, so add one if needed
+				if (resp.headers['content-type']) filename += '.' + Path.basename( resp.headers['content-type'].replace(/\;.*$/, '') );
 				else filename += '.bin';
 			}
 			update.files = [
