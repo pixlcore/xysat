@@ -1,6 +1,6 @@
 {
 	"name": "xysat",
-	"version": "1.0.22",
+	"version": "1.0.23",
 	"private": true,
 	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
@@ -29,7 +29,6 @@
 	"dependencies": {
 		"async": "2.6.4",
 		"class-plus": "^1.0.0",
-		"node-notifier": "10.0.1",
 		"node-pty": "1.1.0",
 		"pixl-boot": "^2.0.2",
 		"pixl-cli": "^1.0.0",
@@ -40,6 +39,7 @@
 		"pixl-tools": "^2.0.3",
 		"pixl-xml": "^1.0.0",
 		"shell-quote": "1.8.2",
+		"ssh2": "1.17.0",
 		"systeminformation": "5.31.5",
 		"ws": "7.5.10"
 	}
