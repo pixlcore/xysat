@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.23
+
+> April 30, 2026
+
+- [`3ab5e95`](https://github.com/pixlcore/xysat/commit/3ab5e954601dda69e60ffb9ef02bc614d40464e5): Version 1.0.23
+	- Remove unused node-notifier dependency.
+	- Add ssh2 dependency, for future use.
+- [`eabd79c`](https://github.com/pixlcore/xysat/commit/eabd79c3b17c0d249410c52b9e9048d926e5ee85): Child Env Setup: Swap order of PATH directories so that our `bin/` is considered first.
+
 ## Version v1.0.22
 
 > April 27, 2026
