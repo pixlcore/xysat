@@ -55,7 +55,7 @@ jobs:
 
           if [[ "${{ matrix.platform }}" == "windows" ]]; then
             # Install additional dependency
-            npm install npm@10.9.7 node-windows
+            npm install node-windows
             
             # For Windows, we only need node.exe
             NODE_DIST="node-v${NODE_VERSION}-win-${{ matrix.arch }}"
