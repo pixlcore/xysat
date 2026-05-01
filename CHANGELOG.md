@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.26
+
+> May 1, 2026
+
+- [`6330f43`](https://github.com/pixlcore/xysat/commit/6330f43a1c6ab9ad33f52dd022021e72eac75439): Version 1.0.26
+- [`b005cb6`](https://github.com/pixlcore/xysat/commit/b005cb648bec7cc15bb685aad5a7781e89adf1b2): Child Env: Remove `./node_modules/.bin` from the PATH inserts (so it doesn't launch the rogue NPX).
+- [`6b28fc8`](https://github.com/pixlcore/xysat/commit/6b28fc831033c3ce086a06b403f12431d5a2529d): GitHub Release: Also remove bundled NPM from Windows build.
+
 ## Version v1.0.25
 
 > May 1, 2026
