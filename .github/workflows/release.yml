@@ -49,13 +49,13 @@ jobs:
 
       - name: Download and Extract Node.js Runtime
         run: |
-          NODE_VERSION=22.22.0
+          NODE_VERSION=22.22.2
           NODE_DIST="node-v${NODE_VERSION}-${{ matrix.platform }}-${{ matrix.arch }}"
           NODE_TARBALL="${NODE_DIST}.tar.gz"
 
           if [[ "${{ matrix.platform }}" == "windows" ]]; then
             # Install additional dependency
-            npm install npm@10.9.4 node-windows
+            npm install npm@10.9.7 node-windows
             
             # For Windows, we only need node.exe
             NODE_DIST="node-v${NODE_VERSION}-win-${{ matrix.arch }}"
@@ -92,7 +92,7 @@ jobs:
             fi
           else
             # Unix platforms
-            npm install npm@10.9.4
+            npm install npm@10.9.7
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
             tar --strip-components=1 -xzf "${NODE_TARBALL}"
             rm -f "${NODE_TARBALL}"
