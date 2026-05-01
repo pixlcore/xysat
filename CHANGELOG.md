@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.0.25
+
+> May 1, 2026
+
+- [`3c54113`](https://github.com/pixlcore/xysat/commit/3c5411319bca52af530e94d9bfe18b1a0a19706d): Version 1.0.25
+- [`b6750c6`](https://github.com/pixlcore/xysat/commit/b6750c62a9bbce41acca00a40853c0cd764b260b): GitHub Release: Do not bundle NPM with Linux release, as the built-in NPX CLI is broken.
+
 ## Version v1.0.24
 
 > May 1, 2026
