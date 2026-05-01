@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.0.27
+
+> May 1, 2026
+
+- [`9728e99`](https://github.com/pixlcore/xysat/commit/9728e9911a2845ca0d7bf0d1fa2b6393e17952ef): Version 1.0.27
+- [`9e313ec`](https://github.com/pixlcore/xysat/commit/9e313eccf2cdd189a33c405792daea96e7821827): Bug Fix: workflowData, serverData and input.data environment variables were not getting set correctly.
+
 ## Version v1.0.26
 
 > May 1, 2026
