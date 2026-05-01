@@ -92,7 +92,6 @@ jobs:
             fi
           else
             # Unix platforms
-            npm install npm@10.9.7
             curl -O "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}"
             tar --strip-components=1 -xzf "${NODE_TARBALL}"
             rm -f "${NODE_TARBALL}"
