@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.0.24
+
+> May 1, 2026
+
+- [`84511e7`](https://github.com/pixlcore/xysat/commit/84511e79f561ecbc1ec4913cc31ea09bf51c0587): Version 1.0.24
+- [`47bb5ef`](https://github.com/pixlcore/xysat/commit/47bb5efe7b09909b965479b2e167f28527757b57): GitHub Release: Bump Node.js to v2.22.2 and NPM to v10.9.7.
+
 ## Version v1.0.23
 
 > April 30, 2026
