@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.0.28
+
+> May 8, 2026
+
+- [`e865033`](https://github.com/pixlcore/xysat/commit/e86503392012102b32fc2a3c5a74f7fc3da4a9d0): Version 1.0.28
+- [`aa1d7fc`](https://github.com/pixlcore/xysat/commit/aa1d7fc23a7a91869017e6feed9cfcd16b27ee97): Enhance job management and data handling
+
 ## Version v1.0.27
 
 > May 1, 2026
