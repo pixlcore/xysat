@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.30
+
+> June 9, 2026
+
+- [`4de15f1`](https://github.com/pixlcore/xysat/commit/4de15f129dc37dfc73fd1208c3824bf5a9375194): Version 1.0.30
+- [`4e56eee`](https://github.com/pixlcore/xysat/commit/4e56eeed9560a1a8c99f0bf0931dc0b9becfeba1): Bump shell-quote to v1.8.4 for vuln fix.
+- [`39cf91a`](https://github.com/pixlcore/xysat/commit/39cf91a0962a3344f480edacc57b83273448c75e): Bump systeminformation to v5.31.7 for vuln fix.
+
 ## Version v1.0.29
 
 > May 17, 2026
