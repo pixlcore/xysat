@@ -38,7 +38,7 @@
 		"pixl-server": "^1.0.50",
 		"pixl-tools": "^2.0.3",
 		"pixl-xml": "^1.0.0",
-		"shell-quote": "1.8.2",
+		"shell-quote": "1.8.4",
 		"ssh2": "1.17.0",
 		"systeminformation": "5.31.7",
 		"ws": "7.5.10"
