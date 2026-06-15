@@ -56,13 +56,13 @@ stream.on('json', function(job) {
 	request.setIdleTimeout( parseInt(params.idle_timeout || params.timeout || 0) * 1000 );
 	request.setConnectTimeout( parseInt(params.connect_timeout || 10) * 1000 );
 	
+	// allow URL to be substituted using [placeholders]
+	params.url = Tools.sub( params.url || '', job );
+	
 	if (!params.url || !params.url.match(/^https?\:\/\/\S+$/i)) {
 		stream.write({ xy: 1, complete: true, code: 1, description: "Malformed URL: " + (params.url || '(n/a)') });
 		return;
 	}
-	
-	// allow URL to be substituted using [placeholders]
-	params.url = Tools.sub( params.url, job );
 	
 	print("Sending HTTP " + params.method + " to URL:\n" + scrubSecrets(params.url) + "\n");
 	
