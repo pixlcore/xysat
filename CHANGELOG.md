@@ -1,5 +1,16 @@
 # xySat Changelog
 
+## Version v1.0.31
+
+> June 15, 2026
+
+- [`70e9255`](https://github.com/pixlcore/xysat/commit/70e92558b5e2791dce128e229c28d56e97817e7e): Version 1.0.31
+	- Bump pixl-request to v2.6.7 for various fixes and upstream vuln patches
+	- Bump ws to v7.5.11 for vuln fix
+- [`9449517`](https://github.com/pixlcore/xysat/commit/94495178e1593e6259c42fbc2198651a1261c556): Add new Web Hook built-in Plugin.
+- [`f423650`](https://github.com/pixlcore/xysat/commit/f423650a0d32126f4885575e48a9e7109f4ace51): Self-Upgrade: Allow the 60 second timeout to be configurable.
+- [`81fb6ce`](https://github.com/pixlcore/xysat/commit/81fb6ce4fadb3dfdc88cc16a01df08252e5a6f88): HTTP Plugin: Allow URL to contain `[base_url]` macro which replaces the protocol.
+
 ## Version v1.0.30
 
 > June 9, 2026
