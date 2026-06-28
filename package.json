@@ -1,6 +1,6 @@
 {
 	"name": "xysat",
-	"version": "1.0.31",
+	"version": "1.0.32",
 	"private": true,
 	"description": "Remote satellite worker daemon for xyOps.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
@@ -42,5 +42,9 @@
 		"ssh2": "1.17.0",
 		"systeminformation": "5.31.11",
 		"ws": "7.5.11"
+	},
+	"allowScripts": {
+		"node-pty@1.1.0": true,
+		"ssh2@1.17.0": true
 	}
 }
