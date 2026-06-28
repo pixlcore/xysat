@@ -83,6 +83,10 @@ stream.on('json', function(job) {
 		console.log( "Glob: " + JSON.stringify( Tools.glob.sync('*') ) );
 	}
 	
+	if (job.workflowData) {
+		console.log( "Received workflowData: " + JSON.stringify(job.workflowData) );
+	}
+	
 	// airgapped mode
 	if (job.airgap && job.airgap.enabled) {
 		if (job.airgap.whitelist && job.airgap.whitelist.length) request.setWhitelist( job.airgap.whitelist );
