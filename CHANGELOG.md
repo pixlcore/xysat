@@ -1,5 +1,15 @@
 # xySat Changelog
 
+## Version v1.0.32
+
+> June 28, 2026
+
+- [`56c9715`](https://github.com/pixlcore/xysat/commit/56c97154084e3c36c099e091d5e2b79274ec516b): Version 1.0.32
+- [`f5a74ef`](https://github.com/pixlcore/xysat/commit/f5a74ef7e7205874e76e1073a035c87a9fa830e0): Dep: Bump systeminformation to v5.31.11 for misc bug fixes.
+- [`80d9f40`](https://github.com/pixlcore/xysat/commit/80d9f4072bf449c719a9c9504ffa34590bd5ab31): Job Push System: Add validation and improved data handling.
+- [`d76c2b6`](https://github.com/pixlcore/xysat/commit/d76c2b61b3a9cd75ac3518fad2a3746da46f5de6): Meta: Release Script: Do not run if local git repo has changes.
+- [`3f605ac`](https://github.com/pixlcore/xysat/commit/3f605ac31286caa6ea6f147677e27055f75b629e): Test Plugin: If workflowData is provided, dump it to stdout.
+
 ## Version v1.0.31
 
 > June 15, 2026
