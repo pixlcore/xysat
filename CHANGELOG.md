@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.33
+
+> July 2, 2026
+
+- [`71ca892`](https://github.com/pixlcore/xysat/commit/71ca89262ebb19496ba156705864e0cd088d76e4): Version 1.0.33
+- [`f9434c1`](https://github.com/pixlcore/xysat/commit/f9434c166ed71ef13576e8177b47e3422137f135): Feature: Support disabling monitoring server-wide.
+- [`a092278`](https://github.com/pixlcore/xysat/commit/a092278276de185fe9f4ba857147f3f390c91449): Dep: Bump shell-quote to v1.9.0 for vuln fix.
+
 ## Version v1.0.32
 
 > June 28, 2026
