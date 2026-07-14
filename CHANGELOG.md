@@ -1,5 +1,17 @@
 # xySat Changelog
 
+## Version v1.0.34
+
+> July 14, 2026
+
+- [`30bae5c`](https://github.com/pixlcore/xysat/commit/30bae5cce32281a3fe5d1a929f184bd9e762c622): Version 1.0.34
+- [`5527d06`](https://github.com/pixlcore/xysat/commit/5527d0645bd382ab97de564ca660e07508a86221): Test Plugin: Include a comprehensive ANSI 256-color test pattern.
+- [`c698cb4`](https://github.com/pixlcore/xysat/commit/c698cb464296ba7c3e4d15cf2a3acc21de3af1e0): Shell Plugin: Bug fix regarding preserving empty lines, and increase max line length to 32MB.
+- [`752f8a9`](https://github.com/pixlcore/xysat/commit/752f8a913a13e036430de1b4724d053f50ca5c47): Docker Plugin: Allow shell variable substitution inside cont_extras param.
+- [`751a54d`](https://github.com/pixlcore/xysat/commit/751a54d4d9b5c552cf2dacf78799ad1d96f68424): Dep: Bump systeminformation to 5.31.17 for various bug fixes.
+- [`0d1d8d1`](https://github.com/pixlcore/xysat/commit/0d1d8d18833a170d1ece605b29a99624cb6b2959): Dep: Add @pixlcore/xyops-sdk v1
+- [`53938c7`](https://github.com/pixlcore/xysat/commit/53938c721ece81e21dbdf6748973dced4d3fc86f): Dep: Bump pixl-json-stream to v1.0.10 for line delimiting bug fix.
+
 ## Version v1.0.33
 
 > July 2, 2026
