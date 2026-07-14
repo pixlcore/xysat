@@ -115,6 +115,8 @@ stream.once('json', function(job) {
 	
 	var cstream = new JSONStream( child.stdout, child.stdin );
 	cstream.recordRegExp = /^\s*\{.+\}\s*$/;
+	cstream.preserveWhitespace = true;
+	cstream.maxLineLength = 1024 * 1024 * 32;
 	
 	cstream.on('json', function(data) {
 		// received JSON data from child, pass along to xyOps or log
