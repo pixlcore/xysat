@@ -38,7 +38,7 @@ if (!docker_bin) {
 	if (params.cont_net) child_args.push('--network', params.cont_net);
 	if (params.cont_name) child_args.push('--name', params.cont_name);
 	if (params.cont_extras) {
-		child_args = child_args.concat( sq.parse(params.cont_extras) );
+		child_args = child_args.concat( sq.parse(params.cont_extras, process.env) );
 	}
 	
 	child_args.push( params.image_name + ':' + params.image_ver );
