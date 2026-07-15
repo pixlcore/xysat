@@ -62,4 +62,4 @@ ENV SATELLITE_debug_level=5
 
 RUN npm install
 
-CMD ["sh", "container-start.sh"]
+CMD ["bash", "container-start.sh"]
