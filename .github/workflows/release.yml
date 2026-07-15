@@ -7,6 +7,12 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: read
+      # Required for GitHub's keyless Sigstore artifact attestation.
+      id-token: write
+      attestations: write
+
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -122,6 +128,12 @@ jobs:
             mv "/tmp/artifact/${BUNDLE_NAME}" $GITHUB_WORKSPACE/
           fi
         shell: bash
+
+      # Attest the exact platform tarball before handing it to the release job.
+      - name: Generate build provenance attestation
+        uses: actions/attest@v4
+        with:
+          subject-path: satellite-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
