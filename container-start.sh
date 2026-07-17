@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# Older containers explicitly launch this script using "sh", which ignores the
+# Bash shebang above.  Re-launch under Bash so self-upgrades remain compatible.
+if [ -z "${BASH_VERSION:-}" ]; then
+	exec /bin/bash "$0" "$@"
+fi
+
 set -e
 
 # add some common path locations
