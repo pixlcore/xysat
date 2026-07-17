@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.0.36
+
+> July 16, 2026
+
+- [`2edc00e`](https://github.com/pixlcore/xysat/commit/2edc00e75c2215468bcc04796905130f316c9334): Version 1.0.36
+- [`6040bb1`](https://github.com/pixlcore/xysat/commit/6040bb171654a59ba535d20c8c71bc4141adbfc9): Meta: Fix GitHub Actions build so that a release draft is created before uploading assets.
+
 ## Version v1.0.35
 
 > July 16, 2026
