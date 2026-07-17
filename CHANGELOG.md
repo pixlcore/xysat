@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.0.37
+
+> July 16, 2026
+
+- [`727be57`](https://github.com/pixlcore/xysat/commit/727be57e91cf310ff3cb00d1a2f469fea9281571): Version 1.0.37
+- [`5eaa106`](https://github.com/pixlcore/xysat/commit/5eaa10602bbf8665a5324f697ffbdccd93cc6870): Bug Fix: Self-upgrade inside containers launched the start script using "sh" (not "bash") causing the new CSV URL splitter to fail.
+
 ## Version v1.0.36
 
 > July 16, 2026
