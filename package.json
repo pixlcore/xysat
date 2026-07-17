@@ -27,7 +27,7 @@
 		"lodash": "4.18.1"
 	},
 	"dependencies": {
-		"@pixlcore/xyops-sdk": "^1.0.1",
+		"@pixlcore/xyops-sdk": "^1.0.3",
 		"async": "2.6.4",
 		"class-plus": "^1.0.0",
 		"node-pty": "1.1.0",
