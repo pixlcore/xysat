@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.35
+
+> July 16, 2026
+
+- [`4e5b7bf`](https://github.com/pixlcore/xysat/commit/4e5b7bf00e2194bad45eae3ccec0ca8cfb41e1a6): Version 1.0.35
+- [`0ce7952`](https://github.com/pixlcore/xysat/commit/0ce7952d0badf116dd0f8a8f395d6ae77da84381): Bump xyops-sdk to v1.0.3 for new features.
+- [`3492e2a`](https://github.com/pixlcore/xysat/commit/3492e2a006b683e472533f88241ad8836b6c26d2): Meta: Add provenance attestation to GitHub Actions build artifacts.
+- [`6960f1a`](https://github.com/pixlcore/xysat/commit/6960f1aed0b441c6c20968006a48a4d990084367): Feature: Support multiple CSV setup URLs in XYOPS_setup env var (container start script).
+
 ## Version v1.0.34
 
 > July 14, 2026
