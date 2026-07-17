@@ -173,20 +173,21 @@ jobs:
           echo "Generated release notes:"
           cat RELEASE_NOTES.md
 
-      - name: Create GitHub Release
+      - name: Create Draft GitHub Release
         id: create_release
         run: |
-          # Create the release and capture the output
+          # Keep the release mutable until all platform tarballs are attached.
           RESPONSE=$(gh release create "${{ github.ref_name }}" \
+            --draft \
             --title "Version ${{ github.ref_name }}" \
             --notes-file RELEASE_NOTES.md)
-          echo "Release created successfully: $RESPONSE"
+          echo "Draft release created successfully: $RESPONSE"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload all tarballs to Release
+      - name: Upload all tarballs to Draft Release
         run: |
-          echo "Uploading artifacts to release..."
+          echo "Uploading artifacts to draft release..."
           for file in artifacts/*/satellite-*.tar.gz; do
             echo "Uploading $file..."
             gh release upload "${{ github.ref_name }}" "$file" --clobber
@@ -194,3 +195,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
+
+      # Publishing locks the completed release and its assets against changes.
+      - name: Publish GitHub Release
+        run: gh release edit "${{ github.ref_name }}" --draft=false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
