@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.38
+
+> July 22, 2026
+
+- [`63c79b9`](https://github.com/pixlcore/xysat/commit/63c79b90ca28c922789b8b6314dbdcddb34c4fe1): Version 1.0.38
+- [`06ca6cd`](https://github.com/pixlcore/xysat/commit/06ca6cdc274c9d9146b35926d8af6d9e32134d19): Bump systeminformation to v5.33.0 for latest bug fixes and features.
+- [`843262f`](https://github.com/pixlcore/xysat/commit/843262fa133de0370f5eae8657601d17281662c9): Bump pixl-boot to v2.0.3 for macOS Tahoe launchctl plist fix.
+
 ## Version v1.0.37
 
 > July 16, 2026
