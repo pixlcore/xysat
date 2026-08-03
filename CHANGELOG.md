@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.39
+
+> August 3, 2026
+
+- [`bf8f5ad`](https://github.com/pixlcore/xysat/commit/bf8f5ad42b733a0c44d711f4e4b8b387082e9fa9): Version 1.0.39
+- [`03114a7`](https://github.com/pixlcore/xysat/commit/03114a7dea0bcffadda7f45b27911335a889139d): Deps: Bump pixl-boot to v2.0.4 for Rocky Linux support.
+- [`90796ea`](https://github.com/pixlcore/xysat/commit/90796ea29d96300fc2c858ec41a25987b92c7b83): Bug Fix: Potential race condition with websocket auto-reconnecting and auth flag.
+
 ## Version v1.0.38
 
 > July 22, 2026
