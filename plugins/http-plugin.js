@@ -190,7 +190,7 @@ stream.on('json', function(job) {
 		if (resp) details += "- **Response:** HTTP " + resp.statusCode + " " + resp.statusMessage + "\n";
 		else if (err) details += "- **Error:** " + err + "\n";
 		
-		if (params.headers.length) {
+		if (params.headers && params.headers.length) {
 			details += "\n### Request Headers:\n\n```http\n";
 			details += scrubSecrets(params.headers) + "\n";
 			details += "```\n";
