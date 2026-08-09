@@ -1,5 +1,16 @@
 # xySat Changelog
 
+## Version v1.0.40
+
+> August 8, 2026
+
+- [`9e02251`](https://github.com/pixlcore/xysat/commit/9e022513a0f79f21747553e7e69f491219e457bc): Version 1.0.40
+- [`ea37723`](https://github.com/pixlcore/xysat/commit/ea37723c8d736a281300786dcc10b7dd96eedf09): Dep: Bump systeminformation to v5.33.1 for networkStats fix on Windows.
+- [`4bbe080`](https://github.com/pixlcore/xysat/commit/4bbe080add198553ed18dce7c1b227847fa8a673): Dep: Bump @pixlcore/xyops-sdk to v1.0.4 for latest API type definitions.
+- [`1569bd2`](https://github.com/pixlcore/xysat/commit/1569bd2abb44bdb1aae27b03f110ca3e86485a46): Dep: Bump pixl-request to v2.6.10 for regression bug fix in download retries.
+- [`2c37b57`](https://github.com/pixlcore/xysat/commit/2c37b57093e249d6292bc75c38f3eaf56669dac0): Bug Fix: Potential crash if params.headers is missing from job object.  Ref pixlcore/xyops#410
+- [`374b9a6`](https://github.com/pixlcore/xysat/commit/374b9a62a39507d511e79f0a48e2612897246cf4): Add basic preliminary support for monitoring on FreeBSD (WIP).
+
 ## Version v1.0.39
 
 > August 3, 2026
