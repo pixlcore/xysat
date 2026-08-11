@@ -133,7 +133,7 @@ Notably, this installation method will not register xySat as a Windows service, 
 
 # Configuration
 
-See the [xySat Configuration Guide](https://docs.xyops.io/config/satellite) for details.
+See the [xySat Configuration Guide](https://docs.xyops.io/hosting/satellite) for details.
 
 # Development
 
@@ -157,6 +157,6 @@ See [LICENSE.md](LICENSE.md) in this repository.
 
 ## Included Software
 
-This software includes the Node.js runtime engine, which is licensed separately:
+The xySat distribution bundles include the Node.js runtime engine, which is licensed separately:
 
 https://github.com/nodejs/node/blob/main/LICENSE
