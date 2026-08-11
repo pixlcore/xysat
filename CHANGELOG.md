@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.0.41
+
+> August 11, 2026
+
+- [`3c8391e`](https://github.com/pixlcore/xysat/commit/3c8391ea6e15c1d4d7f4b5ba00bc0437a46061ca): Version 1.0.41
+- [`eab3743`](https://github.com/pixlcore/xysat/commit/eab3743b4c2174c6c2d9e814852b6478fd883461): Feature: New optional graceful shutdown (wait for all jobs to complete).
+- [`db763c9`](https://github.com/pixlcore/xysat/commit/db763c90a772ed97fd14ef53c760e11cac7dd4ad): Doc: Fix two minor corrections in README (fixed link and wording).
+
 ## Version v1.0.40
 
 > August 8, 2026
