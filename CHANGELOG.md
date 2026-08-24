@@ -1,5 +1,16 @@
 # xySat Changelog
 
+## Version v1.0.42
+
+> August 24, 2026
+
+- [`59e0d24`](https://github.com/pixlcore/xysat/commit/59e0d24fe511b2c92d261669086be410444bc357): Version 1.0.42
+- [`2b13bec`](https://github.com/pixlcore/xysat/commit/2b13bec29941e9e4590eb049b3e8a9088ad43fe1): Bug Fix: Tweak websocket connect retry backoff algorithm.
+- [`5301901`](https://github.com/pixlcore/xysat/commit/53019019e46d49f2c9b6abf75a0442bd772dd167): Dep: Bump systeminformation to v5.33.2 for windows powershell fix.
+- [`76c5be8`](https://github.com/pixlcore/xysat/commit/76c5be83bc514b6fc542780f20c12a81f48572dd): Bug Fix: Adjust permissions for temp directories to prevent deletion by non-owner users.  Fixes #10.
+- [`0d6451a`](https://github.com/pixlcore/xysat/commit/0d6451a9c51e3e43a64a80b090fea682ab095b1c): Bug Fix: Correct job temp ownership for non-root plugins.
+- [`b0e2c34`](https://github.com/pixlcore/xysat/commit/b0e2c343221b4b8cc88e349b1114c6bc1d6a2816): Bug Fix: Set retry_ok flag on job when aborting for shutdown.
+
 ## Version v1.0.41
 
 > August 11, 2026
