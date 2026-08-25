@@ -124,7 +124,17 @@ jobs:
           else
             # Unix commands (Linux/macOS)
             mkdir -p /tmp/artifact
-            tar -czvf "/tmp/artifact/${BUNDLE_NAME}" .
+
+            # Never include the GitHub runner's UID/GID in release archives.
+            # GNU tar and macOS bsdtar use different ownership options.
+            if [[ "${{ matrix.platform }}" == "linux" ]]; then
+              tar --owner=0 --group=0 --numeric-owner \
+                -czvf "/tmp/artifact/${BUNDLE_NAME}" .
+            else
+              tar --uid 0 --gid 0 --numeric-owner \
+                -czvf "/tmp/artifact/${BUNDLE_NAME}" .
+            fi
+
             mv "/tmp/artifact/${BUNDLE_NAME}" $GITHUB_WORKSPACE/
           fi
         shell: bash
