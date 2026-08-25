@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.43
+
+> August 25, 2026
+
+- [`05aa50a`](https://github.com/pixlcore/xysat/commit/05aa50a12d21997346a83408d4853e8f3c93b916): Version 1.0.43
+- [`d2a8db3`](https://github.com/pixlcore/xysat/commit/d2a8db30de20c307aee0e6651a6c630900f68e4b): Bug Fix: GitHub Actions: Never include the GitHub runner's UID/GID in release archives.  Fixes pixlcore/xyops#429
+- [`53db089`](https://github.com/pixlcore/xysat/commit/53db089b8697ebf7ea033768fdd55e1ae5478584): Bug Fix: Performance: Make job ownership setup asynchronous.
+- [`ac2dabc`](https://github.com/pixlcore/xysat/commit/ac2dabc2aeb42e2b308ef18cecfaacb52011eccb): Security: Harden shared and per-job temp directories.
+
 ## Version v1.0.42
 
 > August 24, 2026
