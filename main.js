@@ -76,7 +76,7 @@ if ((args.install || args.uninstall || args.stop) && is_windows) {
 			if (!fs.existsSync(config_file)) {
 				config = sample_config;
 				var raw_config = JSON.stringify( config, null, "\t" );
-				fs.writeFileSync( config_file, raw_config, { mode: 0o600 } );
+				Tools.writeFileAtomicSync( config_file, raw_config, { mode: 0o600, flush: true } );
 				print("\nA sample config file has been created: " + config_file + ":\n");
 				print( raw_config + "\n" );
 				process.exit(0);
@@ -230,7 +230,7 @@ if (args.install || (args.other && (args.other[0] == 'install'))) {
 		if (!fs.existsSync(config_file)) {
 			config = sample_config;
 			var raw_config = JSON.stringify( config, null, "\t" );
-			fs.writeFileSync( config_file, raw_config, { mode: 0o600 } );
+			Tools.writeFileAtomicSync( config_file, raw_config, { mode: 0o600, flush: true } );
 			print("\nA sample config file has been created: " + config_file + ":\n");
 			print( raw_config + "\n" );
 		}
@@ -292,7 +292,7 @@ else {
 	process.chdir( __dirname );
 	if (!fs.existsSync(config_file)) {
 		// create sample config file if needed (user may have skipped the install step)
-		fs.writeFileSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600 } );
+		Tools.writeFileAtomicSync( config_file, JSON.stringify( sample_config, null, "\t" ), { mode: 0o600, flush: true } );
 	}
 	
 	// map XYSAT_ env vars to SATELLITE_, for convenience
@@ -306,7 +306,7 @@ else {
 	
 	if (Tools.numKeys(args) && !args.debug && !args.echo) {
 		var temp_config = Tools.mergeHashes( JSON.parse( fs.readFileSync( config_file, 'utf8' ) ), args );
-		fs.writeFileSync( config_file, JSON.stringify(temp_config, null, "\t") + "\n", { mode: 0o600 } );
+		Tools.writeFileAtomicSync( config_file, JSON.stringify(temp_config, null, "\t") + "\n", { mode: 0o600, flush: true } );
 	}
 	
 	// start server
