@@ -1,5 +1,15 @@
 # xySat Changelog
 
+## Version v1.0.44
+
+> August 30, 2026
+
+- [`4a1a009`](https://github.com/pixlcore/xysat/commit/4a1a00947f995cfa211819519a504c705bcf4a4c): Version 1.0.44
+- [`9e2104e`](https://github.com/pixlcore/xysat/commit/9e2104ee22ad19a806b422766246d6a316b484d4): Dep: Bump systeminformation to v5.33.6 for various fixes.
+- [`ddcea27`](https://github.com/pixlcore/xysat/commit/ddcea27ebc01767395f2db7b9b12c171411951ec): Bug Fix: Improve error logging for monitor plugin failures / timeouts.
+- [`620b945`](https://github.com/pixlcore/xysat/commit/620b9453cdcd7fab2a8839f0c8effedcdbf839f8): Bug Fix: Write config file updates atomically, to avoid race conditions on power loss.  Fixes pixlcore/xyops#433
+- [`80f247e`](https://github.com/pixlcore/xysat/commit/80f247e1bf3cbf2fb0c86451d9be7bb8f7646001): Dep: Bump systeminformation to v5.33.5 for misc fixes.
+
 ## Version v1.0.43
 
 > August 25, 2026
