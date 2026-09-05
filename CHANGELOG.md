@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.45
+
+> September 4, 2026
+
+- [`661a7e8`](https://github.com/pixlcore/xysat/commit/661a7e88202f3e00ab372d6624478cd851252a44): Version 1.0.45
+- [`f59b853`](https://github.com/pixlcore/xysat/commit/f59b8534dc0d77fc0672de819ef6481d1f8f873e): Dep: Bump systeminformation to v5.33.8.
+- [`d18da18`](https://github.com/pixlcore/xysat/commit/d18da18b2127826dea98a15b16f381ab6ddbe4f2): Dep: Bump pixl-boot to v2.0.5 for "OOMPolicy=continue" in systemd service file.  Fixes #12
+- [`dad9dff`](https://github.com/pixlcore/xysat/commit/dad9dff619339b548b583062e30d5af4db951e46): Bug Fix: Workaround 3rd party bug in node-windows where EventLogger can crash on spawn.  Fixes pixlcore/xyops#437
+
 ## Version v1.0.44
 
 > August 30, 2026
