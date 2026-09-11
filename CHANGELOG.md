@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.0.46
+
+> September 11, 2026
+
+- [`bd7f3eb`](https://github.com/pixlcore/xysat/commit/bd7f3eb7876eecfc1f6e145008f43dc9f7a8c743): Version 1.0.46
+- [`9ce8ae8`](https://github.com/pixlcore/xysat/commit/9ce8ae8060ccef5cd20a0b2f3edbe0aa8b7cc306): Bug Fix: Never allow full monitor cycles to overlap.  Fixes #14
+- [`71e5c45`](https://github.com/pixlcore/xysat/commit/71e5c456cc0b6afa257b3468d0dbe15024a4025e): Dep: Bump pixl-request to v2.6.11 for Node.js v24 warning fix.
+- [`b7049dd`](https://github.com/pixlcore/xysat/commit/b7049ddad72a5bea2f688fc3484368bac3010789): Bug Fix: Include HTTP response code in error messages for success/error match.
+
 ## Version v1.0.45
 
 > September 4, 2026
