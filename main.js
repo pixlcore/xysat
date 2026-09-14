@@ -337,38 +337,6 @@ else {
 		}
 	} );
 	
-	if (is_windows) {
-		// hook logger error event for windows event viewer
-		// do not use node-windows EventLogger here, as it can crash on process spawn errors
-		// ref: https://github.com/pixlcore/xyops/issues/437
-		var logWindowsEvent = function(type, message) {
-			var event_args = [
-				'/L', 'APPLICATION',
-				'/T', type,
-				'/SO', 'xyOps',
-				'/D', String(message).replace(/\r\n|\n\r|\r|\n/g, "\f"),
-				'/ID', '1000'
-			];
-			var handleError = function(err) {
-				// Note: this must be log level 2 to prevent an infinite loop
-				if (err) server.logDebug(2, "Failed to write to Windows Event Log: " + err);
-			};
-			try {
-				cp.execFile('eventcreate.exe', event_args, { windowsHide: true }, handleError);
-			}
-			catch (err) {
-				handleError(err);
-			}
-		};
-		
-		logWindowsEvent( 'INFORMATION', "xyOps Satellite v" + pkg.version + " starting up" );
-		
-		server.logger.on('row', function(line, cols, args) {
-			if (args.category == 'error') logWindowsEvent( 'ERROR', line );
-			else if ((args.category == 'debug') && (args.code == 1)) logWindowsEvent( 'INFORMATION', line );
-		});
-	}
-	
 	// process.once('SIGINT', function() {
 	// 	// Note: Doesn't pixl-server take care of this?  Why are we hooking SIGINT in main.js?
 	// 	// Ohhhh did this have something to do with the ptty lib?
