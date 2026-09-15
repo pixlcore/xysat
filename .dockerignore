@@ -1,0 +1,2 @@
+# Windows-only service wrapper source is injected by GitHub Actions builds.
+win/

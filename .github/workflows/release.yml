@@ -60,8 +60,13 @@ jobs:
           NODE_TARBALL="${NODE_DIST}.tar.gz"
 
           if [[ "${{ matrix.platform }}" == "windows" ]]; then
-            # Install additional dependency
-            npm install node-windows
+            # Install our vendored, locally patched copy of node-windows.
+            # Its own lockfile pins the two transitive dependencies it requires.
+            mv win/node-windows node_modules/node-windows
+            (
+              cd node_modules/node-windows
+              npm ci --omit=dev --ignore-scripts
+            )
             
             # For Windows, we only need node.exe
             NODE_DIST="node-v${NODE_VERSION}-win-${{ matrix.arch }}"
@@ -90,7 +95,7 @@ jobs:
             # Move Windows batch files from win directory to root
             if [ -d "win" ]; then
               echo "Moving Windows batch files to root directory..."
-              cp -f win/* .
+              cp -f win/*.bat .
               rm -rf win
               echo "Windows batch files moved successfully."
             else
