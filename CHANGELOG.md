@@ -1,5 +1,16 @@
 # xySat Changelog
 
+## Version v1.0.47
+
+> September 15, 2026
+
+- [`36c00a2`](https://github.com/pixlcore/xysat/commit/36c00a260147f6bde55063c8e093de5ace1f9b82): Version 1.0.47
+- [`8dfe1e3`](https://github.com/pixlcore/xysat/commit/8dfe1e3e0c0f5cdd5da15a29e9986d9ccde31fd2): Bug Fix: Harden vendored node-windows service lifecycle on Windows.
+- [`62d974c`](https://github.com/pixlcore/xysat/commit/62d974c3e172fb96c9c0ae3111cbb1a21119e357): Dep: Fork "node-windows" module and bring development in house.
+- [`73b25ca`](https://github.com/pixlcore/xysat/commit/73b25ca605dc4666936ce80df233d2dd1e995df8): Dep: Bump pixl-server to v1.0.51 for improved PID handling on Windows.
+- [`902bf0d`](https://github.com/pixlcore/xysat/commit/902bf0d1e9c085df4dca597a66265cf76e6a9e79): Bug Fix: Remove broken Windows Event Logger integration.
+- [`80a3c54`](https://github.com/pixlcore/xysat/commit/80a3c540771dc4b8ac6432c9de335fa70bc7e8fc): Bug Fix: Prevent socket disconnect race condition with job starting at same instant.
+
 ## Version v1.0.46
 
 > September 11, 2026
