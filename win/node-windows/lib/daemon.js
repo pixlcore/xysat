@@ -105,8 +105,8 @@ var daemon = function (config) {
           '--grow', this.grow,
           '--wait', this.wait,
           '--maxrestarts', this.maxRestarts,
-          '--abortonerror', (this.abortOnError == true ? 'y' : 'n'),
-          '--stopparentfirst', this.stopparentfirst
+          '--abortonerror', (this.abortOnError === true ? 'y' : 'n'),
+          '--stopparentfirst', (this.stopparentfirst === true ? 'y' : 'n')
         ];
 
         if (this.maxRetries !== null) {
@@ -163,7 +163,7 @@ var daemon = function (config) {
       enumerable: true,
       writable: false,
       configurable: false,
-      value: config.stopparentfirst
+      value: config.stopparentfirst === true
     },
 
     /**
@@ -222,7 +222,7 @@ var daemon = function (config) {
       enumerable: true,
       writable: false,
       configurable: false,
-      value: config.abortOnError instanceof Boolean ? config.abortOnError : false
+      value: config.abortOnError === true
     },
 
     /**
@@ -507,7 +507,7 @@ var daemon = function (config) {
             this.log.warn('The primary configuration file is missing or cannot be found (' + path.join(this.root, this.id + '.xml') + ')');
             missing = true;
           }
-          if (missing.length > 0) {
+          if (missing) {
             this.emit('invalidinstallation');
             return;
           }

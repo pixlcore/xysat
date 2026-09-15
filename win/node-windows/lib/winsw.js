@@ -74,7 +74,6 @@ module.exports = {
 
     multi('argument',config.nodeOptions, ' ');
     xml.push({argument:config.script.trim()});
-console.log({loc: 'winsw.js ~line 77', xml, config})
     multi('argument',config.wrapperArgs,' ');
 
     // Optionally add logging values, defaulting to logmode

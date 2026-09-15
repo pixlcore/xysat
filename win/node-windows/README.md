@@ -16,3 +16,20 @@ This copy is intentionally maintained with xySat so that Windows service
 wrapper fixes can be reviewed, tested, and released together with the
 application. Do not replace it with the package from npm without first
 reviewing and preserving the local changes.
+
+## Local hardening
+
+The service wrapper has been hardened for xySat in the following ways:
+
+- Only one child process and one pending restart timer are allowed at a time.
+- Every delayed restart re-checks the live child and shutdown state before it
+  can launch anything.
+- Restart limits use a rolling 60-second window, and stale child events cannot
+  clear or restart a newer child generation.
+- Wrapper-level uncaught exceptions trigger a controlled shutdown instead of
+  recursively launching another copy of xySat.
+- The Windows Event Log adapter writes to WinSW-captured stdout and stderr. It
+  never spawns `eventcreate.exe` or an elevated fallback process.
+- `stopparentfirst` and `abortOnError` are serialized as explicit `y` or `n`
+  arguments. Existing XML containing `stopparentfirst=undefined` is safely
+  interpreted as disabled.
