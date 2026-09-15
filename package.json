@@ -36,7 +36,7 @@
 		"pixl-json-stream": "^1.0.10",
 		"pixl-perf": "^1.0.9",
 		"pixl-request": "^2.6.11",
-		"pixl-server": "^1.0.50",
+		"pixl-server": "^1.0.51",
 		"pixl-tools": "^2.0.3",
 		"pixl-xml": "^1.0.0",
 		"shell-quote": "1.9.0",
