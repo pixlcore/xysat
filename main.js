@@ -152,7 +152,8 @@ if ((args.install || args.uninstall || args.stop) && is_windows) {
 			cli.log("Temp Script: " + psFile);
 			
 			const tr = `powershell.exe -NoProfile -ExecutionPolicy Bypass -File \\"${psFile}\\"`;
-			let cmd = `schtasks /Create /TN "${task}" /SC ONCE /ST 00:00 /SD 01/01/2000 /RU SYSTEM /RL HIGHEST /TR "${tr}"`;
+			// Use a locale-free placeholder schedule, then explicitly run and delete the task below.
+			let cmd = `schtasks /Create /TN "${task}" /SC ONSTART /RU SYSTEM /RL HIGHEST /TR "${tr}"`;
 			cmd += ` && schtasks /Run /TN "${task}" && schtasks /Delete /TN "${task}" /F`;
 			cli.log("Executing Command: " + cmd);
 			
