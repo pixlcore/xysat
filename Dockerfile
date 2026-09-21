@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim
+FROM node:24-bookworm-slim
 
 LABEL org.opencontainers.image.source="https://github.com/pixlcore/xysat"
 LABEL org.opencontainers.image.description="Remote satellite worker daemon for xyOps."
