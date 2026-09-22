@@ -5,6 +5,9 @@ on:
     tags:
       - '*' # Trigger on any tag push
 
+env:
+  NODE_VERSION: '24.21.0'
+
 jobs:
   build:
     permissions:
@@ -41,7 +44,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Report System Architecture
         run: |
@@ -55,7 +58,6 @@ jobs:
 
       - name: Download and Extract Node.js Runtime
         run: |
-          NODE_VERSION=22.22.2
           NODE_DIST="node-v${NODE_VERSION}-${{ matrix.platform }}-${{ matrix.arch }}"
           NODE_TARBALL="${NODE_DIST}.tar.gz"
 
