@@ -176,13 +176,13 @@ stream.once('json', function(job) {
 		if (stderr_buffer.length && stderr_buffer.match(/\S/)) {
 			if (!sent_html) data.html = {
 				title: "Error Output",
-				content: "<pre>" + stderr_buffer.replace(/</g, '&lt;').trim() + "</pre>"
+				content: "<pre>" + Tools.stripANSI(stderr_buffer).replace(/</g, '&lt;').trim() + "</pre>"
 			};
 			
 			if (code) {
 				// possibly augment description with first line of stderr, if not too insane
 				var stderr_line = stderr_buffer.trim().split(/\n/).shift();
-				if (stderr_line.length < 256) data.description += ": " + stderr_line;
+				if (stderr_line.length < 256) data.description += ": " + Tools.stripANSI(stderr_line);
 			}
 		}
 		
