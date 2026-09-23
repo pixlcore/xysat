@@ -1,5 +1,25 @@
 # xySat Changelog
 
+## Version v1.1.0
+
+> September 23, 2026
+
+- [`c59f139`](https://github.com/pixlcore/xysat/commit/c59f13937e0a7f2f99e3287dcbe6e8c8f642f22a): Version 1.1.0
+- [`8852812`](https://github.com/pixlcore/xysat/commit/8852812ce0cd1839cf1a7dbbcfde5640dd0b81fc): Feature: Terminals: Improve open/close handling, comm, logging, and cleanup of stale refs.
+- [`aaa252b`](https://github.com/pixlcore/xysat/commit/aaa252baaa21c0d533ac8df4dc805454834ff7b5): Docker: Ensure bundled node.js binary runs after self-upgrade.
+- [`2910a52`](https://github.com/pixlcore/xysat/commit/2910a527ee19d6c4ed2b42b23e8b25108eba0656): Feature: Backend for new admin terminal system, for interactive shells in the UI
+- [`844d62e`](https://github.com/pixlcore/xysat/commit/844d62ef8380408cad11aa4623cf633e5391ef11): Bug Fix: Shell Plugin: Strip ANSI color codes from error output.
+- [`75d5a9a`](https://github.com/pixlcore/xysat/commit/75d5a9a257ebbfb843d5f0bf337a7fc67a31a22d): Meta: Docker Bulld: Use github.repository variable instead of github.repository_owner
+- [`68532e7`](https://github.com/pixlcore/xysat/commit/68532e7a2e1bb222854d6592ecb876d3714129e5): Dep: Bump systeminformation to v5.33.13 for latest fixes.
+- [`6b1a67d`](https://github.com/pixlcore/xysat/commit/6b1a67daad8de46d21b06f7e81e44b42fe3b25fb): Dep: Remove unused node-pty and ssh2 modules, add new zigpty module.
+- [`8f6da73`](https://github.com/pixlcore/xysat/commit/8f6da73df239f3581ca1526bd3baf6ffb2d9c713): Meta: Bump Node.js to v24 in packaged distribution.
+- [`ffc5179`](https://github.com/pixlcore/xysat/commit/ffc51791b29e3a673ca210bdfc01aac4818a1af0): Meta: Upgrade GitHub Actions components to latest versions.
+- [`b0cda70`](https://github.com/pixlcore/xysat/commit/b0cda70d07e7a8de5eb9ecd3c4e72b95580037e2): Docker: Bump Node.js to v24
+- [`efb7287`](https://github.com/pixlcore/xysat/commit/efb7287f6ee672f9db6f36d379dd92442c7a360c): Bug Fix: Disallow multiple parallel upgrades from happening at once.
+- [`2788387`](https://github.com/pixlcore/xysat/commit/27883871b2d83e831b32bb6cd8b25f8297fdc1d2): Feature: Replace systeminformation's networkInterfaces call with in-house version for Linux (50X faster).  Fixes #15
+- [`43b0a8a`](https://github.com/pixlcore/xysat/commit/43b0a8ac1dc8c44335ef02757cf587550d111504): Feature: Cache network interface list to avoid expensive systeminformation call every minute.  Ref #15.
+- [`e54cde5`](https://github.com/pixlcore/xysat/commit/e54cde5ac42449d4216ae2dc94511f920f07f435): Bug Fix: Windows on EU locales such as Swedish require YYYY/MM/DD date format for background task scheduling.  Fixes pixlcore/xyops#453.
+
 ## Version v1.0.47
 
 > September 15, 2026
