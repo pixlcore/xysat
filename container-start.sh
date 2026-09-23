@@ -40,13 +40,19 @@ if [[ -n "${XYOPS_setup:-}" && ! -s "$CONFIG_FILE" ]]; then
 	fi
 fi
 
+# find correct node binary
+NODE_BIN="node"
+if [[ -f "bin/node" ]]; then
+	NODE_BIN="bin/node"
+fi
+
 # check for foreground
 if [[ -n "${SATELLITE_foreground:-}" ]]; then
 	# cleanup pid file
 	rm -f pid.txt
 	
 	# start xysat, replace current process
-	exec node main.js start
+	exec "$NODE_BIN" main.js start
 else
 	echo "ERROR: This script is for containers only."
 fi
