@@ -217,7 +217,8 @@ var boot_opts = {
 	linux_type: "forking",
 	linux_after: "network.target",
 	linux_wanted_by: "multi-user.target",
-	darwin_type: "agent"
+	darwin_type: "agent",
+	darwin_interactive: true
 };
 
 if (args.install || (args.other && (args.other[0] == 'install'))) {
