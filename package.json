@@ -30,7 +30,7 @@
 		"@pixlcore/xyops-sdk": "^1.0.4",
 		"async": "2.6.4",
 		"class-plus": "^1.0.0",
-		"pixl-boot": "^2.0.5",
+		"pixl-boot": "^2.0.6",
 		"pixl-cli": "^1.0.0",
 		"pixl-json-stream": "^1.0.10",
 		"pixl-perf": "^1.0.9",
