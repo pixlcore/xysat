@@ -1,5 +1,16 @@
 # xySat Changelog
 
+## Version v1.1.1
+
+> September 30, 2026
+
+- [`0d58d1d`](https://github.com/pixlcore/xysat/commit/0d58d1dd2699a30e9c238bf2db3a284e3ff1864e): Version 1.1.1
+- [`390a5fd`](https://github.com/pixlcore/xysat/commit/390a5fd43954cf94cba744eac5a287abee8abab2): Feature: Add job metadata row showing the exact plugin command that is spawned (includes sudo wrapper if enabled).
+- [`068385c`](https://github.com/pixlcore/xysat/commit/068385cc1f29eb03fbb5dbd3c3c88cd1f04df501): Feature: Support plugin.sudo to wrap child spawn in sudo, to preserve user's supplemental groups.  Ref: pixlcore/xyops#460
+- [`4b67f27`](https://github.com/pixlcore/xysat/commit/4b67f27eb3180274c3be43bc540ceb55cf08e6fa): Dep: Bump pixl-boot to v2.0.6 for new "darwin_interactive" flag.
+- [`2df699e`](https://github.com/pixlcore/xysat/commit/2df699e3c57565e27e08010743c77765cd1c41ce): Bug Fix: Set new "darwin_interactive" flag to prevent throttling on reboot.
+- [`d19f8a3`](https://github.com/pixlcore/xysat/commit/d19f8a33050df18e1a214e1a2420b1f69d9cfb0a): Bug Fix: Do not advertise terminal feature if zigPty failed to load.
+
 ## Version v1.1.0
 
 > September 23, 2026
