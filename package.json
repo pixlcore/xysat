@@ -24,7 +24,8 @@
 		"xysat"
 	],
 	"overrides": {
-		"lodash": "4.18.1"
+		"lodash": "4.18.1",
+		"basic-ftp": "6.2.1"
 	},
 	"dependencies": {
 		"@pixlcore/xyops-sdk": "^1.0.4",
