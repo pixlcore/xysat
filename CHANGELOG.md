@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.1.2
+
+> October 2, 2026
+
+- [`86ef1f6`](https://github.com/pixlcore/xysat/commit/86ef1f699185bdd95296283c06b0ea82caddc5b9): Version 1.1.2
+- [`19935d6`](https://github.com/pixlcore/xysat/commit/19935d6fc8eab202ea451b0fec6b4ec16dc8aea1): Dep: Bump systeminformation to v5.33.15 for latest fixes
+- [`ba2f434`](https://github.com/pixlcore/xysat/commit/ba2f43496305c309f7ecd0ceaf381d4aebfe0783): Feature: Log xySat version into job metadata when launching a job.
+- [`60c4dfc`](https://github.com/pixlcore/xysat/commit/60c4dfc58dcd168b1b5b9ceb5b6e2270d4175bc2): Dep: Override "basic-ftp" (sub-sub-sub-sub-dep of pixl-request) to v6.2.1 for vuln fix, that isn't fixed in any of the parents.
+
 ## Version v1.1.1
 
 > September 30, 2026
