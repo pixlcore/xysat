@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.1.3
+
+> October 7, 2026
+
+- [`f1f0d88`](https://github.com/pixlcore/xysat/commit/f1f0d88ff1770e4b56624cd7dd86ad7d46379a6b): Version 1.1.3
+- [`3b81fd1`](https://github.com/pixlcore/xysat/commit/3b81fd19e76835f02effe7b1779ed4e0e1ff15e2): Dep: Bump shell-quote to v1.12.0 for vuln fix.
+- [`c6d5a5e`](https://github.com/pixlcore/xysat/commit/c6d5a5ef122ad0b1fe8b2a0e54bdefdd88919fda): Bug Fix: Prevent crash if "ps" command returns fewer than the expected number of rows.  Fixes pixlcore/xyops#463
+- [`e6fcb01`](https://github.com/pixlcore/xysat/commit/e6fcb01ac8898d971805ea2209030e6e528bbf29): Meta: Cleanup Dockerfile, reduce layers and optimize for size.
+
 ## Version v1.1.2
 
 > October 2, 2026
