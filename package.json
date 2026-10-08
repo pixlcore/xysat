@@ -39,7 +39,7 @@
 		"pixl-server": "^1.0.51",
 		"pixl-tools": "^2.0.3",
 		"pixl-xml": "^1.0.0",
-		"shell-quote": "1.9.0",
+		"shell-quote": "1.12.0",
 		"systeminformation": "5.33.15",
 		"ws": "7.5.11",
 		"zigpty": "0.2.1"
