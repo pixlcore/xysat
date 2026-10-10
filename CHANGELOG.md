@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.1.4
+
+> October 10, 2026
+
+- [`d7f0cba`](https://github.com/pixlcore/xysat/commit/d7f0cba9b2205438f948f72f69807e07c0f4f922): Version 1.1.4
+- [`6c06878`](https://github.com/pixlcore/xysat/commit/6c068781b6dc87369004d505fa5da8fc08073a20): Feature: Limit job environment size before spawning child processes
+- [`38d9533`](https://github.com/pixlcore/xysat/commit/38d9533decb2b601d536c67c2e75af21e55b18de): Feature: Improve logging around upgrade requests with jobs still active.
+
 ## Version v1.1.3
 
 > October 7, 2026
