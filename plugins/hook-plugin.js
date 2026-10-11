@@ -20,6 +20,7 @@ process.stdout.setEncoding('utf8');
 
 var stream = new JSONStream( process.stdin, process.stdout );
 stream.EOL = "\n";
+stream.maxLineLength = 1024 * 1024 * 32; // allow large job payloads, matching the satellite protocol limit
 
 stream.on('json', function(job) {
 	// got job from parent
