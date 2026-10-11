@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.1.5
+
+> October 11, 2026
+
+- [`9770b41`](https://github.com/pixlcore/xysat/commit/9770b41f57d8fe775fd480c71973672d885265ef): Version 1.1.5
+- [`02ef38d`](https://github.com/pixlcore/xysat/commit/02ef38d3ec1cb9b8970edbf04accf8d552d04cf7): Bug Fix: Disable total ENV soft limit.
+- [`a71c866`](https://github.com/pixlcore/xysat/commit/a71c866336dcadc704755ba6245c3b64b8f0f665): Feature: Add support for new "job_data_env" config param, to disable all job data ENV keys.
+- [`3d643fa`](https://github.com/pixlcore/xysat/commit/3d643faefbbd7f1924a65097b2b188fcc3d12186): Bug Fix: Increase maximum STDIN size from 1MB to 32MB.
+
 ## Version v1.1.4
 
 > October 10, 2026
