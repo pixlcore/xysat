@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.1.6
+
+> October 13, 2026
+
+- [`95e4a7c`](https://github.com/pixlcore/xysat/commit/95e4a7c54f15cfcb820cfc48829ac818bc4e38bf): Version 1.1.6
+- [`402f3e5`](https://github.com/pixlcore/xysat/commit/402f3e574481a9fde53476e0bcb0fb1a3bab7239): Bug Fix: HTTP Plugin is not redacting some secrets from diagnostic output.  Fixes pixlcore/xyops#472.
+
 ## Version v1.1.5
 
 > October 11, 2026
