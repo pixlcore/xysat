@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.1.7
+
+> October 19, 2026
+
+- [`c9b1960`](https://github.com/pixlcore/xysat/commit/c9b19600968a4c54759007358bc40393f7589595): Version 1.1.7
+- [`7442db1`](https://github.com/pixlcore/xysat/commit/7442db14044a49e7636a2ab2d1de48b51c5d1900): Feature: Terminal: Improve shell detection and startup error reporting.
+- [`4e3ba92`](https://github.com/pixlcore/xysat/commit/4e3ba9204305fa048f45b9ea04243adff31c66ea): Dep: Bump systeminformation to v5.33.16 for latest bug fixes.
+
 ## Version v1.1.6
 
 > October 13, 2026
