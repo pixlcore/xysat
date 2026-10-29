@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.1.8
+
+> October 29, 2026
+
+- [`9b6bb5e`](https://github.com/pixlcore/xysat/commit/9b6bb5e17a12f16baab6a058931b56e1a7ee5e2a): Dep: Bump systeminformation to v5.33.18 for latest fixes.
+- [`f954e40`](https://github.com/pixlcore/xysat/commit/f954e4008ed60ad35bcef77795bd9dd4b481fdba): Version 1.1.8
+- [`0a3d7b1`](https://github.com/pixlcore/xysat/commit/0a3d7b154a5cbc43a51bac2804167bb3900d00d2): Dep: Bump pixl-tools to v2.0.6 to remove vulnerable picomatch dependency.
+
 ## Version v1.1.7
 
 > October 19, 2026
