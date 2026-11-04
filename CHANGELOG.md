@@ -1,5 +1,14 @@
 # xySat Changelog
 
+## Version v1.1.9
+
+> November 4, 2026
+
+- [`966258e`](https://github.com/pixlcore/xysat/commit/966258ee839e615c220b68b7fb885da71bba0459): Version 1.1.9
+- [`63b71de`](https://github.com/pixlcore/xysat/commit/63b71de2f2f9a0bd7c9a3ad63ed68ad9bafe9351): Meta: Bump bundled Node.js to v24.22.2 for latest fixes.
+- [`197a266`](https://github.com/pixlcore/xysat/commit/197a2666dcce1c7c8a805f39076a1734be54c93d): Dep: Bump systeminformation to v5.3.19 for latest fixes.
+- [`2f2cb18`](https://github.com/pixlcore/xysat/commit/2f2cb187cc64306b4b5695e3370899b5a6b20f6e): Meta: Add flag to force fresh pull of base docker image on GH actions build.
+
 ## Version v1.1.8
 
 > October 29, 2026
