@@ -307,7 +307,7 @@ else {
 	delete args.other;
 	
 	if (Tools.numKeys(args) && !args.debug && !args.echo) {
-		var temp_config = Tools.mergeHashes( JSON.parse( fs.readFileSync( config_file, 'utf8' ) ), args );
+		var temp_config = Tools.mergeHashes( Tools.sjson.parse( fs.readFileSync( config_file, 'utf8' ) ), args );
 		Tools.writeFileAtomicSync( config_file, JSON.stringify(temp_config, null, "\t") + "\n", { mode: 0o600, flush: true } );
 	}
 	

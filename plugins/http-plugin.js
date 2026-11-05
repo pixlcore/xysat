@@ -235,7 +235,7 @@ stream.on('json', function(job) {
 			// if response was JSON, include parsed data, up to 32 MB
 			if ((text.length < 1024 * 1024 * 32) && (resp.headers['content-type'].match(/(application|text)\/json/i) || text.match(/^\s*\{[\S\s]+\}\s*$/))) {
 				var json = null;
-				try { json = JSON.parse(text); }
+				try { json = Tools.sjson.parse(text); }
 				catch (e) {
 					print("\nWARNING: Failed to parse JSON response: " + e + " (could not include JSON in job data)\n");
 				}

@@ -25,7 +25,7 @@ if (!docker_bin) {
 	// read in data from xyops
 	const chunks = [];
 	for await (const chunk of process.stdin) { chunks.push(chunk); }
-	let job = JSON.parse( chunks.join('') );
+	let job = Tools.sjson.parse( chunks.join('') );
 	let params = job.params;
 	
 	// build docker run command
