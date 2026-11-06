@@ -6,6 +6,8 @@
 
 See the [xySat Installation Guide](https://docs.xyops.io/hosting/satellite) for details.
 
+xySat authenticates using the `auth_token` in its generated configuration. This token is paired with the configuration's `server_id`. Both are provided by the xyOps installer or config download.
+
 ## Manual Installation
 
 If you would like to install xySat manually (for e.g. to run it as a non-root user), see below for the steps.
