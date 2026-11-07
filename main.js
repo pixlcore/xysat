@@ -8,6 +8,13 @@ const Path = require('path');
 const fs = require('fs');
 const cp = require('child_process');
 const os = require('os');
+
+// Older conductor upgrade scripts leave stale nested copies of pixl-tools behind.
+// These packages use the top-level copy, so remove leftovers before loading them.
+for (const name of ['pixl-config', 'pixl-server', 'pixl-cli', 'pixl-request', 'pixl-logger', '@pixlcore/xyops-sdk']) {
+	fs.rmSync( Path.join(__dirname, 'node_modules', name, 'node_modules', 'pixl-tools'), { recursive: true, force: true } );
+}
+
 const PixlServer = require("pixl-server");
 const pkg = require('./package.json');
 const self_bin = Path.resolve(process.argv[0]) + ' ' + Path.resolve(process.argv[1]);
