@@ -1,5 +1,16 @@
 # xySat Changelog
 
+## Version v1.1.10
+
+> November 6, 2026
+
+- [`40264d8`](https://github.com/pixlcore/xysat/commit/40264d887d2f8649da0b89ab2a285949a217f4ec): Version 1.1.10
+- [`1e80b3f`](https://github.com/pixlcore/xysat/commit/1e80b3fb3c27f14999e94811089f58e589767638): Dep: Bump pixl-server to v1.0.54 for logger race condition fix on Windows.
+- [`26304c5`](https://github.com/pixlcore/xysat/commit/26304c542df8493bf6fd08c23aa1cba91a335a38): Fix: Remove legacy undocumented secret key auth method.
+- [`5612c6b`](https://github.com/pixlcore/xysat/commit/5612c6b39dd9546c1f5765a4fe59f57b09f8f8bd): Fix: Use secure JSON parsing across the app.
+- [`806bd63`](https://github.com/pixlcore/xysat/commit/806bd63a6c367a9080a07fdf409a0815b044c5f6): Dep: Bump several pixlcore modules to latest, for secure JSON parsing.
+- [`252aa22`](https://github.com/pixlcore/xysat/commit/252aa22ac78cf61a7c890879acb09344eec025db): Meta: Change release script to preflight check latest Node.js version.
+
 ## Version v1.1.9
 
 > November 4, 2026
