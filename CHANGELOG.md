@@ -1,5 +1,12 @@
 # xySat Changelog
 
+## Version v1.1.11
+
+> November 6, 2026
+
+- [`2ca3486`](https://github.com/pixlcore/xysat/commit/2ca34863957c40aa9743c7f8be828ec9d9834fab): Version 1.1.11
+- [`49535c9`](https://github.com/pixlcore/xysat/commit/49535c9c497c5aba3bd2f83c13e4102350022891): Fix: Old upgrade scripts leave stale copies of nested pixl-tools modules.
+
 ## Version v1.1.10
 
 > November 6, 2026
