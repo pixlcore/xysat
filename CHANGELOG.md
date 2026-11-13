@@ -1,5 +1,17 @@
 # xySat Changelog
 
+## Version v1.1.12
+
+> November 13, 2026
+
+- [`4410165`](https://github.com/pixlcore/xysat/commit/4410165aee0d7181925e4fe4541ff30971f125d5): Version 1.1.12
+- [`885d7aa`](https://github.com/pixlcore/xysat/commit/885d7aa4c97d81ffdf6ca8842acd5ddef6c8a017): Dep: Bump basic-ftp override to v6.2.6 for vuln fixes.
+- [`28ab804`](https://github.com/pixlcore/xysat/commit/28ab804d1da250a15dc6d1df60e5fbc0c9b2f890): Feature: Add terminal file uploads with destination and ownership controls
+- [`74849b7`](https://github.com/pixlcore/xysat/commit/74849b7b7f488b52692759853cc19db68cc9b288): Dep: Bump pixl-request to v2.6.14 for atomic downloads feature.
+- [`c24cede`](https://github.com/pixlcore/xysat/commit/c24cede48b72e5267d89a9f7fc1da34c8880debc): Meta: Change GitHub Actions x64 runner to use ubuntu-24.04, so it matches the arm64 build.
+- [`50dd0d0`](https://github.com/pixlcore/xysat/commit/50dd0d01f145e68aa7bdf52eca4aac774c36e37b): Dep: Bump Node.js to v24.22.3 for latest November security releases.
+- [`34e7aa6`](https://github.com/pixlcore/xysat/commit/34e7aa64e8f0888343510b1df715515f7e32732d): Fix: Linux disk monitoring on ZFS
+
 ## Version v1.1.11
 
 > November 6, 2026
