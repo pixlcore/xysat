@@ -6,7 +6,7 @@ on:
       - '*' # Trigger on any tag push
 
 env:
-  NODE_VERSION: '24.22.2'
+  NODE_VERSION: '24.22.3'
 
 jobs:
   build:
