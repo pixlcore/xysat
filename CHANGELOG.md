@@ -1,5 +1,13 @@
 # xySat Changelog
 
+## Version v1.1.13
+
+> November 26, 2026
+
+- [`0204669`](https://github.com/pixlcore/xysat/commit/0204669256f794bb7733ac2849d29076e1d9e708): Version 1.1.13
+- [`ddd91df`](https://github.com/pixlcore/xysat/commit/ddd91df925889eea7e3b190c4338e0e12c2f3998): Dep: Bump systeminformation to 5.33.26 for latest fixes.
+- [`0c7a983`](https://github.com/pixlcore/xysat/commit/0c7a983cae76d71d1c330ed9adf04968db0df1c5): Fix: Report Windows satellite upgrade failures
+
 ## Version v1.1.12
 
 > November 13, 2026
